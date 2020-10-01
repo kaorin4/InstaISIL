@@ -12,6 +12,12 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SfW-yk-HxV">
+                    <connections>
+                        <action selector="tapDismissKeyboard:" destination="BYZ-38-t0r" id="Z2k-p0-RAP"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="InstaISIL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -36,14 +42,17 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDr-40-xYB">
                                         <rect key="frame" x="10" y="155" width="294" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VeL-6w-sSM"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-FM-Smj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-FM-Smj">
                                         <rect key="frame" x="10" y="30" width="294" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Ks0-ca-M5n"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -100,16 +109,12 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="ConstraintCenterYContent" destination="5UM-vP-M46" id="3XJ-K4-QKT"/>
+                        <outlet property="constraintCenterYContent" destination="5UM-vP-M46" id="hsw-t5-pT3"/>
+                        <outlet property="emailTextField" destination="BOB-5q-c3Q" id="Kw6-Zj-sMu"/>
+                        <outlet property="statusLabel" destination="XeF-FM-Smj" id="Sk4-TJ-Gbt"/>
                         <outlet property="viewContent" destination="Wfm-lR-Zco" id="FLr-Y3-CK2"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="SfW-yk-HxV">
-                    <connections>
-                        <action selector="tapDismissKeyboard:" destination="BYZ-38-t0r" id="Z2k-p0-RAP"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="103.79464285714285"/>
         </scene>
@@ -120,6 +125,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

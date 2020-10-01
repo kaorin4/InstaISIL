@@ -14,14 +14,33 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var viewContent: UIView!
     
-    @IBAction func tapDismissKeyboard(_ gestureRecognizer : UITapGestureRecognizer) {
-        self.view.endEditing(true)        
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBAction func tapDismissKeyboard(_ sender : Any) {
+        self.view.endEditing(true)
     }
+    
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        let email: String = emailTextField.text ?? ""
+        let isEmail: Bool = CommonUtility.isValidEmail(email)
+        if !isEmail {
+            statusLabel.isHidden = false
+            statusLabel.text = "Ingresar email válido"
+        } else {
+            statusLabel.text = ""
+            statusLabel.isHidden = true
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
+        statusLabel.isHidden = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +71,7 @@ class LoginViewController: UIViewController {
         
         let endPosYContent = self.viewContent.frame.origin.y + self.viewContent.frame.height
         let originKeyboardY = keyboardFrame.origin.y
-        var spaceKeyboardToViewContent: CGFloat = 20
+        let spaceKeyboardToViewContent: CGFloat = 20
         var delta: CGFloat = 0
         
         if originKeyboardY < endPosYContent {
@@ -78,6 +97,9 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+
+
 
     /*
     // MARK: - Navigation
