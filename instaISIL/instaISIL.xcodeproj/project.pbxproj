@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D725266225008E1D6C /* AppDelegate.swift */; };
 		3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D925266225008E1D6C /* SceneDelegate.swift */; };
 		3A6422DC25266225008E1D6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422DB25266225008E1D6C /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6422D425266225008E1D6C /* InstaISIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaISIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422D725266225008E1D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A6422D925266225008E1D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				3A6422DB25266225008E1D6C /* ViewController.swift */,
+				06A871FA252674A100AA1740 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,7 +237,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "InstaISIL" */;
+			buildConfigurationList = 3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "instaISIL" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -289,6 +292,7 @@
 				3A6422DC25266225008E1D6C /* ViewController.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
+				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +579,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "InstaISIL" */ = {
+		3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "instaISIL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A6422FF25266226008E1D6C /* Debug */,
