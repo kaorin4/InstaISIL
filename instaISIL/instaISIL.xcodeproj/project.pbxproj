@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AB2529205B00737645 /* SignUpViewController.swift */; };
 		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
 		3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D725266225008E1D6C /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0656A0AB2529205B00737645 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = instaISIL/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
 		3A6422D425266225008E1D6C /* InstaISIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaISIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 			children = (
 				3A6422DB25266225008E1D6C /* ViewController.swift */,
 				06A871FA252674A100AA1740 /* LoginViewController.swift */,
+				0656A0AB2529205B00737645 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6422DC25266225008E1D6C /* ViewController.swift in Sources */,
+				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
