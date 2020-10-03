@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        statusLabel.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
