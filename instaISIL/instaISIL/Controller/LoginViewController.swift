@@ -18,10 +18,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
-    @IBAction func tapDismissKeyboard(_ sender : Any) {
-        self.view.endEditing(true)
-    }
-    
     @IBAction func loginButtonPressed(_ sender: Any) {
         let email: String = emailTextField.text ?? ""
         let isEmail: Bool = CommonUtility.isValidEmail(email)
@@ -39,7 +35,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     
         // Do any additional setup after loading the view.
+        //self.view.backgroundColor = UIColor(red: 0.27, green: 0.60, blue: 0.91, alpha: 1.00)
         statusLabel.isHidden = true
+
+        // dismiss keyboard when no longer editing text view
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
 
     }
     

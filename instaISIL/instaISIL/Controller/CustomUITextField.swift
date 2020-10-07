@@ -22,6 +22,7 @@ class CustomUITextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUpTextField()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +47,7 @@ class CustomUITextField: UITextField {
         layer.cornerRadius = 15
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.lightGray.cgColor
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00).cgColor
                 
     }
 
