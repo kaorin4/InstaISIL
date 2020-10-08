@@ -35,11 +35,11 @@ class CustomUIView: UIView {
         layer.borderColor = UIColor.lightGray.cgColor
         
         // shadow
-        let shadowOffset: CGFloat = 10
-        let contactRect = CGRect(x: bounds.origin.x + shadowOffset, y: bounds.origin.y + shadowOffset, width: bounds.width, height: bounds.height)
-        layer.shadowPath = UIBezierPath(rect: contactRect).cgPath
+        let rect: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width * 0.9, height: bounds.height)
+        layer.shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(signOf: 15.0, magnitudeOf: 15.0)).cgPath
         layer.shadowRadius = 5
-        layer.shadowOpacity = 0.4
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.5
     }
 
 }

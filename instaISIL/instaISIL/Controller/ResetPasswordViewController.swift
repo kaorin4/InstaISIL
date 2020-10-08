@@ -32,6 +32,11 @@ class ResetPasswordViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         statusLabel.isHidden = true
+        
+        // dismiss keyboard when no longer editing text view
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
 
