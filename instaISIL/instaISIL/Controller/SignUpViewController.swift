@@ -16,6 +16,10 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var degreeTextField: CustomUITextField!
+    
+    @IBOutlet weak var campusTextField: CustomUITextField!
+    
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         
         let email: String = emailTextField.text ?? ""
@@ -32,14 +36,37 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.degreeTextField.delegate = self
+        self.campusTextField.delegate = self
         // Do any additional setup after loading the view.
         statusLabel.isHidden = true
+        
         
         // dismiss keyboard when no longer editing text view
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? PickerOptionViewController {
+            controller.delegate = self
+            
+            if let textField = sender as? CustomUITextField {
+                controller.sender = sender
+                
+                if textField == self.degreeTextField {
+                    controller.arrayData = ["Software", "Sistemas", "Admin"]
+                }
+                else if textField == self.campusTextField {
+                    controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,16 +112,32 @@ class SignUpViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+
+}
+
+extension SignUpViewController: PickerOptionViewControllerDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func pickerOptionViewController(_ controller: PickerOptionViewController, didSelectOption option: Any) {
+        if let sender = controller.sender as? CustomUITextField {
+            sender.text = "\(option)"
+        }
     }
-    */
+    
+}
 
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.degreeTextField {
+            self.performSegue(withIdentifier: "DegreePickerViewController", sender: self.degreeTextField)
+            return false
+        }
+        else if textField == self.campusTextField {
+            self.performSegue(withIdentifier: "DegreePickerViewController", sender: self.campusTextField)
+            return false
+        }
+        
+        return true
+        
+    }
 }
