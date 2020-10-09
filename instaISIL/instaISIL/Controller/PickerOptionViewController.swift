@@ -38,9 +38,9 @@ class PickerOptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.backgroundColor = .clear
         self.pickerViewContent.transform = CGAffineTransform(translationX: 0, y: self.pickerViewContent.frame.height)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,19 +48,22 @@ class PickerOptionViewController: UIViewController {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
         
-            self.view.backgroundColor = UIColor.gray
+            self.view.backgroundColor = UIColor(named: "black_50")
             self.pickerViewContent.transform = .identity
             
         }, completion: nil)
         
         // Set selected row based on last selected value
-        var lastPos: Int = 0
-        if let textField = self.sender as? UITextField {
-            lastPos = self.arrayData.firstIndex(of: textField.text!) ?? 0
-        }
         
-        picker.selectRow(lastPos, inComponent: 0, animated: true)
-        picker.delegate?.pickerView!(picker, didSelectRow: lastPos, inComponent: 0)
+        if let pickerview = picker  {
+            var lastPos: Int = 0
+            if let textField = self.sender as? UITextField {
+                lastPos = self.arrayData.firstIndex(of: textField.text!) ?? 0
+            }
+            
+            picker.selectRow(lastPos, inComponent: 0, animated: true)
+            picker.delegate?.pickerView!(picker, didSelectRow: lastPos, inComponent: 0)
+        }
         
     }
 }

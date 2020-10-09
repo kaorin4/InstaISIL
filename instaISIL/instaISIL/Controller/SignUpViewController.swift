@@ -20,6 +20,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var campusTextField: CustomUITextField!
     
+    @IBOutlet weak var birthdateTextField: CustomUITextField!
+    
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         
         let email: String = emailTextField.text ?? ""
@@ -38,6 +40,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         self.degreeTextField.delegate = self
         self.campusTextField.delegate = self
+        self.birthdateTextField.delegate = self;
+        
         // Do any additional setup after loading the view.
         statusLabel.isHidden = true
         
@@ -50,6 +54,7 @@ class SignUpViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         
         super.prepare(for: segue, sender: sender)
         
@@ -66,6 +71,9 @@ class SignUpViewController: UIViewController {
                     controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
                 }
             }
+        } else if let controller = segue.destination as? DatePickerSelectViewController {
+            controller.delegate = self
+            
         }
     }
     
@@ -121,8 +129,26 @@ extension SignUpViewController: PickerOptionViewControllerDelegate {
         if let sender = controller.sender as? CustomUITextField {
             sender.text = "\(option)"
         }
+        print("picker delegate")
     }
     
+}
+
+extension SignUpViewController: DatePickerSelectViewControllerDelegate {
+    
+    
+    func datePickerSelectViewController(_ controller: DatePickerSelectViewController, didSelectDate date: Date) {
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+        dateFormat.locale = Locale(identifier: "es_PE")
+        
+        let textDate = dateFormat.string(from: date)
+        
+        self.birthdateTextField.text = textDate
+        
+        print("date picker delegate")
+    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
@@ -136,8 +162,16 @@ extension SignUpViewController: UITextFieldDelegate {
             self.performSegue(withIdentifier: "DegreePickerViewController", sender: self.campusTextField)
             return false
         }
+        else if textField == self.birthdateTextField {
+            self.performSegue(withIdentifier: "DatePickerViewController", sender: self.birthdateTextField)
+            return false
+        }
         
         return true
         
     }
 }
+
+
+
+
