@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */; };
+		0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AB2529205B00737645 /* SignUpViewController.swift */; };
+		0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AD2529422800737645 /* ResetPasswordViewController.swift */; };
+		0656A0B02529508600737645 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AF2529508600737645 /* CustomUITextField.swift */; };
+		06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06826B14252D3B37008E7009 /* CustomUIView.swift */; };
+		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
+		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
+		3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */; };
+		3A616840253035FB00E77484 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A61683F253035FB00E77484 /* Colors.xcassets */; };
 		3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D725266225008E1D6C /* AppDelegate.swift */; };
 		3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D925266225008E1D6C /* SceneDelegate.swift */; };
 		3A6422DC25266225008E1D6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422DB25266225008E1D6C /* ViewController.swift */; };
@@ -36,6 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerOptionViewController.swift; path = instaISIL/Controller/PickerOptionViewController.swift; sourceTree = SOURCE_ROOT; };
+		0656A0AB2529205B00737645 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = instaISIL/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
+		0656A0AD2529422800737645 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = instaISIL/Controller/ResetPasswordViewController.swift; sourceTree = SOURCE_ROOT; };
+		0656A0AF2529508600737645 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUITextField.swift; path = instaISIL/Controller/CustomUITextField.swift; sourceTree = SOURCE_ROOT; };
+		06826B14252D3B37008E7009 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = instaISIL/Controller/CustomUIView.swift; sourceTree = SOURCE_ROOT; };
+		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
+		3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerSelectViewController.swift; path = instaISIL/Controller/DatePickerSelectViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A61683F253035FB00E77484 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = instaISIL/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		3A6422D425266225008E1D6C /* InstaISIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaISIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422D725266225008E1D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A6422D925266225008E1D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06A8720325268EAB00AA1740 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				06A8720725268EF200AA1740 /* Common.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		3A6422CB25266225008E1D6C = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +127,7 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
+				06A8720325268EAB00AA1740 /* Utility */,
 				3A64230C252662B8008E1D6C /* Model */,
 				3A64230B252662B0008E1D6C /* View */,
 				3A64230A252662A6008E1D6C /* Controller */,
@@ -111,6 +138,7 @@
 				3A6422E525266226008E1D6C /* LaunchScreen.storyboard */,
 				3A6422E825266226008E1D6C /* Info.plist */,
 				3A6422E025266225008E1D6C /* InstaISIL.xcdatamodeld */,
+				3A61683F253035FB00E77484 /* Colors.xcassets */,
 			);
 			path = InstaISIL;
 			sourceTree = "<group>";
@@ -137,6 +165,11 @@
 			isa = PBXGroup;
 			children = (
 				3A6422DB25266225008E1D6C /* ViewController.swift */,
+				06A871FA252674A100AA1740 /* LoginViewController.swift */,
+				0656A0AB2529205B00737645 /* SignUpViewController.swift */,
+				0656A0AD2529422800737645 /* ResetPasswordViewController.swift */,
+				064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */,
+				3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,6 +177,8 @@
 		3A64230B252662B0008E1D6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0656A0AF2529508600737645 /* CustomUITextField.swift */,
+				06826B14252D3B37008E7009 /* CustomUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,7 +269,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "InstaISIL" */;
+			buildConfigurationList = 3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "instaISIL" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -260,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */,
+				3A616840253035FB00E77484 /* Colors.xcassets in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
@@ -287,8 +323,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6422DC25266225008E1D6C /* ViewController.swift in Sources */,
+				06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */,
+				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
+				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
+				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
+				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
+				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
+				06A8720825268EF200AA1740 /* Common.swift in Sources */,
+				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +619,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "InstaISIL" */ = {
+		3A6422CF25266225008E1D6C /* Build configuration list for PBXProject "instaISIL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A6422FF25266226008E1D6C /* Debug */,
