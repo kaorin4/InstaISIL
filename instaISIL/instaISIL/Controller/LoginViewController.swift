@@ -9,6 +9,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var textFields = [UITextField]()
 
     @IBOutlet weak var constraintCenterYContent: NSLayoutConstraint!
     
@@ -16,18 +18,14 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
-        if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
-        } else {
-            statusLabel.text = ""
-            statusLabel.isHidden = true
-        }
+        
+        checkMandatoryFields()
+    
     }
     
     
@@ -42,6 +40,9 @@ class LoginViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // add textfields into array
+        getTextFields(fromView: viewContent)
 
     }
     
@@ -85,8 +86,6 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        
-        
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -100,17 +99,44 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func checkMandatoryFields() {
+        
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+        
+        var emptyFields: Int = 0
 
+        // check empty fields
+        textFields.forEach { field in
+            if field.text?.count ?? 0 <= 0 {
+                emptyFields+=1
+            }
+        }
+            
+        if emptyFields > 0 {
+            statusLabel.isHidden = false
+            statusLabel.text = "Completar todos los campos solicitados"
+            return
+        }
+        
+        // check if email has valid format        
+        let email: String = emailTextField.text ?? ""
+        let isEmail: Bool = CommonUtility.isValidEmail(email)
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if !isEmail {
+            statusLabel.isHidden = false
+            statusLabel.text = "Ingresar email válido"
+        }
+        
     }
-    */
+    
+    private func getTextFields(fromView view: UIView) {
+        for subview in view.subviews {
+            if subview is UITextField {
+                textFields.append(subview as! UITextField)
+            }
+        }
+    }
 
 }

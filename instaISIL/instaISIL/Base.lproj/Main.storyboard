@@ -48,7 +48,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEK-h4-wmK" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
                                         <rect key="frame" x="10" y="106" width="354" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDr-40-xYB">
                                         <rect key="frame" x="10" y="155" width="354" height="35"/>
@@ -71,7 +71,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-FM-Smj">
                                         <rect key="frame" x="10" y="30" width="354" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Ks0-ca-M5n"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Ks0-ca-M5n"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
@@ -166,6 +166,7 @@
                     <connections>
                         <outlet property="constraintCenterYContent" destination="5UM-vP-M46" id="hsw-t5-pT3"/>
                         <outlet property="emailTextField" destination="BOB-5q-c3Q" id="Kw6-Zj-sMu"/>
+                        <outlet property="passwordTextField" destination="zEK-h4-wmK" id="WH7-z8-cCI"/>
                         <outlet property="statusLabel" destination="XeF-FM-Smj" id="Sk4-TJ-Gbt"/>
                         <outlet property="viewContent" destination="Wfm-lR-Zco" id="FLr-Y3-CK2"/>
                     </connections>
@@ -564,7 +565,7 @@
     <resources>
         <image name="logo_cyan" width="367" height="209"/>
         <namedColor name="black_50">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.49970569349315069" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
