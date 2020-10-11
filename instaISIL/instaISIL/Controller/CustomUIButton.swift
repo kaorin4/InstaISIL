@@ -30,10 +30,12 @@ class CustomUIButton: UIButton {
     
     func setShadow() {
         let shadowSize: CGFloat = 20
-        let contactRect = CGRect(x: -shadowSize, y: self.frame.height - (shadowSize * 0.4), width: self.frame.width + shadowSize * 2, height: shadowSize)
+        let contactRect = CGRect(x: 0, y: self.frame.height - (shadowSize * 0.4), width: self.frame.width - shadowSize * 2, height: shadowSize)
         self.layer.shadowPath = UIBezierPath(ovalIn: contactRect).cgPath
         self.layer.shadowRadius = 5
-        self.layer.shadowOpacity = 0.4
+        self.layer.shadowOpacity = 0.5
+        let currentBackgroundColor: CGColor = self.backgroundColor!.cgColor
+        self.layer.shadowColor = currentBackgroundColor
     }
 
 }

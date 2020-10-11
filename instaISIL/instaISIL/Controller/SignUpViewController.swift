@@ -34,13 +34,12 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formContainer.roundCorners([.topRight, .bottomRight], radius: 15)
         self.degreeTextField.delegate = self
         self.campusTextField.delegate = self
         self.birthdateTextField.delegate = self;
         
-        // Do any additional setup after loading the view.
         statusLabel.isHidden = true
-        
         
         // dismiss keyboard when no longer editing text view
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
@@ -54,7 +53,6 @@ class SignUpViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
         super.prepare(for: segue, sender: sender)
         
         if let controller = segue.destination as? PickerOptionViewController {
@@ -64,7 +62,7 @@ class SignUpViewController: UIViewController {
                 controller.sender = sender
                 
                 if textField == self.degreeTextField {
-                    controller.arrayData = ["Software", "Sistemas", "Admin"]
+                    controller.arrayData = ["Software", "Sistemas", "Administración"]
                 }
                 else if textField == self.campusTextField {
                     controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
