@@ -10,29 +10,25 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
+    var textFields = [UITextField]()
+    
     @IBOutlet weak var constraintBottonScrollView: NSLayoutConstraint!
     
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet weak var degreeTextField: CustomUITextField!
+    @IBOutlet weak var degreeTextField: UITextField!
     
-    @IBOutlet weak var campusTextField: CustomUITextField!
+    @IBOutlet weak var campusTextField: UITextField!
     
-    @IBOutlet weak var birthdateTextField: CustomUITextField!
+    @IBOutlet weak var birthdateTextField: UITextField!
+    
+    @IBOutlet weak var formContainer: UIView!
     
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
-        if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
-        } else {
-            statusLabel.text = ""
-            statusLabel.isHidden = true
-        }
+        checkMandatoryFields()
     }
     
     
@@ -50,6 +46,9 @@ class SignUpViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // add textfields into array
+        getTextFields(fromView: formContainer)
 
     }
     
@@ -118,6 +117,46 @@ class SignUpViewController: UIViewController {
             
             self.constraintBottonScrollView.constant = 0
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func checkMandatoryFields() {
+        
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+        
+        var emptyFields: Int = 0
+
+        // check empty fields
+        textFields.forEach { field in
+            if field.text?.count ?? 0 <= 0 {
+                emptyFields+=1
+            }
+        }
+            
+        if emptyFields > 0 {
+            statusLabel.isHidden = false
+            statusLabel.text = "Completar todos los campos solicitados"
+            return
+        }
+        
+        // check if email has valid format
+        let email: String = emailTextField.text ?? ""
+        let isEmail: Bool = CommonUtility.isValidEmail(email)
+
+        if !isEmail {
+            statusLabel.isHidden = false
+            statusLabel.text = "Ingresar email válido"
+        }
+        
+    }
+    
+    private func getTextFields(fromView view: UIView) {
+        for subview in view.subviews {
+            if subview is UITextField {
+                textFields.append(subview as! UITextField)
+            }
         }
     }
 
