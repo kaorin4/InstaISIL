@@ -11,6 +11,7 @@
 		0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AB2529205B00737645 /* SignUpViewController.swift */; };
 		0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AD2529422800737645 /* ResetPasswordViewController.swift */; };
 		0656A0B02529508600737645 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AF2529508600737645 /* CustomUITextField.swift */; };
+		065797402532A47A00D91853 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0657973F2532A47A00D91853 /* CustomUIButton.swift */; };
 		06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06826B14252D3B37008E7009 /* CustomUIView.swift */; };
 		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
@@ -49,6 +50,7 @@
 		0656A0AB2529205B00737645 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = instaISIL/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		0656A0AD2529422800737645 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = instaISIL/Controller/ResetPasswordViewController.swift; sourceTree = SOURCE_ROOT; };
 		0656A0AF2529508600737645 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUITextField.swift; path = instaISIL/Controller/CustomUITextField.swift; sourceTree = SOURCE_ROOT; };
+		0657973F2532A47A00D91853 /* CustomUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIButton.swift; path = instaISIL/Controller/CustomUIButton.swift; sourceTree = SOURCE_ROOT; };
 		06826B14252D3B37008E7009 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = instaISIL/Controller/CustomUIView.swift; sourceTree = SOURCE_ROOT; };
 		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
@@ -179,6 +181,7 @@
 			children = (
 				0656A0AF2529508600737645 /* CustomUITextField.swift */,
 				06826B14252D3B37008E7009 /* CustomUIView.swift */,
+				0657973F2532A47A00D91853 /* CustomUIButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
 				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
+				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,

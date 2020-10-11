@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewContent.roundCorners([.topRight, .bottomRight], radius: 15)
     
         // Do any additional setup after loading the view.
         //self.view.backgroundColor = UIColor(red: 0.27, green: 0.60, blue: 0.91, alpha: 1.00)
