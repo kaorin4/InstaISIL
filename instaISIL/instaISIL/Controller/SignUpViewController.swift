@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
     
@@ -18,6 +20,12 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var firstnameTextField: UITextField!
+    
+    @IBOutlet weak var lastnameTextField: UITextField!
+    
     @IBOutlet weak var degreeTextField: UITextField!
     
     @IBOutlet weak var campusTextField: UITextField!
@@ -28,7 +36,84 @@ class SignUpViewController: UIViewController {
     
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         
-        checkMandatoryFields()
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+               
+        // validate fields
+        let error = checkMandatoryFields()
+        
+        if error != nil {
+            // there is an error
+            statusLabel.isHidden = false
+            statusLabel.text = error
+            
+        } else {
+            
+            
+            // data to be stored
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let firstname = firstnameTextField.text!.trimmingCharacters(in: .newlines)
+            let lastname = lastnameTextField.text!.trimmingCharacters(in: .newlines)
+            let degree = degreeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let campus = campusTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let birthdate = birthdateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            // create user
+            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                
+                // if there is an error
+                if error != nil {
+                    
+                    // there is an error
+                    var errorMsg: String = ""
+                    if let errCode = AuthErrorCode(rawValue: error!._code) {
+
+                        switch errCode {
+                            case .emailAlreadyInUse :
+                                errorMsg = "Email ya está en uso"
+                            default:
+                                errorMsg = "Error al crear usuario"
+                        }
+                    }
+                    
+                    self.statusLabel.isHidden = false
+                    self.statusLabel.text = errorMsg
+
+                    print(error?.localizedDescription ?? "error")
+                    
+                } else {
+                                     
+                    // user was created
+                    let db = Firestore.firestore()
+                
+                    // Add a new document in collection "cities"
+                    db.collection("users").document((authResult?.user.uid)!).setData([
+                        "uid": authResult!.user.uid,
+                        "firstname": firstname,
+                        "lastname": lastname,
+                        "degree": degree,
+                        "campus": campus,
+                        "birthdate": birthdate
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+
+                    // Go to homepage wohoo
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+                }
+                
+            }
+            
+        }
+        
     }
     
     
@@ -47,8 +132,7 @@ class SignUpViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         // add textfields into array
-        getTextFields(fromView: formContainer)
-
+        CommonUtility.getTextFields(fromView: formContainer, textFieldsArray: &textFields)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +146,7 @@ class SignUpViewController: UIViewController {
                 controller.sender = sender
                 
                 if textField == self.degreeTextField {
-                    controller.arrayData = ["Software", "Sistemas", "Administración"]
+                    controller.arrayData = ["Software", "Sistemas", "Redes", "Administración", "Marketing"]
                 }
                 else if textField == self.campusTextField {
                     controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
@@ -118,25 +202,19 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    private func checkMandatoryFields() {
-        
-        // clean status label
-        statusLabel.isHidden = true
-        statusLabel.text = ""
+    private func checkMandatoryFields() -> String? {
         
         var emptyFields: Int = 0
 
         // check empty fields
         textFields.forEach { field in
-            if field.text?.count ?? 0 <= 0 {
+            if field.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 <= 0 {
                 emptyFields+=1
             }
         }
             
         if emptyFields > 0 {
-            statusLabel.isHidden = false
-            statusLabel.text = "Completar todos los campos solicitados"
-            return
+            return "Completar todos los campos solicitados"
         }
         
         // check if email has valid format
@@ -144,18 +222,11 @@ class SignUpViewController: UIViewController {
         let isEmail: Bool = CommonUtility.isValidEmail(email)
 
         if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
+            return "Ingresar email válido"
         }
         
-    }
-    
-    private func getTextFields(fromView view: UIView) {
-        for subview in view.subviews {
-            if subview is UITextField {
-                textFields.append(subview as! UITextField)
-            }
-        }
+        return nil
+        
     }
 
 }

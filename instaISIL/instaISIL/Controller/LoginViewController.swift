@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -24,7 +25,55 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        checkMandatoryFields()
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+               
+        // validate fields
+        let error = checkMandatoryFields()
+        
+        if error != nil {
+            // there is an error
+            statusLabel.isHidden = false
+            statusLabel.text = error
+            
+        } else {
+            
+            //Sign in
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+                
+                if error != nil {
+                    // sign in error
+                    var errorMsg: String = ""
+                    if let errCode = AuthErrorCode(rawValue: error!._code) {
+
+                        switch errCode {
+                            case .invalidEmail  :
+                                errorMsg = "Email no válido"
+                            case .userNotFound :
+                                errorMsg = "Usuario no registrado"
+                            case .wrongPassword :
+                                errorMsg = "Contraseña incorrecta"
+                            default:
+                                errorMsg = "Error al iniciar sesión"
+                        }
+                    }
+                    
+                    self.statusLabel.isHidden = false
+                    self.statusLabel.text = errorMsg
+
+                    print(error?.localizedDescription ?? "error")
+                } else {
+                    // Go to homepage wohoo
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+                }
+            }
+        }
     
     }
     
@@ -43,7 +92,7 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         // add textfields into array
-        getTextFields(fromView: viewContent)
+        CommonUtility.getTextFields(fromView: viewContent, textFieldsArray: &textFields)
 
     }
     
@@ -100,44 +149,30 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func checkMandatoryFields() {
-        
-        // clean status label
-        statusLabel.isHidden = true
-        statusLabel.text = ""
+    private func checkMandatoryFields() -> String? {
         
         var emptyFields: Int = 0
 
         // check empty fields
         textFields.forEach { field in
-            if field.text?.count ?? 0 <= 0 {
+            if field.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 <= 0 {
                 emptyFields+=1
             }
         }
             
         if emptyFields > 0 {
-            statusLabel.isHidden = false
-            statusLabel.text = "Completar todos los campos solicitados"
-            return
+            return "Completar todos los campos solicitados"
         }
         
-        // check if email has valid format        
+        // check if email has valid format
         let email: String = emailTextField.text ?? ""
         let isEmail: Bool = CommonUtility.isValidEmail(email)
 
         if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
+            return "Ingresar email válido"
         }
         
+        return nil
+        
     }
-    
-    private func getTextFields(fromView view: UIView) {
-        for subview in view.subviews {
-            if subview is UITextField {
-                textFields.append(subview as! UITextField)
-            }
-        }
-    }
-
 }

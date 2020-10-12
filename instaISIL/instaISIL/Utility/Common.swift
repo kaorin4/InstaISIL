@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class CommonUtility{
     
@@ -16,6 +16,14 @@ class CommonUtility{
             
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
+    }
+    
+    static func getTextFields(fromView view: UIView, textFieldsArray textFields: inout [UITextField]) {
+        for subview in view.subviews {
+            if subview is UITextField {
+                textFields.append(subview as! UITextField)
+            }
+        }
     }
     
 }

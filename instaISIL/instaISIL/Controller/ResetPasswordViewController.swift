@@ -20,24 +20,7 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func resetButtonPressed(_ sender: Any) {
         
-        // clean status label
-        statusLabel.text = ""
-        statusLabel.isHidden = true
-        
-        // check if empty
-        if emailTextField.text?.count ?? 0 <= 0 {
-            statusLabel.isHidden = false
-            statusLabel.text = "Completar todos los campos solicitados"
-            return
-        }
-        
-        // check if email is valid
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
-        if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
-        }
+        checkMandatoryFields()
         
     }
     
@@ -106,6 +89,28 @@ class ResetPasswordViewController: UIViewController {
             
             self.constraintCenterYContent.constant = 0
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func checkMandatoryFields() {
+        
+        // clean status label
+        statusLabel.text = ""
+        statusLabel.isHidden = true
+        
+        // check if empty
+        if emailTextField.text?.count ?? 0 <= 0 {
+            statusLabel.isHidden = false
+            statusLabel.text = "Completar todos los campos solicitados"
+            return
+        }
+        
+        // check if email is valid
+        let email: String = emailTextField.text ?? ""
+        let isEmail: Bool = CommonUtility.isValidEmail(email)
+        if !isEmail {
+            statusLabel.isHidden = false
+            statusLabel.text = "Ingresar email válido"
         }
     }
 

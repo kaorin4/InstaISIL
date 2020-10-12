@@ -176,6 +176,39 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="103.79464285714285"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="3Sa-fr-xYB">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="GLb-64-05s" customClass="HomeViewController" customModule="InstaISIL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ySG-bC-gL7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38r-KH-gly">
+                                <rect key="frame" x="184" y="437.5" width="46" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="HCt-z0-WWD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NLk-Xz-l22"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="38r-KH-gly" firstAttribute="centerY" secondItem="ySG-bC-gL7" secondAttribute="centerY" id="Gp4-Ni-REE"/>
+                            <constraint firstItem="38r-KH-gly" firstAttribute="centerX" secondItem="ySG-bC-gL7" secondAttribute="centerX" id="fVp-Lh-NN5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="38r-KH-gly" id="PgU-VH-cE4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEl-Im-hza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398.5507246376812" y="7.3660714285714279"/>
+        </scene>
         <!--SignUp View Controller-->
         <scene sceneID="2Xu-GA-ku2">
             <objects>
@@ -202,7 +235,7 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtc-0N-wHv" customClass="CustomUIView" customModule="InstaISIL" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="190" width="389" height="411"/>
+                                        <rect key="frame" x="5" y="190" width="389" height="455"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1c-A4-as3" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="70" width="359" height="35"/>
@@ -213,17 +246,17 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yv-owE" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="115" width="359" height="35"/>
+                                                <rect key="frame" x="15" y="159" width="359" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellidos" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLV-6V-zU2" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="160" width="359" height="34"/>
+                                                <rect key="frame" x="15" y="204" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seleccionar carrera" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-2d-INv" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="204" width="359" height="34"/>
+                                                <rect key="frame" x="15" y="248" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -237,12 +270,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seleccionar sede" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="18b-6B-mOj" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="248" width="359" height="34"/>
+                                                <rect key="frame" x="15" y="292" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3d-gS-VRp" customClass="CustomUIButton" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="341" width="359" height="35"/>
+                                                <rect key="frame" x="15" y="385" width="359" height="35"/>
                                                 <color key="backgroundColor" name="app_blue"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="N7w-Yp-uBj"/>
@@ -260,9 +293,14 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seleccionar fecha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3b-Nw-HPS" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="292" width="359" height="34"/>
+                                                <rect key="frame" x="15" y="336" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DMt-6c-X2B" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="115" width="359" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -271,9 +309,10 @@
                                             <constraint firstItem="4V6-2d-INv" firstAttribute="height" secondItem="HLV-6V-zU2" secondAttribute="height" id="1sP-lA-PBu"/>
                                             <constraint firstItem="18b-6B-mOj" firstAttribute="trailing" secondItem="4V6-2d-INv" secondAttribute="trailing" id="2GO-WL-ksc"/>
                                             <constraint firstItem="Y3b-Nw-HPS" firstAttribute="leading" secondItem="18b-6B-mOj" secondAttribute="leading" id="2bj-Ng-NZV"/>
+                                            <constraint firstItem="DMt-6c-X2B" firstAttribute="leading" secondItem="r1c-A4-as3" secondAttribute="leading" id="3PO-dg-zoS"/>
+                                            <constraint firstItem="DMt-6c-X2B" firstAttribute="top" secondItem="r1c-A4-as3" secondAttribute="bottom" constant="10" id="AU2-YP-8rU"/>
+                                            <constraint firstItem="y1R-yv-owE" firstAttribute="leading" secondItem="DMt-6c-X2B" secondAttribute="leading" id="B5o-iH-yAH"/>
                                             <constraint firstItem="Y3d-gS-VRp" firstAttribute="leading" secondItem="18b-6B-mOj" secondAttribute="leading" id="HY2-uQ-tr0"/>
-                                            <constraint firstItem="y1R-yv-owE" firstAttribute="trailing" secondItem="r1c-A4-as3" secondAttribute="trailing" id="Iga-1F-cB4"/>
-                                            <constraint firstItem="y1R-yv-owE" firstAttribute="leading" secondItem="r1c-A4-as3" secondAttribute="leading" id="JOg-fU-v86"/>
                                             <constraint firstItem="18b-6B-mOj" firstAttribute="height" secondItem="4V6-2d-INv" secondAttribute="height" id="JXv-cR-dJX"/>
                                             <constraint firstItem="r1c-A4-as3" firstAttribute="top" secondItem="NHR-tb-LX6" secondAttribute="bottom" constant="15" id="LfE-Xr-Zyb"/>
                                             <constraint firstItem="HLV-6V-zU2" firstAttribute="leading" secondItem="y1R-yv-owE" secondAttribute="leading" id="M2P-qH-ggg"/>
@@ -281,9 +320,8 @@
                                             <constraint firstAttribute="trailing" secondItem="NHR-tb-LX6" secondAttribute="trailing" constant="15" id="OhJ-rv-5xz"/>
                                             <constraint firstAttribute="trailing" secondItem="r1c-A4-as3" secondAttribute="trailing" constant="15" id="S4g-y2-VRu"/>
                                             <constraint firstItem="NHR-tb-LX6" firstAttribute="leading" secondItem="jtc-0N-wHv" secondAttribute="leading" constant="15" id="Tvm-Ex-Q26"/>
-                                            <constraint firstItem="y1R-yv-owE" firstAttribute="height" secondItem="r1c-A4-as3" secondAttribute="height" id="VvH-Gg-VPy"/>
+                                            <constraint firstItem="y1R-yv-owE" firstAttribute="trailing" secondItem="DMt-6c-X2B" secondAttribute="trailing" id="W7t-z2-zoR"/>
                                             <constraint firstItem="4V6-2d-INv" firstAttribute="leading" secondItem="HLV-6V-zU2" secondAttribute="leading" id="WKA-2y-aDE"/>
-                                            <constraint firstItem="y1R-yv-owE" firstAttribute="top" secondItem="r1c-A4-as3" secondAttribute="bottom" constant="10" id="XJ9-oY-NuN"/>
                                             <constraint firstItem="HLV-6V-zU2" firstAttribute="top" secondItem="y1R-yv-owE" secondAttribute="bottom" constant="10" id="YX5-74-JXI"/>
                                             <constraint firstItem="4V6-2d-INv" firstAttribute="top" secondItem="HLV-6V-zU2" secondAttribute="bottom" constant="10" id="ZAT-aI-Kth"/>
                                             <constraint firstItem="NHR-tb-LX6" firstAttribute="top" secondItem="jtc-0N-wHv" secondAttribute="top" constant="30" id="caq-mt-qOu"/>
@@ -291,8 +329,12 @@
                                             <constraint firstItem="Y3b-Nw-HPS" firstAttribute="trailing" secondItem="18b-6B-mOj" secondAttribute="trailing" id="gef-tU-iMN"/>
                                             <constraint firstItem="4V6-2d-INv" firstAttribute="trailing" secondItem="HLV-6V-zU2" secondAttribute="trailing" id="iHp-Eq-t7P"/>
                                             <constraint firstItem="Y3d-gS-VRp" firstAttribute="trailing" secondItem="18b-6B-mOj" secondAttribute="trailing" id="iJk-3e-NwJ"/>
+                                            <constraint firstItem="DMt-6c-X2B" firstAttribute="height" secondItem="r1c-A4-as3" secondAttribute="height" multiplier="0.971429" id="iW0-si-YRJ"/>
                                             <constraint firstItem="18b-6B-mOj" firstAttribute="top" secondItem="4V6-2d-INv" secondAttribute="bottom" constant="10" id="jf9-47-z8H"/>
+                                            <constraint firstItem="y1R-yv-owE" firstAttribute="height" secondItem="DMt-6c-X2B" secondAttribute="height" multiplier="1.02941" id="llO-ac-LVa"/>
+                                            <constraint firstItem="y1R-yv-owE" firstAttribute="top" secondItem="DMt-6c-X2B" secondAttribute="bottom" constant="10" id="obf-LB-Vzx"/>
                                             <constraint firstItem="18b-6B-mOj" firstAttribute="leading" secondItem="4V6-2d-INv" secondAttribute="leading" id="phI-wG-rSG"/>
+                                            <constraint firstItem="DMt-6c-X2B" firstAttribute="trailing" secondItem="r1c-A4-as3" secondAttribute="trailing" id="sGC-Ru-olN"/>
                                             <constraint firstItem="Y3d-gS-VRp" firstAttribute="top" secondItem="Y3b-Nw-HPS" secondAttribute="bottom" constant="15" id="tlh-vL-plX"/>
                                             <constraint firstItem="Y3b-Nw-HPS" firstAttribute="top" secondItem="18b-6B-mOj" secondAttribute="bottom" constant="10" id="vUh-5h-TnI"/>
                                             <constraint firstItem="HLV-6V-zU2" firstAttribute="trailing" secondItem="y1R-yv-owE" secondAttribute="trailing" id="yk6-XJ-2Q3"/>
@@ -300,7 +342,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNK-ny-Pg0">
-                                        <rect key="frame" x="82.5" y="641" width="234" height="30"/>
+                                        <rect key="frame" x="82.5" y="685" width="234" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="234" id="jEr-B7-ACh"/>
                                             <constraint firstAttribute="height" constant="30" id="yPf-UW-x3H"/>
@@ -345,7 +387,10 @@
                         <outlet property="constraintBottonScrollView" destination="Sod-Rh-VGi" id="ab0-xg-vze"/>
                         <outlet property="degreeTextField" destination="4V6-2d-INv" id="3Uw-vR-sBh"/>
                         <outlet property="emailTextField" destination="r1c-A4-as3" id="4tg-ub-veK"/>
+                        <outlet property="firstnameTextField" destination="y1R-yv-owE" id="nrD-8U-l0E"/>
                         <outlet property="formContainer" destination="jtc-0N-wHv" id="48v-Tz-Mmb"/>
+                        <outlet property="lastnameTextField" destination="HLV-6V-zU2" id="5ds-ky-J9C"/>
+                        <outlet property="passwordTextField" destination="DMt-6c-X2B" id="1Xl-j9-Toz"/>
                         <outlet property="statusLabel" destination="NHR-tb-LX6" id="vPO-F5-VLS"/>
                         <segue destination="A4Q-No-pBN" kind="presentation" identifier="DegreePickerViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="Gub-Xg-atd"/>
                         <segue destination="AbL-BO-CMa" kind="presentation" identifier="DatePickerViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="5AP-Xa-2qy"/>
