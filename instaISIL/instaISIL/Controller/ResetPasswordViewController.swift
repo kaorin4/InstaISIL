@@ -28,44 +28,32 @@ class ResetPasswordViewController: UIViewController {
         statusLabel.text = ""
                
         // validate fields
-        let error = checkMandatoryFields()
+        let error = CommonUtility.validateTextFields(textFields, emailTextField)
         
         if error != nil {
             // there is an error
             statusLabel.isHidden = false
             statusLabel.text = error
+            return
+        }
             
-        } else {
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let errMsg = CommonUtility.getAuthErrorMessage(error)
             
-            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if errMsg != nil {
                 
-                if error != nil {
-                    // sign in error
-                    var errorMsg: String = ""
-                    if let errCode = AuthErrorCode(rawValue: error!._code) {
-
-                        switch errCode {
-                            case .invalidEmail  :
-                                errorMsg = "Email no válido"
-                            case .userNotFound :
-                                errorMsg = "Usuario no registrado"
-                            default:
-                                errorMsg = "Error al restablecer contraseña"
-                        }
-                    }
-                    
-                    self.statusLabel.isHidden = false
-                    self.statusLabel.text = errorMsg
-
-                    print(error?.localizedDescription ?? "error")
-                } else {
-                    print("sent reset password email")
-                    
-                    self.performSegue(withIdentifier: "ResetPasswordEmailVC",sender: self)
-                }
+                // sign up error
+                self.statusLabel.isHidden = false
+                self.statusLabel.text = errMsg
+                return
+                
             }
+            print("sent reset password email")
+            self.performSegue(withIdentifier: "ResetPasswordEmailVC",sender: self)
+            
         }
         
     }

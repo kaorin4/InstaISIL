@@ -41,81 +41,23 @@ class SignUpViewController: UIViewController {
         statusLabel.text = ""
                
         // validate fields
-        let error = checkMandatoryFields()
+        let error = CommonUtility.validateTextFields(textFields, emailTextField)
         
         if error != nil {
             // there is an error
             statusLabel.isHidden = false
             statusLabel.text = error
-            
-        } else {
-            
-            
-            // data to be stored
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let firstname = firstnameTextField.text!.trimmingCharacters(in: .newlines)
-            let lastname = lastnameTextField.text!.trimmingCharacters(in: .newlines)
-            let degree = degreeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let campus = campusTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let birthdate = birthdateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            // create user
-            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                
-                // if there is an error
-                if error != nil {
-                    
-                    // there is an error
-                    var errorMsg: String = ""
-                    if let errCode = AuthErrorCode(rawValue: error!._code) {
-
-                        switch errCode {
-                            case .emailAlreadyInUse :
-                                errorMsg = "Email ya está en uso"
-                            default:
-                                errorMsg = "Error al crear usuario"
-                        }
-                    }
-                    
-                    self.statusLabel.isHidden = false
-                    self.statusLabel.text = errorMsg
-
-                    print(error?.localizedDescription ?? "error")
-                    
-                } else {
-                                     
-                    // user was created
-                    let db = Firestore.firestore()
-                
-                    // Add a new document in collection "cities"
-                    db.collection("users").document((authResult?.user.uid)!).setData([
-                        "uid": authResult!.user.uid,
-                        "firstname": firstname,
-                        "lastname": lastname,
-                        "degree": degree,
-                        "campus": campus,
-                        "birthdate": birthdate
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Document successfully written!")
-                        }
-                    }
-
-                    // Go to homepage wohoo
-                    let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
-                    self.view.window?.rootViewController = homeViewController
-                    self.view.window?.makeKeyAndVisible()
-                }
-                
-            }
+            return
             
         }
+        createUser()
         
     }
     
+    @IBAction func toLoginPageButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "LoginVC",sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,7 +97,7 @@ class SignUpViewController: UIViewController {
         } else if let controller = segue.destination as? DatePickerSelectViewController {
             controller.delegate = self
             
-        }
+        } 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,31 +144,58 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    private func checkMandatoryFields() -> String? {
+    private func createUser() {
         
-        var emptyFields: Int = 0
-
-        // check empty fields
-        textFields.forEach { field in
-            if field.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 <= 0 {
-                emptyFields+=1
-            }
-        }
+        // data to be stored
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let firstname = firstnameTextField.text!.trimmingCharacters(in: .newlines)
+        let lastname = lastnameTextField.text!.trimmingCharacters(in: .newlines)
+        let degree = degreeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let campus = campusTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let birthdate = birthdateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // create user
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             
-        if emptyFields > 0 {
-            return "Completar todos los campos solicitados"
-        }
+            let errMsg = CommonUtility.getAuthErrorMessage(error)
+            
+            if errMsg != nil {
+                
+                // sign up error
+                self.statusLabel.isHidden = false
+                self.statusLabel.text = errMsg
+                return
+                
+            }
+            
+            // user was created
+            let db = Firestore.firestore()
         
-        // check if email has valid format
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
+            // Add a new document in collection "users"
+            db.collection("users").document((authResult?.user.uid)!).setData([
+                "uid": authResult!.user.uid,
+                "firstname": firstname,
+                "lastname": lastname,
+                "degree": degree,
+                "campus": campus,
+                "birthdate": birthdate
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
 
-        if !isEmail {
-            return "Ingresar email válido"
+            // Go to homepage wohoo
+            self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
+            /*
+            let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+            self.view.window?.rootViewController = homeViewController
+            self.view.window?.makeKeyAndVisible()*/
+            
         }
-        
-        return nil
-        
     }
 
 }
