@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
+    
+    var textFields = [UITextField]()
     
     @IBOutlet weak var constraintBottonScrollView: NSLayoutConstraint!
     
@@ -16,45 +20,64 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet weak var degreeTextField: CustomUITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var campusTextField: CustomUITextField!
+    @IBOutlet weak var firstnameTextField: UITextField!
     
-    @IBOutlet weak var birthdateTextField: CustomUITextField!
+    @IBOutlet weak var lastnameTextField: UITextField!
+    
+    @IBOutlet weak var degreeTextField: UITextField!
+    
+    @IBOutlet weak var campusTextField: UITextField!
+    
+    @IBOutlet weak var birthdateTextField: UITextField!
+    
+    @IBOutlet weak var formContainer: UIView!
     
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
-        if !isEmail {
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+               
+        // validate fields
+        let error = CommonUtility.validateTextFields(textFields, emailTextField)
+        
+        if error != nil {
+            // there is an error
             statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
-        } else {
-            statusLabel.text = ""
-            statusLabel.isHidden = true
+            statusLabel.text = error
+            return
+            
         }
+        createUser()
+        
     }
     
+    @IBAction func toLoginPageButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "LoginVC",sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formContainer.roundCorners([.topRight, .bottomRight], radius: 15)
         self.degreeTextField.delegate = self
         self.campusTextField.delegate = self
         self.birthdateTextField.delegate = self;
         
-        // Do any additional setup after loading the view.
         statusLabel.isHidden = true
-        
         
         // dismiss keyboard when no longer editing text view
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-
+        
+        // add textfields into array
+        CommonUtility.getTextFields(fromView: formContainer, textFieldsArray: &textFields)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         
         super.prepare(for: segue, sender: sender)
         
@@ -65,7 +88,7 @@ class SignUpViewController: UIViewController {
                 controller.sender = sender
                 
                 if textField == self.degreeTextField {
-                    controller.arrayData = ["Software", "Sistemas", "Admin"]
+                    controller.arrayData = ["Software", "Sistemas", "Redes", "Administración", "Marketing"]
                 }
                 else if textField == self.campusTextField {
                     controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
@@ -74,7 +97,7 @@ class SignUpViewController: UIViewController {
         } else if let controller = segue.destination as? DatePickerSelectViewController {
             controller.delegate = self
             
-        }
+        } 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,6 +141,60 @@ class SignUpViewController: UIViewController {
             
             self.constraintBottonScrollView.constant = 0
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func createUser() {
+        
+        // data to be stored
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let firstname = firstnameTextField.text!.trimmingCharacters(in: .newlines)
+        let lastname = lastnameTextField.text!.trimmingCharacters(in: .newlines)
+        let degree = degreeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let campus = campusTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let birthdate = birthdateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // create user
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            
+            let errMsg = CommonUtility.getAuthErrorMessage(error)
+            
+            if errMsg != nil {
+                
+                // sign up error
+                self.statusLabel.isHidden = false
+                self.statusLabel.text = errMsg
+                return
+                
+            }
+            
+            // user was created
+            let db = Firestore.firestore()
+        
+            // Add a new document in collection "users"
+            db.collection("users").document((authResult?.user.uid)!).setData([
+                "uid": authResult!.user.uid,
+                "firstname": firstname,
+                "lastname": lastname,
+                "degree": degree,
+                "campus": campus,
+                "birthdate": birthdate
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+
+            // Go to homepage wohoo
+            self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
+            /*
+            let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+            self.view.window?.rootViewController = homeViewController
+            self.view.window?.makeKeyAndVisible()*/
+            
         }
     }
 

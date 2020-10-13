@@ -1,0 +1,6 @@
+framework module Pods_InstaISILTests {
+  umbrella header "Pods-InstaISILTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

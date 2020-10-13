@@ -55,7 +55,7 @@ class PickerOptionViewController: UIViewController {
         
         // Set selected row based on last selected value
         
-        if let pickerview = picker  {
+        if picker != nil {
             var lastPos: Int = 0
             if let textField = self.sender as? UITextField {
                 lastPos = self.arrayData.firstIndex(of: textField.text!) ?? 0

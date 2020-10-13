@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,20 +11,26 @@
 		0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AB2529205B00737645 /* SignUpViewController.swift */; };
 		0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AD2529422800737645 /* ResetPasswordViewController.swift */; };
 		0656A0B02529508600737645 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0656A0AF2529508600737645 /* CustomUITextField.swift */; };
+		065797402532A47A00D91853 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0657973F2532A47A00D91853 /* CustomUIButton.swift */; };
 		06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06826B14252D3B37008E7009 /* CustomUIView.swift */; };
 		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
+		3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */; };
 		3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */; };
 		3A616840253035FB00E77484 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A61683F253035FB00E77484 /* Colors.xcassets */; };
 		3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D725266225008E1D6C /* AppDelegate.swift */; };
 		3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D925266225008E1D6C /* SceneDelegate.swift */; };
-		3A6422DC25266225008E1D6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422DB25266225008E1D6C /* ViewController.swift */; };
 		3A6422DF25266225008E1D6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6422DD25266225008E1D6C /* Main.storyboard */; };
 		3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422E025266225008E1D6C /* InstaISIL.xcdatamodeld */; };
 		3A6422E425266226008E1D6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6422E325266226008E1D6C /* Assets.xcassets */; };
 		3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6422E525266226008E1D6C /* LaunchScreen.storyboard */; };
 		3A6422F225266226008E1D6C /* InstaISILTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422F125266226008E1D6C /* InstaISILTests.swift */; };
 		3A6422FD25266226008E1D6C /* InstaISILUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422FC25266226008E1D6C /* InstaISILUITests.swift */; };
+		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
+		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
+		82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */; };
+		C137718BFDF0E1823F3996F8 /* Pods_InstaISIL_InstaISILUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */; };
+		DA5DCA176ACEFC94796CC1AF /* Pods_InstaISIL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF0D7EAB8A1267E201F238 /* Pods_InstaISIL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,19 +51,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04CF0D7EAB8A1267E201F238 /* Pods_InstaISIL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISIL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerOptionViewController.swift; path = instaISIL/Controller/PickerOptionViewController.swift; sourceTree = SOURCE_ROOT; };
 		0656A0AB2529205B00737645 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = instaISIL/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		0656A0AD2529422800737645 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = instaISIL/Controller/ResetPasswordViewController.swift; sourceTree = SOURCE_ROOT; };
-		0656A0AF2529508600737645 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUITextField.swift; path = instaISIL/Controller/CustomUITextField.swift; sourceTree = SOURCE_ROOT; };
-		06826B14252D3B37008E7009 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = instaISIL/Controller/CustomUIView.swift; sourceTree = SOURCE_ROOT; };
+		0656A0AF2529508600737645 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUITextField.swift; path = InstaISIL/View/CustomUITextField.swift; sourceTree = SOURCE_ROOT; };
+		0657973F2532A47A00D91853 /* CustomUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIButton.swift; path = InstaISIL/View/CustomUIButton.swift; sourceTree = SOURCE_ROOT; };
+		06826B14252D3B37008E7009 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = InstaISIL/View/CustomUIView.swift; sourceTree = SOURCE_ROOT; };
 		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
+		23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL.debug.xcconfig"; path = "Target Support Files/Pods-InstaISIL/Pods-InstaISIL.debug.xcconfig"; sourceTree = "<group>"; };
+		3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerSelectViewController.swift; path = instaISIL/Controller/DatePickerSelectViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A61683F253035FB00E77484 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = instaISIL/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		3A6422D425266225008E1D6C /* InstaISIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaISIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422D725266225008E1D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A6422D925266225008E1D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A6422DB25266225008E1D6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A6422DE25266225008E1D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A6422E125266225008E1D6C /* InstaISIL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstaISIL.xcdatamodel; sourceTree = "<group>"; };
 		3A6422E325266226008E1D6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +78,15 @@
 		3A6422F825266226008E1D6C /* InstaISILUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaISILUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422FC25266226008E1D6C /* InstaISILUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaISILUITests.swift; sourceTree = "<group>"; };
 		3A6422FE25266226008E1D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISILTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISIL_InstaISILUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6D2065A458EA26D303E9FA /* Pods-InstaISILTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISILTests.debug.xcconfig"; path = "Target Support Files/Pods-InstaISILTests/Pods-InstaISILTests.debug.xcconfig"; sourceTree = "<group>"; };
+		812DB423AE1FA075E96AA8F2 /* Pods-InstaISIL-InstaISILUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL-InstaISILUITests.release.xcconfig"; path = "Target Support Files/Pods-InstaISIL-InstaISILUITests/Pods-InstaISIL-InstaISILUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CC4C7AB3ABC445CBDDC1158B /* Pods-InstaISIL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL.release.xcconfig"; path = "Target Support Files/Pods-InstaISIL/Pods-InstaISIL.release.xcconfig"; sourceTree = "<group>"; };
+		ED9DD8D24A4F7712B4B6B378 /* Pods-InstaISIL-InstaISILUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL-InstaISILUITests.debug.xcconfig"; path = "Target Support Files/Pods-InstaISIL-InstaISILUITests/Pods-InstaISIL-InstaISILUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA8932AC3FE4F724732E9960 /* Pods-InstaISILTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISILTests.release.xcconfig"; path = "Target Support Files/Pods-InstaISILTests/Pods-InstaISILTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5DCA176ACEFC94796CC1AF /* Pods_InstaISIL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C137718BFDF0E1823F3996F8 /* Pods_InstaISIL_InstaISILUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +125,33 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		06FB7C1CFC03814C64C677BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04CF0D7EAB8A1267E201F238 /* Pods_InstaISIL.framework */,
+				6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */,
+				4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A579D2E2533CC1E003AD6A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06826B14252D3B37008E7009 /* CustomUIView.swift */,
+				0657973F2532A47A00D91853 /* CustomUIButton.swift */,
+				0656A0AF2529508600737645 /* CustomUITextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3A579D2F2533CC4C003AD6A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3A6422CB25266225008E1D6C = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +159,8 @@
 				3A6422F025266226008E1D6C /* InstaISILTests */,
 				3A6422FB25266226008E1D6C /* InstaISILUITests */,
 				3A6422D525266225008E1D6C /* Products */,
+				FD0AF39AE1D405D28CA59C79 /* Pods */,
+				06FB7C1CFC03814C64C677BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,9 +177,9 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
+				3A579D2F2533CC4C003AD6A4 /* Model */,
+				3A579D2E2533CC1E003AD6A4 /* View */,
 				06A8720325268EAB00AA1740 /* Utility */,
-				3A64230C252662B8008E1D6C /* Model */,
-				3A64230B252662B0008E1D6C /* View */,
 				3A64230A252662A6008E1D6C /* Controller */,
 				3A6422D725266225008E1D6C /* AppDelegate.swift */,
 				3A6422D925266225008E1D6C /* SceneDelegate.swift */,
@@ -139,6 +189,7 @@
 				3A6422E825266226008E1D6C /* Info.plist */,
 				3A6422E025266225008E1D6C /* InstaISIL.xcdatamodeld */,
 				3A61683F253035FB00E77484 /* Colors.xcassets */,
+				3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */,
 			);
 			path = InstaISIL;
 			sourceTree = "<group>";
@@ -164,30 +215,28 @@
 		3A64230A252662A6008E1D6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A6422DB25266225008E1D6C /* ViewController.swift */,
 				06A871FA252674A100AA1740 /* LoginViewController.swift */,
 				0656A0AB2529205B00737645 /* SignUpViewController.swift */,
 				0656A0AD2529422800737645 /* ResetPasswordViewController.swift */,
 				064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */,
 				3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */,
+				3AAF4B6F2534144500989925 /* HomeViewController.swift */,
+				3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		3A64230B252662B0008E1D6C /* View */ = {
+		FD0AF39AE1D405D28CA59C79 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0656A0AF2529508600737645 /* CustomUITextField.swift */,
-				06826B14252D3B37008E7009 /* CustomUIView.swift */,
+				23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */,
+				CC4C7AB3ABC445CBDDC1158B /* Pods-InstaISIL.release.xcconfig */,
+				ED9DD8D24A4F7712B4B6B378 /* Pods-InstaISIL-InstaISILUITests.debug.xcconfig */,
+				812DB423AE1FA075E96AA8F2 /* Pods-InstaISIL-InstaISILUITests.release.xcconfig */,
+				7B6D2065A458EA26D303E9FA /* Pods-InstaISILTests.debug.xcconfig */,
+				FA8932AC3FE4F724732E9960 /* Pods-InstaISILTests.release.xcconfig */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3A64230C252662B8008E1D6C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A64230125266226008E1D6C /* Build configuration list for PBXNativeTarget "InstaISIL" */;
 			buildPhases = (
+				016E4C18E9AB501411971A54 /* [CP] Check Pods Manifest.lock */,
 				3A6422D025266225008E1D6C /* Sources */,
 				3A6422D125266225008E1D6C /* Frameworks */,
 				3A6422D225266225008E1D6C /* Resources */,
+				7475857D12ACC86227D4AC37 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A64230425266226008E1D6C /* Build configuration list for PBXNativeTarget "InstaISILTests" */;
 			buildPhases = (
+				D0FA2AAACEE674090E701E6D /* [CP] Check Pods Manifest.lock */,
 				3A6422E925266226008E1D6C /* Sources */,
 				3A6422EA25266226008E1D6C /* Frameworks */,
 				3A6422EB25266226008E1D6C /* Resources */,
@@ -232,9 +284,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A64230725266226008E1D6C /* Build configuration list for PBXNativeTarget "InstaISILUITests" */;
 			buildPhases = (
+				916C09BE41A2190FA824F3F1 /* [CP] Check Pods Manifest.lock */,
 				3A6422F425266226008E1D6C /* Sources */,
 				3A6422F525266226008E1D6C /* Frameworks */,
 				3A6422F625266226008E1D6C /* Resources */,
+				B1CE2A2D0EC7DAAAD005CB8F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +350,7 @@
 			files = (
 				3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */,
 				3A616840253035FB00E77484 /* Colors.xcassets in Resources */,
+				3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
@@ -317,22 +372,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		016E4C18E9AB501411971A54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstaISIL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7475857D12ACC86227D4AC37 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstaISIL/Pods-InstaISIL-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstaISIL/Pods-InstaISIL-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InstaISIL/Pods-InstaISIL-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		916C09BE41A2190FA824F3F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstaISIL-InstaISILUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1CE2A2D0EC7DAAAD005CB8F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstaISIL-InstaISILUITests/Pods-InstaISIL-InstaISILUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstaISIL-InstaISILUITests/Pods-InstaISIL-InstaISILUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InstaISIL-InstaISILUITests/Pods-InstaISIL-InstaISILUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0FA2AAACEE674090E701E6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstaISILTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A6422D025266225008E1D6C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A6422DC25266225008E1D6C /* ViewController.swift in Sources */,
 				06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */,
 				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
 				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
+				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
+				3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
 				06A8720825268EF200AA1740 /* Common.swift in Sources */,
 				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
+				3AAF4B702534144500989925 /* HomeViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +664,7 @@
 		};
 		3A64230225266226008E1D6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +682,7 @@
 		};
 		3A64230325266226008E1D6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC4C7AB3ABC445CBDDC1158B /* Pods-InstaISIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,6 +700,7 @@
 		};
 		3A64230525266226008E1D6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B6D2065A458EA26D303E9FA /* Pods-InstaISILTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -559,6 +722,7 @@
 		};
 		3A64230625266226008E1D6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA8932AC3FE4F724732E9960 /* Pods-InstaISILTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -580,6 +744,7 @@
 		};
 		3A64230825266226008E1D6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED9DD8D24A4F7712B4B6B378 /* Pods-InstaISIL-InstaISILUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -599,6 +764,7 @@
 		};
 		3A64230925266226008E1D6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812DB423AE1FA075E96AA8F2 /* Pods-InstaISIL-InstaISILUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

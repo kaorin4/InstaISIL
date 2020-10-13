@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -24,16 +25,53 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        checkMandatoryFields()
-    
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+               
+        // validate fields
+        let error = CommonUtility.validateTextFields(textFields, emailTextField)
+        
+        if error != nil {
+            // there is an error
+            statusLabel.isHidden = false
+            statusLabel.text = error
+            return
+            
+        }
+            
+        //Sign in
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            
+            let errMsg = CommonUtility.getAuthErrorMessage(error)
+            
+            if errMsg != nil {
+                
+                // sign in error
+                self.statusLabel.isHidden = false
+                self.statusLabel.text = errMsg
+                return
+            }
+                
+        }
+        // Go to homepage wohoo
+        self.performSegue(withIdentifier: "loginToHomeVC",sender: self)
+        /*
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()*/
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Do any additional setup after loading the view.
-        //self.view.backgroundColor = UIColor(red: 0.27, green: 0.60, blue: 0.91, alpha: 1.00)
+        viewContent.roundCorners([.topRight, .bottomRight], radius: 15)
         statusLabel.isHidden = true
 
         // dismiss keyboard when no longer editing text view
@@ -42,7 +80,7 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         // add textfields into array
-        getTextFields(fromView: viewContent)
+        CommonUtility.getTextFields(fromView: viewContent, textFieldsArray: &textFields)
 
     }
     
@@ -96,46 +134,6 @@ class LoginViewController: UIViewController {
             
             self.constraintCenterYContent.constant = 0
             self.view.layoutIfNeeded()
-        }
-    }
-    
-    private func checkMandatoryFields() {
-        
-        // clean status label
-        statusLabel.isHidden = true
-        statusLabel.text = ""
-        
-        var emptyFields: Int = 0
-
-        // check empty fields
-        textFields.forEach { field in
-            if field.text?.count ?? 0 <= 0 {
-                emptyFields+=1
-            }
-        }
-            
-        if emptyFields > 0 {
-            statusLabel.isHidden = false
-            statusLabel.text = "Completar todos los campos solicitados"
-            return
-        }
-        
-        // check if email has valid format        
-        let email: String = emailTextField.text ?? ""
-        let isEmail: Bool = CommonUtility.isValidEmail(email)
-
-        if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
-        }
-        
-    }
-    
-    private func getTextFields(fromView view: UIView) {
-        for subview in view.subviews {
-            if subview is UITextField {
-                textFields.append(subview as! UITextField)
-            }
         }
     }
 
