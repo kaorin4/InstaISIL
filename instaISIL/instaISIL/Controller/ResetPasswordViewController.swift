@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ResetPasswordViewController: UIViewController {
+    
+    var textFields = [UITextField]()
     
     @IBOutlet weak var constraintCenterYContent: NSLayoutConstraint!
     
@@ -20,7 +23,50 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func resetButtonPressed(_ sender: Any) {
         
-        checkMandatoryFields()
+        // clean status label
+        statusLabel.isHidden = true
+        statusLabel.text = ""
+               
+        // validate fields
+        let error = checkMandatoryFields()
+        
+        if error != nil {
+            // there is an error
+            statusLabel.isHidden = false
+            statusLabel.text = error
+            
+        } else {
+            
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                
+                if error != nil {
+                    // sign in error
+                    var errorMsg: String = ""
+                    if let errCode = AuthErrorCode(rawValue: error!._code) {
+
+                        switch errCode {
+                            case .invalidEmail  :
+                                errorMsg = "Email no válido"
+                            case .userNotFound :
+                                errorMsg = "Usuario no registrado"
+                            default:
+                                errorMsg = "Error al restablecer contraseña"
+                        }
+                    }
+                    
+                    self.statusLabel.isHidden = false
+                    self.statusLabel.text = errorMsg
+
+                    print(error?.localizedDescription ?? "error")
+                } else {
+                    print("sent reset password email")
+                    
+                    self.performSegue(withIdentifier: "ResetPasswordEmailVC",sender: self)
+                }
+            }
+        }
         
     }
     
@@ -36,8 +82,10 @@ class ResetPasswordViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // add textfields into array
+        CommonUtility.getTextFields(fromView: formContainer, textFieldsArray: &textFields)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -92,26 +140,31 @@ class ResetPasswordViewController: UIViewController {
         }
     }
     
-    private func checkMandatoryFields() {
+    private func checkMandatoryFields() -> String? {
         
-        // clean status label
-        statusLabel.text = ""
-        statusLabel.isHidden = true
-        
-        // check if empty
-        if emailTextField.text?.count ?? 0 <= 0 {
-            statusLabel.isHidden = false
-            statusLabel.text = "Completar todos los campos solicitados"
-            return
+        var emptyFields: Int = 0
+
+        // check empty fields
+        textFields.forEach { field in
+            if field.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 <= 0 {
+                emptyFields+=1
+            }
+        }
+            
+        if emptyFields > 0 {
+            return "Completar todos los campos solicitados"
         }
         
-        // check if email is valid
+        // check if email has valid format
         let email: String = emailTextField.text ?? ""
         let isEmail: Bool = CommonUtility.isValidEmail(email)
+
         if !isEmail {
-            statusLabel.isHidden = false
-            statusLabel.text = "Ingresar email válido"
+            return "Ingresar email válido"
         }
+        
+        return nil
+        
     }
 
 }

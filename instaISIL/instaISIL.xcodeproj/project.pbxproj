@@ -26,6 +26,7 @@
 		3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6422E525266226008E1D6C /* LaunchScreen.storyboard */; };
 		3A6422F225266226008E1D6C /* InstaISILTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422F125266226008E1D6C /* InstaISILTests.swift */; };
 		3A6422FD25266226008E1D6C /* InstaISILUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422FC25266226008E1D6C /* InstaISILUITests.swift */; };
+		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
 		82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */; };
 		C137718BFDF0E1823F3996F8 /* Pods_InstaISIL_InstaISILUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */; };
@@ -77,6 +78,7 @@
 		3A6422F825266226008E1D6C /* InstaISILUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaISILUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422FC25266226008E1D6C /* InstaISILUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaISILUITests.swift; sourceTree = "<group>"; };
 		3A6422FE25266226008E1D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISILTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISIL_InstaISILUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,7 @@
 				064FD634252FC1D5008003C6 /* PickerOptionViewController.swift */,
 				3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */,
 				3AAF4B6F2534144500989925 /* HomeViewController.swift */,
+				3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
+				3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
