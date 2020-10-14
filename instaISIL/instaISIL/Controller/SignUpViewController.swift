@@ -165,36 +165,35 @@ class SignUpViewController: UIViewController {
                 // sign up error
                 self.statusLabel.isHidden = false
                 self.statusLabel.text = errMsg
-                return
                 
-            }
+            } else {
+                // user was created
+                let db = Firestore.firestore()
             
-            // user was created
-            let db = Firestore.firestore()
-        
-            // Add a new document in collection "users"
-            db.collection("users").document((authResult?.user.uid)!).setData([
-                "uid": authResult!.user.uid,
-                "firstname": firstname,
-                "lastname": lastname,
-                "degree": degree,
-                "campus": campus,
-                "birthdate": birthdate
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
+                // Add a new document in collection "users"
+                db.collection("users").document((authResult?.user.uid)!).setData([
+                    "uid": authResult!.user.uid,
+                    "firstname": firstname,
+                    "lastname": lastname,
+                    "degree": degree,
+                    "campus": campus,
+                    "birthdate": birthdate
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
                 }
-            }
 
-            // Go to homepage wohoo
-            self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
-            /*
-            let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
-            self.view.window?.rootViewController = homeViewController
-            self.view.window?.makeKeyAndVisible()*/
-            
+                // Go to homepage wohoo
+                self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
+                /*
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
+                self.view.window?.rootViewController = homeViewController
+                self.view.window?.makeKeyAndVisible()*/
+            }
+                       
         }
     }
 
