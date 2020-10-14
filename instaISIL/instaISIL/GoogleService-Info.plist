@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>660039897038-fkvg2gk2p4urd7jf7tujsrltnc6j845d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.660039897038-fkvg2gk2p4urd7jf7tujsrltnc6j845d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCCnq5W7m4d2WOdNqxFBdNIOttd8hZWd3A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>660039897038</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.murakami.InstaISIL</string>
+	<key>PROJECT_ID</key>
+	<string>instaisil-eebdc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>instaisil-eebdc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:660039897038:ios:4216b91b412fa32874e59f</string>
+	<key>DATABASE_URL</key>
+	<string>https://instaisil-eebdc.firebaseio.com</string>
+</dict>
+</plist>
