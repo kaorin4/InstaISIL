@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func toLoginPageButtonPressed(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "LoginVC",sender: self)
+        self.performSegue(withIdentifier: "signupToLoginVC",sender: self)
     }
     
     override func viewDidLoad() {
@@ -88,10 +88,10 @@ class SignUpViewController: UIViewController {
                 controller.sender = sender
                 
                 if textField == self.degreeTextField {
-                    controller.arrayData = ["Software", "Sistemas", "Redes", "Administración", "Marketing"]
+                    controller.arrayData = Constants.DEGREES
                 }
                 else if textField == self.campusTextField {
-                    controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
+                    controller.arrayData = Constants.CAMPUS_LOCATIONS
                 }
             }
         } else if let controller = segue.destination as? DatePickerSelectViewController {
@@ -187,11 +187,8 @@ class SignUpViewController: UIViewController {
                 }
 
                 // Go to homepage wohoo
-                self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
-                /*
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()*/
+                self.performSegue(withIdentifier: "signupToTabBarVC",sender: self)
+
             }
                        
         }
