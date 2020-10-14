@@ -18,6 +18,12 @@ class CustomUIButton: UIButton {
     }
     */
     
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = self.cornerRadius
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setShadow()

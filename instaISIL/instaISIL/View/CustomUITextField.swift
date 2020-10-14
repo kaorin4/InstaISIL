@@ -46,14 +46,7 @@ class CustomUITextField: UITextField, UITextFieldDelegate {
     }
     
     private func setUpTextField(){
-        //borderStyle = .none
-        //layer.cornerRadius = 15
-        //layer.borderWidth = 0
-        //layer.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00).cgColor
-        //layer.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00).cgColor
-        //layer.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00).cgColor
-        
-
+    
         let width: CGFloat = CGFloat(0.5)
         border.borderColor = UIColor(named: "app_gray")?.cgColor
         border.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.frame.width, height: 1.0)

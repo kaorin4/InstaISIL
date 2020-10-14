@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func toLoginPageButtonPressed(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "LoginVC",sender: self)
+        self.performSegue(withIdentifier: "signupToLoginVC",sender: self)
     }
     
     override func viewDidLoad() {
@@ -88,10 +88,10 @@ class SignUpViewController: UIViewController {
                 controller.sender = sender
                 
                 if textField == self.degreeTextField {
-                    controller.arrayData = ["Software", "Sistemas", "Redes", "Administración", "Marketing"]
+                    controller.arrayData = Constants.DEGREES
                 }
                 else if textField == self.campusTextField {
-                    controller.arrayData = ["San Isidro", "La Molina", "Miraflores"]
+                    controller.arrayData = Constants.CAMPUS_LOCATIONS
                 }
             }
         } else if let controller = segue.destination as? DatePickerSelectViewController {
@@ -165,36 +165,32 @@ class SignUpViewController: UIViewController {
                 // sign up error
                 self.statusLabel.isHidden = false
                 self.statusLabel.text = errMsg
-                return
                 
-            }
+            } else {
+                // user was created
+                let db = Firestore.firestore()
             
-            // user was created
-            let db = Firestore.firestore()
-        
-            // Add a new document in collection "users"
-            db.collection("users").document((authResult?.user.uid)!).setData([
-                "uid": authResult!.user.uid,
-                "firstname": firstname,
-                "lastname": lastname,
-                "degree": degree,
-                "campus": campus,
-                "birthdate": birthdate
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
+                // Add a new document in collection "users"
+                db.collection("users").document((authResult?.user.uid)!).setData([
+                    "uid": authResult!.user.uid,
+                    "firstname": firstname,
+                    "lastname": lastname,
+                    "degree": degree,
+                    "campus": campus,
+                    "birthdate": birthdate
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
                 }
-            }
 
-            // Go to homepage wohoo
-            self.performSegue(withIdentifier: "signupToHomeVC",sender: self)
-            /*
-            let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
-            self.view.window?.rootViewController = homeViewController
-            self.view.window?.makeKeyAndVisible()*/
-            
+                // Go to homepage wohoo
+                self.performSegue(withIdentifier: "signupToTabBarVC",sender: self)
+
+            }
+                       
         }
     }
 

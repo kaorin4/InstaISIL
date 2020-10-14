@@ -18,9 +18,9 @@ class CustomUIView: UIView {
     }
     */
     
-    @IBInspectable var conerRadius: CGFloat = 0 {
+    @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = self.conerRadius
+            self.layer.cornerRadius = self.cornerRadius
         }
     }
     
@@ -32,30 +32,10 @@ class CustomUIView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
-    }
-    
- 
-    
-    private func setupView() {
-        
-        // rounded corner
-        //layer.cornerRadius = 15
-        //layer.borderWidth = 0
-        //layer.backgroundColor = UIColor.white.cgColor
-        //layer.borderColor = UIColor.lightGray.cgColor
-        
-        // shadow
-        //let rect: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width * 0.9, height: bounds.height)
-        //layer.shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(signOf: 15.0, magnitudeOf: 15.0)).cgPath
-        //layer.shadowRadius = 2
-        //layer.shadowOffset = .zero
-        //layer.shadowOpacity = 0.25
     }
 
 }

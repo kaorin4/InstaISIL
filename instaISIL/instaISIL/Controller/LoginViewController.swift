@@ -53,16 +53,13 @@ class LoginViewController: UIViewController {
                 // sign in error
                 self.statusLabel.isHidden = false
                 self.statusLabel.text = errMsg
-                return
+                
+            } else {
+                // Go to homepage wohoo
+                self.performSegue(withIdentifier: "loginToTabBarVC",sender: self)
             }
                 
         }
-        // Go to homepage wohoo
-        self.performSegue(withIdentifier: "loginToHomeVC",sender: self)
-        /*
-        let homeViewController = self.storyboard?.instantiateViewController(identifier: "HomeVC") as? HomeViewController
-        self.view.window?.rootViewController = homeViewController
-        self.view.window?.makeKeyAndVisible()*/
         
     }
     

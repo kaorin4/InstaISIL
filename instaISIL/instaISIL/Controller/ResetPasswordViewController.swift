@@ -48,11 +48,12 @@ class ResetPasswordViewController: UIViewController {
                 // sign up error
                 self.statusLabel.isHidden = false
                 self.statusLabel.text = errMsg
-                return
                 
+            } else {
+                print("sent reset password email")
+                self.performSegue(withIdentifier: "ResetPasswordEmailVC",sender: self)
             }
-            print("sent reset password email")
-            self.performSegue(withIdentifier: "ResetPasswordEmailVC",sender: self)
+
             
         }
         

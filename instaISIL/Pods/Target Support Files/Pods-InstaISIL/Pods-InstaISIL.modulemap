@@ -1,6 +1,0 @@
-framework module Pods_InstaISIL {
-  umbrella header "Pods-InstaISIL-umbrella.h"
-
-  export *
-  module * { export * }
-}
