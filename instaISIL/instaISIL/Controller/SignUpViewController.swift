@@ -227,6 +227,7 @@ extension SignUpViewController: DatePickerSelectViewControllerDelegate {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        // switch
         if textField == self.degreeTextField {
             self.performSegue(withIdentifier: "DegreePickerViewController", sender: self.degreeTextField)
             return false

@@ -11,12 +11,23 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
+    
+    @IBOutlet weak var table: UITableView!
     @IBOutlet var welcomeLabel: UILabel!
+    
+    var posts = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the views
+        self.parent?.title = "Insta ISIL"
+        
+        table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
+        table.delegate = self
+        table.dataSource = self
+        table.reloadData()
+        
         welcomeLabel.text = ""
         
         let db = Firestore.firestore()
@@ -41,3 +52,29 @@ class HomeViewController: UIViewController {
     }
 
 }
+
+extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 12//posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = 	table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    }
+    
+}
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+}
+

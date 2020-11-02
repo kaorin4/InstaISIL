@@ -29,6 +29,9 @@
 		3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B5FF42536AD6100AA949E /* Constants.swift */; };
 		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
+		3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABBC254FD016006B915A /* PostTableViewCell.swift */; };
+		3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AECABBD254FD016006B915A /* PostTableViewCell.xib */; };
+		3AECABC4254FE9BC006B915A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABC3254FE9BC006B915A /* File.swift */; };
 		82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */; };
 		C137718BFDF0E1823F3996F8 /* Pods_InstaISIL_InstaISILUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */; };
 		DA5DCA176ACEFC94796CC1AF /* Pods_InstaISIL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF0D7EAB8A1267E201F238 /* Pods_InstaISIL.framework */; };
@@ -82,6 +85,9 @@
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AECABBC254FD016006B915A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = instaISIL/View/PostTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3AECABBD254FD016006B915A /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostTableViewCell.xib; path = instaISIL/View/PostTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		3AECABC3254FE9BC006B915A /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File.swift; path = instaISIL/View/File.swift; sourceTree = SOURCE_ROOT; };
 		4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISILTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISIL_InstaISILUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6D2065A458EA26D303E9FA /* Pods-InstaISILTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISILTests.debug.xcconfig"; path = "Target Support Files/Pods-InstaISILTests/Pods-InstaISILTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 				06826B14252D3B37008E7009 /* CustomUIView.swift */,
 				0657973F2532A47A00D91853 /* CustomUIButton.swift */,
 				0656A0AF2529508600737645 /* CustomUITextField.swift */,
+				3AECABBC254FD016006B915A /* PostTableViewCell.swift */,
+				3AECABBD254FD016006B915A /* PostTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 		3A579D2F2533CC4C003AD6A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3AECABC3254FE9BC006B915A /* File.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +363,7 @@
 				3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */,
 				3A616840253035FB00E77484 /* Colors.xcassets in Resources */,
 				3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */,
+				3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
@@ -494,6 +504,8 @@
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
+				3AECABC4254FE9BC006B915A /* File.swift in Sources */,
+				3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */,
 				06A8720825268EF200AA1740 /* Common.swift in Sources */,
 				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
 				3AAF4B702534144500989925 /* HomeViewController.swift in Sources */,
