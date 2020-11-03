@@ -28,6 +28,7 @@
 		3A6422FD25266226008E1D6C /* InstaISILUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422FC25266226008E1D6C /* InstaISILUITests.swift */; };
 		3A694DEA2550B67F00F012CA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A694DE92550B67F00F012CA /* Post.swift */; };
 		3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B5FF42536AD6100AA949E /* Constants.swift */; };
+		3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F07E92551C93000C99C63 /* ProfileViewController.swift */; };
 		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
 		3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABBC254FD016006B915A /* PostTableViewCell.swift */; };
@@ -84,6 +85,7 @@
 		3A6422FE25266226008E1D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A694DE92550B67F00F012CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = instaISIL/Model/Post.swift; sourceTree = SOURCE_ROOT; };
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
+		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AECABBC254FD016006B915A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = instaISIL/View/PostTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -226,6 +228,7 @@
 				3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */,
 				3AAF4B6F2534144500989925 /* HomeViewController.swift */,
 				3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */,
+				3A6F07E92551C93000C99C63 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */,
+				3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
 				3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,

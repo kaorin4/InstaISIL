@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
         
         posts.append(Post(id: "2", user: "user2", postText: "this is a post 2", date: "11/2/2020", userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 20))
         
+        // add custom table cell to table view
+        
         table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
@@ -34,6 +36,8 @@ class HomeViewController: UIViewController {
         table.reloadData()
         
         welcomeLabel.text = ""
+        
+        // Get user session data
         
         let db = Firestore.firestore()
         
