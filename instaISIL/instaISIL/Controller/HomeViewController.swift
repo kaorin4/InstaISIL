@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the views
-        self.parent?.title = "Insta ISIL"
+        self.parent?.title = "InstaISIL"
         
         posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: "11/2/2020", userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
         
