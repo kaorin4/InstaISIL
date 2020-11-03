@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SXc-TL-lCt" firstAttribute="top" secondItem="V8K-aJ-3vV" secondAttribute="top" constant="10" id="11s-Nq-5Jy"/>
                             <constraint firstAttribute="trailing" secondItem="SXc-TL-lCt" secondAttribute="trailing" constant="10" id="9pZ-lj-w9B"/>
@@ -157,15 +158,25 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="app_gray"/>
+            <connections>
+                <outlet property="constraintPostImageHeight" destination="jeC-xE-rYE" id="Q3U-zs-foR"/>
+                <outlet property="dateLabel" destination="SXc-TL-lCt" id="Yzz-si-kSe"/>
+                <outlet property="numOfLikesLabel" destination="OhQ-8F-FhQ" id="tCI-4j-TXl"/>
+                <outlet property="postImage" destination="vyq-eK-4k0" id="zov-tJ-DSI"/>
+                <outlet property="postText" destination="NXl-b3-vMV" id="m8P-Qx-2j2"/>
+                <outlet property="userImage" destination="Z6b-bX-xIj" id="0En-8L-3cw"/>
+                <outlet property="usernameLabel" destination="MCv-Fc-3Lo" id="uNI-ed-tIz"/>
+            </connections>
             <point key="canvasLocation" x="-35.507246376811594" y="211.60714285714286"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="comment" width="24" height="24"/>
         <image name="like" width="24" height="24"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="app_gray">
+            <color red="0.76899999380111694" green="0.81599998474121094" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

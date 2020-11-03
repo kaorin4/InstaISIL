@@ -731,7 +731,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YPE-iU-lOo"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="app_gray"/>
                         <constraints>
                             <constraint firstItem="bZe-kM-KOU" firstAttribute="leading" secondItem="YPE-iU-lOo" secondAttribute="leading" id="1zg-lv-RKy"/>
                             <constraint firstItem="bZe-kM-KOU" firstAttribute="bottom" secondItem="YPE-iU-lOo" secondAttribute="bottom" id="HHK-xx-jdi"/>
@@ -800,6 +800,9 @@
         </namedColor>
         <namedColor name="app_blue">
             <color red="0.086000002920627594" green="0.47099998593330383" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="app_gray">
+            <color red="0.76899999380111694" green="0.81599998474121094" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black_50">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>

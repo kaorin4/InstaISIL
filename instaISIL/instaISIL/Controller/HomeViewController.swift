@@ -11,11 +11,11 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    
+    var posts:[Post] = []
+        
     @IBOutlet weak var table: UITableView!
     @IBOutlet var welcomeLabel: UILabel!
-    
-    var posts = [String]()
+       
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,14 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the views
         self.parent?.title = "Insta ISIL"
         
+        posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: "11/2/2020", userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
+        
+        posts.append(Post(id: "2", user: "user2", postText: "this is a post 2", date: "11/2/2020", userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 20))
+        
         table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
+        table.tableFooterView = UIView()
         table.reloadData()
         
         welcomeLabel.text = ""
@@ -50,17 +55,19 @@ class HomeViewController: UIViewController {
             })
         }
     }
+    
 
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12//posts.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = 	table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.set(with: posts[indexPath.row])
         return cell
     }
     
