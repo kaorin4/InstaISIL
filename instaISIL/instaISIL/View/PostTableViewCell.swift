@@ -20,7 +20,11 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var numOfLikesLabel: UILabel!
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
     
-    
+    var objPost : Post! {
+        didSet {
+            self.updateData()
+        }
+    }
     
     static func nib() -> UINib {
         return UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -38,6 +42,25 @@ class PostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func updateData() {
+        self.usernameLabel.text = self.objPost.user
+        self.dateLabel.text = self.objPost.date
+        self.postText.text = self.objPost.postText
+        self.numOfLikesLabel.text = "\(self.objPost.numOfLikes) Likes"
+        
+        if self.objPost.userImage != nil {
+            self.userImage.setImage(from: self.objPost.userImage!)
+        } else {
+            self.userImage.image = UIImage(named:"bunny")
+        }
+        
+        if self.objPost.postImage != nil {
+            self.postImage.setImage(from: self.objPost.postImage!)
+        } else {
+            constraintPostImageHeight.constant = 0
+        }
     }
     
     func set(with model: Post) {

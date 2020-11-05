@@ -180,7 +180,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="z2m-kz-5Me">
             <objects>
-                <tabBarController id="7wd-sv-Yzc" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="7wd-sv-Yzc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="q3n-q6-53a"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xqv-Zg-xqh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -718,6 +718,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bZe-kM-KOU">
                                 <rect key="frame" x="0.0" y="32" width="414" height="781"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wxe-or-PhK" id="QO4-T7-VfO"/>
+                                    <outlet property="delegate" destination="wxe-or-PhK" id="XDw-NL-Ftc"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxP-Xw-eLW">
                                 <rect key="frame" x="184" y="437.5" width="46" height="21"/>
@@ -751,21 +755,71 @@
             </objects>
             <point key="canvasLocation" x="4152.1739130434789" y="-931.47321428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Post View Controller-->
         <scene sceneID="qFs-jj-ss4">
             <objects>
-                <viewController id="LTX-Ev-d1C" sceneMemberID="viewController">
+                <viewController id="LTX-Ev-d1C" customClass="CreatePostViewController" customModule="InstaISIL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3ZU-GH-hZ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="njO-6z-JSv">
+                                <rect key="frame" x="10" y="133" width="394" height="128"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="gsR-u8-0tJ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-FO-qfe" customClass="CustomUIButton" customModule="InstaISIL" customModuleProvider="target">
+                                <rect key="frame" x="15" y="326" width="384" height="30"/>
+                                <color key="backgroundColor" name="app_blue"/>
+                                <state key="normal" title="Publicar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="LTX-Ev-d1C" eventType="touchUpInside" id="J8b-iX-LnM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6PU-ax-fFv">
+                                <rect key="frame" x="151" y="276" width="112" height="30"/>
+                                <color key="backgroundColor" name="app_gray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zeU-Jt-mGl"/>
+                                </constraints>
+                                <state key="normal" title="Adjuntar imagen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RHN-tZ-6HQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6PU-ax-fFv" firstAttribute="centerX" secondItem="3ZU-GH-hZ3" secondAttribute="centerX" id="0Ck-EH-vam"/>
+                            <constraint firstItem="G2c-FO-qfe" firstAttribute="leading" secondItem="RHN-tZ-6HQ" secondAttribute="leading" constant="15" id="5TP-bQ-KIe"/>
+                            <constraint firstItem="G2c-FO-qfe" firstAttribute="top" secondItem="6PU-ax-fFv" secondAttribute="bottom" constant="20" id="7LY-tX-6WC"/>
+                            <constraint firstItem="njO-6z-JSv" firstAttribute="top" secondItem="RHN-tZ-6HQ" secondAttribute="top" constant="45" id="9gW-RQ-Unf"/>
+                            <constraint firstItem="6PU-ax-fFv" firstAttribute="top" secondItem="njO-6z-JSv" secondAttribute="bottom" constant="15" id="JbR-Er-Gv8"/>
+                            <constraint firstItem="RHN-tZ-6HQ" firstAttribute="trailing" secondItem="njO-6z-JSv" secondAttribute="trailing" constant="10" id="hFd-eT-e9w"/>
+                            <constraint firstItem="RHN-tZ-6HQ" firstAttribute="trailing" secondItem="G2c-FO-qfe" secondAttribute="trailing" constant="15" id="oM1-Wc-kSj"/>
+                            <constraint firstItem="njO-6z-JSv" firstAttribute="leading" secondItem="RHN-tZ-6HQ" secondAttribute="leading" constant="10" id="q54-gz-zbu"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="plus" id="92Z-fe-l6q"/>
+                    <connections>
+                        <outlet property="postText" destination="njO-6z-JSv" id="NOW-ND-bL2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udp-Gh-qck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4154" y="475"/>
+            <point key="canvasLocation" x="4152.1739130434789" y="474.77678571428567"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vA4-f9-lK4">
@@ -878,10 +932,6 @@
                                     <color key="titleColor" name="app_black"/>
                                 </state>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="G6X-3p-VEZ">
-                                <rect key="frame" x="58" y="678" width="220.5" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xRc-ab-BDv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1146,8 +1196,14 @@
         <namedColor name="black_50">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
