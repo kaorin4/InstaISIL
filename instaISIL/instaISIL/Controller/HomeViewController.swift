@@ -20,14 +20,51 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the views
         self.parent?.title = "InstaISIL"
         
-        posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: "11/2/2020", userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
+        // Get all posts from posts collections in firebase
         
-        posts.append(Post(id: "2", user: "user2", postText: "this is a post 2", date: "11/2/2020", userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 20))
+        let db = Firestore.firestore()
         
-        posts.append(Post(id: "3", user: "user2", postText: "this is a post 2", date: "11/2/2020", userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 50))
+        db.collection("posts").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    
+                    let timestamp: Timestamp = document.get("timestamp") as! Timestamp
+                    
+                    let docRef = db.collection("users").document(document.get("uid") as! String)
+
+                    docRef.getDocument(source: .cache) { (userDoc, error) in
+                        
+                        if let userDoc = userDoc {
+                            
+                            let username: String = "\(userDoc.get("firstname") ?? "") \(userDoc.get("lastname") ?? "")"
+                            
+                            self.posts.append(Post(id: document.documentID,
+                                                   user: username,
+                                                   postText: document.get("text") as? String ?? "",
+                                                   date: timestamp.dateValue(),
+                                                   userImage: userDoc.get("image") as? String ?? "",
+                                                   postImage: document.get("image") as? String,
+                                                   numOfLikes: document.get("likes") as? Int ?? 0 ))
+                            
+                            DispatchQueue.main.async {
+                                self.table.reloadData()
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        /*
+        
+        posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: date, userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
+        
+        posts.append(Post(id: "2", user: "user2", postText: "this is a post 2", date: date, userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 20))
+        */
         
         // add custom table cell to table view
         
@@ -40,8 +77,6 @@ class HomeViewController: UIViewController {
         welcomeLabel.text = ""
         
         // Get user session data
-        
-        let db = Firestore.firestore()
         
         if let userId = Auth.auth().currentUser?.uid {
             let collectionRef = db.collection("users")

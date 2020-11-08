@@ -15,25 +15,42 @@ class CreatePostViewController: UIViewController {
     
     @IBAction func postButtonPressed(_ sender: Any) {
         
-        let post = [
-            "text": postText.text!,
-            "timestamp": FieldValue.serverTimestamp()
-        ] as [String : Any]
-        
         let db = Firestore.firestore()
         
-        // new document with a generated id.
-        var ref: DocumentReference? = nil
-        ref = db.collection("posts").addDocument(data: post) {
-            err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
+        if let userId = Auth.auth().currentUser?.uid {
+
+            let collectionRef = db.collection("users")
+            let thisUserDoc = collectionRef.document(userId)
+            thisUserDoc.getDocument(completion: { document, error in
+                
+                if let err = error {
+                    print(err.localizedDescription)
+                    return
+                }
+                if document != nil {
+                    
+                    let post = [
+                        "uid": document!.documentID,
+                        "text": self.postText.text!,
+                        "likes": 0,
+                        "timestamp": FieldValue.serverTimestamp()
+                    ] as [String : Any]
+                    
+                    // new document with a generated id.
+                    var ref: DocumentReference? = nil
+                    ref = db.collection("posts").addDocument(data: post) {
+                        err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                        }
+                    }
+                }
+                
+            })
         }
-            
-        
+
         
     }
 

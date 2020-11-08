@@ -12,12 +12,12 @@ class Post {
     var id: String
     var user: String
     var postText: String
-    var date: String
+    var date: Date
     var userImage: String?
     var postImage: String?
     var numOfLikes: Int
     
-    init(id:String, user:String, postText:String, date: String, userImage:String?, postImage:String?, numOfLikes: Int) {
+    init(id:String, user:String, postText:String, date: Date, userImage:String?, postImage:String?, numOfLikes: Int) {
         self.id = id
         self.user = user
         self.postText = postText

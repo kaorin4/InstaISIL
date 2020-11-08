@@ -46,7 +46,7 @@ class PostTableViewCell: UITableViewCell {
     
     func updateData() {
         self.usernameLabel.text = self.objPost.user
-        self.dateLabel.text = self.objPost.date
+        self.dateLabel.text = self.objPost.date.toDate(dateFormat: "dd/MM/yyyy HH:mm")
         self.postText.text = self.objPost.postText
         self.numOfLikesLabel.text = "\(self.objPost.numOfLikes) Likes"
         
@@ -86,19 +86,4 @@ class PostTableViewCell: UITableViewCell {
     
 }
 
-extension UIImageView {
-    
-    func setImage(from url: String) {
-        guard let imageURL = URL(string: url) else { return }
 
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
-    }
-    
-}
