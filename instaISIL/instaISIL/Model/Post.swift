@@ -16,15 +16,19 @@ class Post {
     var userImage: String?
     var postImage: String?
     var numOfLikes: Int
+    var userLikes: Set<String>
     
-    init(id:String, user:String, postText:String, date: Date, userImage:String?, postImage:String?, numOfLikes: Int) {
+    init(id:String, user:String, postText:String, date: Date, userImage:String?, postImage:String?, userLikes:Set<String>) {
+        
         self.id = id
         self.user = user
         self.postText = postText
         self.date = date
         self.userImage = userImage
         self.postImage = postImage
-        self.numOfLikes = numOfLikes
+        self.userLikes = userLikes
+        self.numOfLikes = userLikes.count
+        
     }
     
 }

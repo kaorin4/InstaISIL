@@ -48,7 +48,8 @@ class HomeViewController: UIViewController {
                                                    date: timestamp.dateValue(),
                                                    userImage: userDoc.get("image") as? String ?? "",
                                                    postImage: document.get("image") as? String,
-                                                   numOfLikes: document.get("likes") as? Int ?? 0 ))
+                                                   userLikes: Set(document.get("userLikes") as? [String] ?? [String]())
+                                                   ))
                             
                             DispatchQueue.main.async {
                                 self.table.reloadData()
@@ -68,11 +69,11 @@ class HomeViewController: UIViewController {
         
         // add custom table cell to table view
         
-        table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
+        //table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
         //table.delegate = self
         //table.dataSource = self
-        table.tableFooterView = UIView()
-        table.reloadData()
+        //table.tableFooterView = UIView()
+        //table.reloadData()
         
         welcomeLabel.text = ""
         
@@ -120,10 +121,10 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-        //cell.set(with: posts[indexPath.row])
         cell.objPost = self.posts[indexPath.row]
         return cell
     }
     
 }
+
 

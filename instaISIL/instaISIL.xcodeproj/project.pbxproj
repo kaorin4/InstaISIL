@@ -34,6 +34,7 @@
 		3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F07E92551C93000C99C63 /* ProfileViewController.swift */; };
 		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
+		3AC51DEE255C53480065DB80 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC51DED255C53480065DB80 /* FirebaseUtils.swift */; };
 		3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABBC254FD016006B915A /* PostTableViewCell.swift */; };
 		3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AECABBD254FD016006B915A /* PostTableViewCell.xib */; };
 		82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */; };
@@ -94,6 +95,7 @@
 		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AC51DED255C53480065DB80 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseUtils.swift; path = instaISIL/Utility/FirebaseUtils.swift; sourceTree = SOURCE_ROOT; };
 		3AECABBC254FD016006B915A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = instaISIL/View/PostTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3AECABBD254FD016006B915A /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostTableViewCell.xib; path = instaISIL/View/PostTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISILTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				06A8720725268EF200AA1740 /* Common.swift */,
 				3A6B5FF42536AD6100AA949E /* Constants.swift */,
 				3A56F8C4255895C30060A815 /* Extensions.swift */,
+				3AC51DED255C53480065DB80 /* FirebaseUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC51DEE255C53480065DB80 /* FirebaseUtils.swift in Sources */,
 				06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */,
 				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
 				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
