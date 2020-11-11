@@ -797,24 +797,35 @@
                                 <state key="normal" title="Adjuntar imagen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="pickPhotoButtonPressed:" destination="LTX-Ev-d1C" eventType="touchUpInside" id="ejY-gb-N1b"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rzF-cb-XxL">
+                                <rect key="frame" x="87" y="506" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RHN-tZ-6HQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6PU-ax-fFv" firstAttribute="centerX" secondItem="3ZU-GH-hZ3" secondAttribute="centerX" id="0Ck-EH-vam"/>
+                            <constraint firstItem="rzF-cb-XxL" firstAttribute="top" secondItem="G2c-FO-qfe" secondAttribute="bottom" constant="150" id="0bf-ra-9J4"/>
                             <constraint firstItem="G2c-FO-qfe" firstAttribute="leading" secondItem="RHN-tZ-6HQ" secondAttribute="leading" constant="15" id="5TP-bQ-KIe"/>
                             <constraint firstItem="G2c-FO-qfe" firstAttribute="top" secondItem="6PU-ax-fFv" secondAttribute="bottom" constant="20" id="7LY-tX-6WC"/>
                             <constraint firstItem="njO-6z-JSv" firstAttribute="top" secondItem="RHN-tZ-6HQ" secondAttribute="top" constant="45" id="9gW-RQ-Unf"/>
                             <constraint firstItem="6PU-ax-fFv" firstAttribute="top" secondItem="njO-6z-JSv" secondAttribute="bottom" constant="15" id="JbR-Er-Gv8"/>
+                            <constraint firstItem="rzF-cb-XxL" firstAttribute="centerX" secondItem="3ZU-GH-hZ3" secondAttribute="centerX" id="V4T-TE-ZxR"/>
+                            <constraint firstItem="RHN-tZ-6HQ" firstAttribute="bottom" secondItem="rzF-cb-XxL" secondAttribute="bottom" constant="179" id="anA-Gw-MNV"/>
                             <constraint firstItem="RHN-tZ-6HQ" firstAttribute="trailing" secondItem="njO-6z-JSv" secondAttribute="trailing" constant="10" id="hFd-eT-e9w"/>
                             <constraint firstItem="RHN-tZ-6HQ" firstAttribute="trailing" secondItem="G2c-FO-qfe" secondAttribute="trailing" constant="15" id="oM1-Wc-kSj"/>
                             <constraint firstItem="njO-6z-JSv" firstAttribute="leading" secondItem="RHN-tZ-6HQ" secondAttribute="leading" constant="10" id="q54-gz-zbu"/>
+                            <constraint firstItem="rzF-cb-XxL" firstAttribute="leading" secondItem="RHN-tZ-6HQ" secondAttribute="leading" constant="87" id="y52-tU-TPe"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="plus" id="92Z-fe-l6q"/>
                     <connections>
                         <outlet property="postText" destination="njO-6z-JSv" id="NOW-ND-bL2"/>
+                        <outlet property="prevImg" destination="rzF-cb-XxL" id="Ova-p2-nAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udp-Gh-qck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

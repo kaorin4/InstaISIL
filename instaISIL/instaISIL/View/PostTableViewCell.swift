@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PostTableViewCell: UITableViewCell {
     
@@ -19,11 +20,37 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var numOfLikesLabel: UILabel!
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
+        
     
     var objPost : Post! {
         didSet {
             self.updateData()
         }
+    }
+    
+    var didLike = false
+    let db = Firestore.firestore()
+    
+    @IBAction func likeButtonPressed(_ sender: Any) {
+        
+        let postRef = db.collection("posts").document(objPost.id)
+        
+        didLike = !didLike
+        objPost.numOfLikes += didLike ? 1 : -1
+        print("likes : \(objPost.numOfLikes)")
+        
+        postRef.updateData([
+            "likes": objPost.numOfLikes
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        updateData()        
+        
     }
     
     static func nib() -> UINib {
@@ -61,6 +88,8 @@ class PostTableViewCell: UITableViewCell {
         } else {
             constraintPostImageHeight.constant = 0
         }
+        
+        
     }
     
     func set(with model: Post) {

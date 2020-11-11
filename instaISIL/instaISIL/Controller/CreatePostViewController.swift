@@ -13,6 +13,18 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var postText: UITextView!
     
+    @IBOutlet weak var prevImg: UIImageView!
+    
+    let pickerController = UIImagePickerController()
+
+    @IBAction func pickPhotoButtonPressed(_ sender: Any) {
+        
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func postButtonPressed(_ sender: Any) {
         
         let db = Firestore.firestore()
@@ -44,6 +56,11 @@ class CreatePostViewController: UIViewController {
                             print("Error adding document: \(err)")
                         } else {
                             print("Document added with ID: \(ref!.documentID)")
+                            
+                            // redirect to home tab
+                            let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                                tabBarVC.selectedIndex = 0
+                            self.navigationController?.pushViewController(tabBarVC, animated: true)
                         }
                     }
                 }
@@ -58,6 +75,23 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        pickerController.delegate = self
     }
 
+}
+
+extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        print("\(info)")
+        //let image = info.
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }

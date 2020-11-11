@@ -86,6 +86,9 @@
                                             <constraint firstAttribute="height" constant="25" id="Uxs-Sg-3gt"/>
                                         </constraints>
                                         <state key="normal" image="like"/>
+                                        <connections>
+                                            <action selector="likeButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q3m-Jc-Qsy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85p-EB-SNU">
                                         <rect key="frame" x="189.5" y="15" width="24" height="25"/>
