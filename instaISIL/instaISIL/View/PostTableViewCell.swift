@@ -9,6 +9,13 @@
 import UIKit
 import Firebase
 
+
+protocol PostTableViewCellDelegate {
+    
+    func callSegueFromCell(_ controller: PostTableViewCell)
+    
+}
+
 class PostTableViewCell: UITableViewCell {
     
     static let identifier = "PostTableViewCell"
@@ -21,6 +28,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var numOfLikes: UIButton!
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
     @IBOutlet weak var likeButton: UIButton!
+    
+    var delegate: PostTableViewCellDelegate?
     
     var objPost : Post! {
         didSet {
@@ -67,12 +76,23 @@ class PostTableViewCell: UITableViewCell {
     
     @IBAction func listLikesButtonPressed(_ sender: Any) {
 
+        if(self.delegate != nil){
+            self.delegate?.callSegueFromCell(self)
+        }
         
     }
     
     
     static func nib() -> UINib {
+        
         return UINib(nibName: "PostTableViewCell", bundle: nil)
+        
+    }
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
     }
 /*
     override func awakeFromNib() {
@@ -101,17 +121,28 @@ class PostTableViewCell: UITableViewCell {
         self.numOfLikes.setTitle("\(self.objPost.numOfLikes) Likes", for: .normal)
         
         if self.objPost.userImage != nil {
-            self.userImage.setImage(from: self.objPost.userImage!)
+            self.userImage.setImage(from: self.objPost.userImage!) { (image, urlString) in
+        
+                if self.objPost.userImage == urlString {
+                    self.userImage.image = image
+                }
+                
+            }
         } else {
             self.userImage.image = UIImage(named:"user")
         }
         
         if self.objPost.postImage != nil {
-            self.postImage.setImage(from: self.objPost.postImage!)
+            self.postImage.setImage(from: self.objPost.postImage!) { (image, urlString) in
+                
+                if self.objPost.postImage == urlString {
+                    self.postImage.image = image
+                }
+                
+            }            
         } else {
             constraintPostImageHeight.constant = 0
         }
-        
         
     }
     

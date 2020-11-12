@@ -914,17 +914,17 @@
                     <connections>
                         <outlet property="table" destination="bZe-kM-KOU" id="m96-Jq-Aqf"/>
                         <outlet property="welcomeLabel" destination="IxP-Xw-eLW" id="iBx-BQ-0Qu"/>
-                        <segue destination="1Ll-N6-TVP" kind="show" identifier="homeToLikeListVC" id="QWG-o8-OY7"/>
+                        <segue destination="1Ll-N6-TVP" kind="show" identifier="homeTopPostLikeListVC" id="QWG-o8-OY7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZE-Ue-1zn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4152.1739130434789" y="-931.47321428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Post Likes View Controller-->
         <scene sceneID="uYx-7M-Uz4">
             <objects>
-                <viewController id="1Ll-N6-TVP" sceneMemberID="viewController">
+                <viewController id="1Ll-N6-TVP" customClass="PostLikesViewController" customModule="InstaISIL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2P2-2c-Yt6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -933,31 +933,36 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="93" id="kVr-9J-Lxi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostLikesViewCell" rowHeight="93" id="kVr-9J-Lxi" customClass="PostLikesViewCell" customModule="InstaISIL" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kVr-9J-Lxi" id="5RD-kh-ebs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usuario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxw-Hg-qRe">
-                                                    <rect key="frame" x="10" y="34" width="58.5" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="46J-G0-U49"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usuario" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxw-Hg-qRe">
+                                                    <rect key="frame" x="10" y="20" width="58.5" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Gxw-Hg-qRe" firstAttribute="centerY" secondItem="5RD-kh-ebs" secondAttribute="centerY" id="5fk-8g-7yv"/>
-                                                <constraint firstAttribute="trailing" secondItem="Gxw-Hg-qRe" secondAttribute="trailing" constant="345.5" id="dF3-VJ-FpE"/>
-                                                <constraint firstItem="Gxw-Hg-qRe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5RD-kh-ebs" secondAttribute="leading" constant="10" id="iKe-6v-OZp"/>
+                                                <constraint firstItem="Gxw-Hg-qRe" firstAttribute="top" secondItem="5RD-kh-ebs" secondAttribute="top" constant="20" id="7YH-hZ-7c5"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Gxw-Hg-qRe" secondAttribute="trailing" constant="345.5" id="8wc-X7-5NP"/>
+                                                <constraint firstItem="Gxw-Hg-qRe" firstAttribute="leading" secondItem="5RD-kh-ebs" secondAttribute="leading" constant="10" id="RHQ-GC-Iov"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gxw-Hg-qRe" secondAttribute="bottom" constant="20" id="d4e-0D-zDC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="username" destination="Gxw-Hg-qRe" id="EBI-S1-rdh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1Ll-N6-TVP" id="mRq-5G-A5w"/>
+                                    <outlet property="delegate" destination="1Ll-N6-TVP" id="xYl-lU-zbh"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pfo-YX-VXX"/>
@@ -970,6 +975,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f99-nx-wsk"/>
+                    <connections>
+                        <outlet property="table" destination="OOi-5S-QsW" id="Whq-5Y-eYD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAK-o4-TNp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

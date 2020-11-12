@@ -60,6 +60,8 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        
+
         /*
         
         posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: date, userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
@@ -98,6 +100,20 @@ class HomeViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? PostLikesViewController {
+            
+            if let cell = sender as? PostTableViewCell {
+
+                controller.userlikes = Array(cell.objPost.userLikes)
+            }
+            
+        }
+    }
+    
 
 }
 
@@ -121,10 +137,21 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.delegate = self
         cell.objPost = self.posts[indexPath.row]
+
         return cell
     }
     
 }
+
+extension HomeViewController: PostTableViewCellDelegate {
+    
+    func callSegueFromCell(_ controller: PostTableViewCell) {
+        self.performSegue(withIdentifier: "homeTopPostLikeListVC", sender:controller )
+    }
+    
+}
+
 
 

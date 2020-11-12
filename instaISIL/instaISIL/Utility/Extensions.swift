@@ -6,20 +6,23 @@
 //  Copyright © 2020 Kaori Murakami. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIImageView {
     
-    func setImage(from url: String) {
-        guard let imageURL = URL(string: url) else { return }
+    typealias DownloadSuccess = (_ image: UIImage?, _ urlString: String) -> Void
+    
+    func setImage(from urlString: String, success: @escaping DownloadSuccess) {
+        
+        guard let imageURL = URL(string: urlString) else { return }
 
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
 
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
-                self.image = image
+                //self.image = image
+                success(image, urlString)
             }
         }
     }
@@ -28,14 +31,13 @@ extension UIImageView {
 
 extension Date {
     
-    func  toDate(dateFormat format  : String) -> String
-   {
+    func  toDate(dateFormat format  : String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         dateFormatter.timeZone = TimeZone.current
         let dateString = dateFormatter.string(from:self)
         return dateString
-   }
+    }
     
 }
 
