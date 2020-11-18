@@ -16,6 +16,8 @@ class PostLikesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        table.tableFooterView = UIView()
     }
 
 }

@@ -17,8 +17,9 @@ class Post {
     var postImage: String?
     var numOfLikes: Int
     var userLikes: Set<String>
+    var comments: [Comment]
     
-    init(id:String, user:String, postText:String, date: Date, userImage:String?, postImage:String?, userLikes:Set<String>) {
+    init(id: String, user: String, postText: String, date: Date, userImage: String?, postImage: String?, userLikes: Set<String>, comments: [Comment] = [Comment]()) {
         
         self.id = id
         self.user = user
@@ -28,7 +29,14 @@ class Post {
         self.postImage = postImage
         self.userLikes = userLikes
         self.numOfLikes = userLikes.count
+        self.comments = comments
         
     }
+    
+}
+
+struct Comment: Codable {
+    var user: String = ""
+    var comment: String = ""
     
 }

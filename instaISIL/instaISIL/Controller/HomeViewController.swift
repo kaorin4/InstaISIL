@@ -20,8 +20,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.parent?.title = "InstaISIL"
-        
         // Get all posts from posts collections in firebase
         
         let db = Firestore.firestore()
@@ -42,14 +40,37 @@ class HomeViewController: UIViewController {
                             
                             let username: String = "\(userDoc.get("firstname") ?? "") \(userDoc.get("lastname") ?? "")"
                             
+                            let commentsFirebase = document.get("comments")
+                            var commentsArr = [Comment]()
+                            
+                            if commentsFirebase != nil {
+                                do {
+                                    let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
+                                    let decoder = JSONDecoder()
+                                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                                    commentsArr = try decoder.decode([Comment].self, from: json)
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        
                             self.posts.append(Post(id: document.documentID,
                                                    user: username,
                                                    postText: document.get("text") as? String ?? "",
                                                    date: timestamp.dateValue(),
                                                    userImage: userDoc.get("image") as? String ?? "",
                                                    postImage: document.get("image") as? String,
-                                                   userLikes: Set(document.get("userLikes") as? [String] ?? [String]())
+                                                   userLikes: Set(document.get("userLikes") as? [String] ?? [String]()),
+                                                   comments: commentsArr
                                                    ))
+                            
+                            //print(commentsArr)
+                            //print(type(of: commentsArr))
+                            /*
+                            for item in commentsArr {
+                                print(type(of: item))
+                                print(item)
+                            }*/
                             
                             DispatchQueue.main.async {
                                 self.table.reloadData()
@@ -107,20 +128,25 @@ class HomeViewController: UIViewController {
         if let controller = segue.destination as? PostLikesViewController {
             
             if let cell = sender as? PostTableViewCell {
-
                 controller.userlikes = Array(cell.objPost.userLikes)
             }
+        }
+        
+        if let controller = segue.destination as? PostViewController {
             
+            if let cell = sender as? IndexPath {
+                controller.objPost = posts[cell.row]
+            }
         }
     }
     
-
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // llamar segue al post (cuando cree uno :D )
+
+        self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
     }
     
 }
@@ -148,7 +174,7 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
 extension HomeViewController: PostTableViewCellDelegate {
     
     func callSegueFromCell(_ controller: PostTableViewCell) {
-        self.performSegue(withIdentifier: "homeTopPostLikeListVC", sender:controller )
+        self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: controller )
     }
     
 }
