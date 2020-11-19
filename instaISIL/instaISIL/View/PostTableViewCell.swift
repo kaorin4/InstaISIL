@@ -94,14 +94,6 @@ class PostTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-/*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        userImage.layer.cornerRadius = userImage.bounds.height / 2
-        userImage.clipsToBounds = true
-        
-    }*/
     
     override func draw(_ rect: CGRect) {
         

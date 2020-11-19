@@ -1067,6 +1067,9 @@
                                         <state key="normal" title="Comentar">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="postCommentButtonPressed:" destination="QjG-Qf-sRD" eventType="touchUpInside" id="XSe-Q0-1Jt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1146,6 +1149,7 @@
                     <navigationItem key="navigationItem" id="WYE-g8-R0j"/>
                     <connections>
                         <outlet property="constraintPostImageHeight" destination="ciy-44-8T0" id="uEa-20-yBX"/>
+                        <outlet property="postCommentTextfield" destination="i9c-V5-lhQ" id="16d-oS-FN8"/>
                         <outlet property="postDate" destination="zhI-ae-ig1" id="syJ-25-WbV"/>
                         <outlet property="postImage" destination="aQO-nC-yMb" id="hIP-HI-vFs"/>
                         <outlet property="postLikes" destination="RCO-60-a9e" id="ZKc-Lk-Kqg"/>

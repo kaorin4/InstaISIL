@@ -64,14 +64,6 @@ class HomeViewController: UIViewController {
                                                    comments: commentsArr
                                                    ))
                             
-                            //print(commentsArr)
-                            //print(type(of: commentsArr))
-                            /*
-                            for item in commentsArr {
-                                print(type(of: item))
-                                print(item)
-                            }*/
-                            
                             DispatchQueue.main.async {
                                 self.table.reloadData()
                             }
