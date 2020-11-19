@@ -15,7 +15,11 @@
 		06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06826B14252D3B37008E7009 /* CustomUIView.swift */; };
 		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
+		3A56F8C5255895C30060A815 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56F8C4255895C30060A815 /* Extensions.swift */; };
 		3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */; };
+		3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */; };
+		3A5CACE8255DE8C600566E1D /* PostLikesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE7255DE8C600566E1D /* PostLikesViewCell.swift */; };
+		3A5DF0382564D4C900CE05C4 /* PostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DF0372564D4C900CE05C4 /* PostCommentTableViewCell.swift */; };
 		3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */; };
 		3A616840253035FB00E77484 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A61683F253035FB00E77484 /* Colors.xcassets */; };
 		3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422D725266225008E1D6C /* AppDelegate.swift */; };
@@ -26,9 +30,17 @@
 		3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6422E525266226008E1D6C /* LaunchScreen.storyboard */; };
 		3A6422F225266226008E1D6C /* InstaISILTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422F125266226008E1D6C /* InstaISILTests.swift */; };
 		3A6422FD25266226008E1D6C /* InstaISILUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422FC25266226008E1D6C /* InstaISILUITests.swift */; };
+		3A648A07255466870007E131 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A648A06255466870007E131 /* CreatePostViewController.swift */; };
+		3A68390D25520213001101F2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68390C25520213001101F2 /* EditProfileViewController.swift */; };
+		3A6871F52564802C00A0020B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6871F42564802B00A0020B /* PostViewController.swift */; };
+		3A694DEA2550B67F00F012CA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A694DE92550B67F00F012CA /* Post.swift */; };
 		3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B5FF42536AD6100AA949E /* Constants.swift */; };
+		3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F07E92551C93000C99C63 /* ProfileViewController.swift */; };
 		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
+		3AC51DEE255C53480065DB80 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC51DED255C53480065DB80 /* FirebaseUtils.swift */; };
+		3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABBC254FD016006B915A /* PostTableViewCell.swift */; };
+		3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AECABBD254FD016006B915A /* PostTableViewCell.xib */; };
 		82A79D7DB2F73E902A773C2D /* Pods_InstaISILTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */; };
 		C137718BFDF0E1823F3996F8 /* Pods_InstaISIL_InstaISILUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */; };
 		DA5DCA176ACEFC94796CC1AF /* Pods_InstaISIL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF0D7EAB8A1267E201F238 /* Pods_InstaISIL.framework */; };
@@ -62,7 +74,11 @@
 		06A871FA252674A100AA1740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = instaISIL/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
 		23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL.debug.xcconfig"; path = "Target Support Files/Pods-InstaISIL/Pods-InstaISIL.debug.xcconfig"; sourceTree = "<group>"; };
+		3A56F8C4255895C30060A815 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = instaISIL/Utility/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewController.swift; path = instaISIL/Controller/PostLikesViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A5CACE7255DE8C600566E1D /* PostLikesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewCell.swift; path = instaISIL/View/PostLikesViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3A5DF0372564D4C900CE05C4 /* PostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCommentTableViewCell.swift; path = instaISIL/View/PostCommentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerSelectViewController.swift; path = instaISIL/Controller/DatePickerSelectViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A61683F253035FB00E77484 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = instaISIL/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		3A6422D425266225008E1D6C /* InstaISIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaISIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,9 +95,17 @@
 		3A6422F825266226008E1D6C /* InstaISILUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaISILUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6422FC25266226008E1D6C /* InstaISILUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaISILUITests.swift; sourceTree = "<group>"; };
 		3A6422FE25266226008E1D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A648A06255466870007E131 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = instaISIL/Controller/CreatePostViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A68390C25520213001101F2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = instaISIL/Controller/EditProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A6871F42564802B00A0020B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewController.swift; path = instaISIL/Controller/PostViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A694DE92550B67F00F012CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = instaISIL/Model/Post.swift; sourceTree = SOURCE_ROOT; };
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
+		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AC51DED255C53480065DB80 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseUtils.swift; path = instaISIL/Utility/FirebaseUtils.swift; sourceTree = SOURCE_ROOT; };
+		3AECABBC254FD016006B915A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = instaISIL/View/PostTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3AECABBD254FD016006B915A /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostTableViewCell.xib; path = instaISIL/View/PostTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		4073B13A0ED812AB3D2BF2CF /* Pods_InstaISILTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISILTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD1DA493DB9F79BF5926851 /* Pods_InstaISIL_InstaISILUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaISIL_InstaISILUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6D2065A458EA26D303E9FA /* Pods-InstaISILTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISILTests.debug.xcconfig"; path = "Target Support Files/Pods-InstaISILTests/Pods-InstaISILTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +148,8 @@
 			children = (
 				06A8720725268EF200AA1740 /* Common.swift */,
 				3A6B5FF42536AD6100AA949E /* Constants.swift */,
+				3A56F8C4255895C30060A815 /* Extensions.swift */,
+				3AC51DED255C53480065DB80 /* FirebaseUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -144,15 +170,12 @@
 				06826B14252D3B37008E7009 /* CustomUIView.swift */,
 				0657973F2532A47A00D91853 /* CustomUIButton.swift */,
 				0656A0AF2529508600737645 /* CustomUITextField.swift */,
+				3AECABBC254FD016006B915A /* PostTableViewCell.swift */,
+				3AECABBD254FD016006B915A /* PostTableViewCell.xib */,
+				3A5CACE7255DE8C600566E1D /* PostLikesViewCell.swift */,
+				3A5DF0372564D4C900CE05C4 /* PostCommentTableViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3A579D2F2533CC4C003AD6A4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3A6422CB25266225008E1D6C = {
@@ -180,7 +203,7 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
-				3A579D2F2533CC4C003AD6A4 /* Model */,
+				3A694DE02550B5D000F012CA /* Model */,
 				3A579D2E2533CC1E003AD6A4 /* View */,
 				06A8720325268EAB00AA1740 /* Utility */,
 				3A64230A252662A6008E1D6C /* Controller */,
@@ -225,8 +248,21 @@
 				3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */,
 				3AAF4B6F2534144500989925 /* HomeViewController.swift */,
 				3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */,
+				3A6F07E92551C93000C99C63 /* ProfileViewController.swift */,
+				3A68390C25520213001101F2 /* EditProfileViewController.swift */,
+				3A648A06255466870007E131 /* CreatePostViewController.swift */,
+				3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */,
+				3A6871F42564802B00A0020B /* PostViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3A694DE02550B5D000F012CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A694DE92550B67F00F012CA /* Post.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FD0AF39AE1D405D28CA59C79 /* Pods */ = {
@@ -354,6 +390,7 @@
 				3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */,
 				3A616840253035FB00E77484 /* Colors.xcassets in Resources */,
 				3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */,
+				3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
@@ -483,19 +520,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC51DEE255C53480065DB80 /* FirebaseUtils.swift in Sources */,
 				06826B15252D3B37008E7009 /* CustomUIView.swift in Sources */,
 				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
 				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
+				3A6871F52564802C00A0020B /* PostViewController.swift in Sources */,
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */,
+				3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */,
+				3A68390D25520213001101F2 /* EditProfileViewController.swift in Sources */,
 				3A6422D825266225008E1D6C /* AppDelegate.swift in Sources */,
 				3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */,
+				3A5CACE8255DE8C600566E1D /* PostLikesViewCell.swift in Sources */,
+				3A648A07255466870007E131 /* CreatePostViewController.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
+				3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
+				3A56F8C5255895C30060A815 /* Extensions.swift in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
+				3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */,
 				06A8720825268EF200AA1740 /* Common.swift in Sources */,
+				3A5DF0382564D4C900CE05C4 /* PostCommentTableViewCell.swift in Sources */,
 				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
+				3A694DEA2550B67F00F012CA /* Post.swift in Sources */,
 				3AAF4B702534144500989925 /* HomeViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
 			);
