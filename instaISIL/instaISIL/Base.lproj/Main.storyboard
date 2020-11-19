@@ -409,7 +409,6 @@
                         <outlet property="statusLabel" destination="NHR-tb-LX6" id="vPO-F5-VLS"/>
                         <segue destination="A4Q-No-pBN" kind="presentation" identifier="DegreePickerViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="Gub-Xg-atd"/>
                         <segue destination="AbL-BO-CMa" kind="presentation" identifier="DatePickerViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="5AP-Xa-2qy"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="signupToLoginVC" id="e3W-JC-waM"/>
                         <segue destination="7wd-sv-Yzc" kind="show" identifier="signupToTabBarVC" id="tVy-fO-iLH"/>
                     </connections>
                 </viewController>
@@ -581,9 +580,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Q1C-wT-4xa"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="resetPasswordEmailToLoginvc" id="og0-W4-d0b"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTj-zS-49W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1652,11 +1648,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZK9-P6-cwy"/>
-        <segue reference="u3r-z6-lBc"/>
+        <segue reference="ylZ-Vj-309"/>
+        <segue reference="5AP-Xa-2qy"/>
         <segue reference="5NH-fc-blE"/>
         <segue reference="KUs-Mx-gZA"/>
-        <segue reference="9mP-Oc-cFn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="comment" width="24" height="24"/>

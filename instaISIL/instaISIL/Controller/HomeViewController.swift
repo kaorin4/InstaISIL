@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet var welcomeLabel: UILabel!
        
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         
@@ -53,21 +53,20 @@ class HomeViewController: UIViewController {
     }
     
     func loadData() {
-
+        
         db.collection("posts").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     
-                    //let timestamp: Timestamp = document.get("timestamp") as? Timestamp
                     guard let timestamp = document.get("timestamp") as? Timestamp else {
                          return
                      }
                     
                     let docRef = self.db.collection("users").document(document.get("uid") as! String)
 
-                    docRef.getDocument(source: .cache) { (userDoc, error) in
+                    docRef.getDocument(source: .server) { (userDoc, error) in
                         
                         if let userDoc = userDoc {
                             
@@ -122,8 +121,6 @@ class HomeViewController: UIViewController {
                     
                     // append new posts
                     if diff.type == .added {
-                        
-                        print(diff.document.get("firstname"))
 
                         let username: String = "\(diff.document.get("firstname") ?? "") \(diff.document.get("lastname") ?? "")"
                         //let timestamp: Timestamp = diff.document.get("timestamp") as! Timestamp
