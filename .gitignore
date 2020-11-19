@@ -1,7 +1,15 @@
 .DS_Store
+
 ## User settings
 xcuserdata/
 project.xcworkspace/
 
 ## CocoaPods
 Pods/
+project.xcworkspace
+
+### Xcode ###
+build
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcworkspace/contents.xcworkspacedata
