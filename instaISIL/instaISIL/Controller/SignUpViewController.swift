@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController {
         formContainer.roundCorners([.topRight, .bottomRight], radius: 15)
         self.degreeTextField.delegate = self
         self.campusTextField.delegate = self
-        self.birthdateTextField.delegate = self;
+        self.birthdateTextField.delegate = self
         
         statusLabel.isHidden = true
         
@@ -227,6 +227,7 @@ extension SignUpViewController: DatePickerSelectViewControllerDelegate {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
         if textField == self.degreeTextField {
             self.performSegue(withIdentifier: "DegreePickerViewController", sender: self.degreeTextField)
             return false

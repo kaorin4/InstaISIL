@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.   
         viewContent.roundCorners([.topRight, .bottomRight], radius: 15)
         statusLabel.isHidden = true
 
