@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func toLoginPageButtonPressed(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "signupToLoginVC",sender: self)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
                     
                     let docRef = self.db.collection("users").document(document.get("uid") as! String)
 
-                    docRef.getDocument(source: .cache) { (userDoc, error) in
+                    docRef.getDocument(source: .server) { (userDoc, error) in
                         
                         if let userDoc = userDoc {
                             
@@ -122,8 +122,6 @@ class HomeViewController: UIViewController {
                     
                     // append new posts
                     if diff.type == .added {
-                        
-                        print(diff.document.get("firstname"))
 
                         let username: String = "\(diff.document.get("firstname") ?? "") \(diff.document.get("lastname") ?? "")"
                         //let timestamp: Timestamp = diff.document.get("timestamp") as! Timestamp
