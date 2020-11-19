@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 class Post {
+    
     var id: String
     var user: String
     var postText: String

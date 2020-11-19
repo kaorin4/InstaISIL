@@ -167,24 +167,13 @@ class SignUpViewController: UIViewController {
                 self.statusLabel.text = errMsg
                 
             } else {
+                
                 // user was created
-                let db = Firestore.firestore()
-            
-                // Add a new document in collection "users"
-                db.collection("users").document((authResult?.user.uid)!).setData([
-                    "uid": authResult!.user.uid,
-                    "firstname": firstname,
-                    "lastname": lastname,
-                    "degree": degree,
-                    "campus": campus,
-                    "birthdate": birthdate
-                ]) { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("Document successfully written!")
-                    }
-                }
+                let newUser = User(uid: authResult!.user.uid, firstname: firstname, lastname: lastname, birthdate: birthdate, campus: campus, degree: degree)
+                
+                // add to users collections
+                let userVM = UserViewModel()
+                userVM.createUser(user: newUser)
 
                 // Go to homepage wohoo
                 self.performSegue(withIdentifier: "signupToTabBarVC",sender: self)
