@@ -16,23 +16,56 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet var welcomeLabel: UILabel!
        
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+        welcomeLabel.text = ""
+        
         // Get all posts from posts collections in firebase
+        loadData()
+
+        table.tableFooterView = UIView()
         
-        let db = Firestore.firestore()
+        // Update posts if there are changes to the db
+        checkForUpdates()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? PostLikesViewController {
+            
+            if let cell = sender as? PostTableViewCell {
+                controller.userlikes = Array(cell.objPost.userLikes)
+            }
+        }
+        
+        if let controller = segue.destination as? PostViewController {
+            
+            if let cell = sender as? IndexPath {
+                controller.objPost = posts[cell.row]
+            }
+        }
+    }
+    
+    func loadData() {
+
         db.collection("posts").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     
-                    let timestamp: Timestamp = document.get("timestamp") as! Timestamp
+                    //let timestamp: Timestamp = document.get("timestamp") as? Timestamp
+                    guard let timestamp = document.get("timestamp") as? Timestamp else {
+                         return
+                     }
                     
-                    let docRef = db.collection("users").document(document.get("uid") as! String)
+                    let docRef = self.db.collection("users").document(document.get("uid") as! String)
 
                     docRef.getDocument(source: .cache) { (userDoc, error) in
                         
@@ -73,63 +106,61 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
-
-        /*
-        
-        posts.append(Post(id: "1", user: "user1", postText: "this is a post", date: date, userImage: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png", postImage: nil, numOfLikes: 10))
-        
-        posts.append(Post(id: "2", user: "user2", postText: "this is a post 2", date: date, userImage: nil , postImage: "https://static.wikia.nocookie.net/pokemon/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200405125039", numOfLikes: 20))
-        */
-        
-        // add custom table cell to table view
-        
-        //table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
-        //table.delegate = self
-        //table.dataSource = self
-        //table.tableFooterView = UIView()
-        //table.reloadData()
-        
-        welcomeLabel.text = ""
-        
-        // Get user session data
-        
-        if let userId = Auth.auth().currentUser?.uid {
-            let collectionRef = db.collection("users")
-            let thisUserDoc = collectionRef.document(userId)
-            thisUserDoc.getDocument(completion: { document, error in
-                
-                if let err = error {
-                    print(err.localizedDescription)
-                    return
-                }
-                if let doc = document {
-                    let name = doc.get("firstname") ?? "No Name"
-                    let lastname = doc.get("lastname") ?? "No lastname"
-                    self.welcomeLabel.text = "Bienvenido \(name) \(lastname)"
-                    print("document " + document!.documentID )
-                }
-            })
-        }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func checkForUpdates() {
         
-        super.prepare(for: segue, sender: sender)
-        
-        if let controller = segue.destination as? PostLikesViewController {
-            
-            if let cell = sender as? PostTableViewCell {
-                controller.userlikes = Array(cell.objPost.userLikes)
+        // listen to changes
+        db.collection("posts").whereField("timestamp", isGreaterThan: Date())
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    print("Error retreiving collection: \(error)")
+                }
+                guard let snapshot = querySnapshot else {return}
+                
+                snapshot.documentChanges.forEach { (diff) in
+                    
+                    // append new posts
+                    if diff.type == .added {
+                        
+                        print(diff.document.get("firstname"))
+
+                        let username: String = "\(diff.document.get("firstname") ?? "") \(diff.document.get("lastname") ?? "")"
+                        //let timestamp: Timestamp = diff.document.get("timestamp") as! Timestamp
+                        guard let timestamp = diff.document.get("timestamp") as? Timestamp else {
+                             return
+                         }
+                        
+                        let commentsFirebase = diff.document.get("comments")
+                        var commentsArr = [Comment]()
+                        
+                        if commentsFirebase != nil {
+                            do {
+                                let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
+                                let decoder = JSONDecoder()
+                                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                                commentsArr = try decoder.decode([Comment].self, from: json)
+                            } catch {
+                                print(error)
+                            }
+                        }
+                        
+                        self.posts.append(Post(id: diff.document.documentID,
+                                               user: username,
+                                               postText: diff.document.get("text") as? String ?? "",
+                                               date: timestamp.dateValue(),
+                                               userImage: diff.document.get("image") as? String ?? "",
+                                               postImage: diff.document.get("image") as? String,
+                                               userLikes: Set(diff.document.get("userLikes") as? [String] ?? [String]()),
+                                               comments: commentsArr
+                                               ))
+                        
+                        DispatchQueue.main.async {
+                            self.table.reloadData()
+                        }
+                    }
+                }
             }
-        }
-        
-        if let controller = segue.destination as? PostViewController {
-            
-            if let cell = sender as? IndexPath {
-                controller.objPost = posts[cell.row]
-            }
-        }
     }
     
 }
