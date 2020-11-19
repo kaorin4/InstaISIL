@@ -33,6 +33,8 @@
 		3A648A07255466870007E131 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A648A06255466870007E131 /* CreatePostViewController.swift */; };
 		3A68390D25520213001101F2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68390C25520213001101F2 /* EditProfileViewController.swift */; };
 		3A6871F52564802C00A0020B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6871F42564802B00A0020B /* PostViewController.swift */; };
+		3A68EA812566D10300321040 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68EA802566D10200321040 /* User.swift */; };
+		3A68EA872566D4F000321040 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68EA862566D4F000321040 /* UserViewModel.swift */; };
 		3A694DEA2550B67F00F012CA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A694DE92550B67F00F012CA /* Post.swift */; };
 		3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B5FF42536AD6100AA949E /* Constants.swift */; };
 		3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F07E92551C93000C99C63 /* ProfileViewController.swift */; };
@@ -98,6 +100,8 @@
 		3A648A06255466870007E131 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = instaISIL/Controller/CreatePostViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A68390C25520213001101F2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = instaISIL/Controller/EditProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6871F42564802B00A0020B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewController.swift; path = instaISIL/Controller/PostViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A68EA802566D10200321040 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = instaISIL/Model/User.swift; sourceTree = SOURCE_ROOT; };
+		3A68EA862566D4F000321040 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = instaISIL/ViewModel/UserViewModel.swift; sourceTree = SOURCE_ROOT; };
 		3A694DE92550B67F00F012CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = instaISIL/Model/Post.swift; sourceTree = SOURCE_ROOT; };
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
 		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -203,6 +207,7 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
+				3A68EA852566D4C900321040 /* ViewModel */,
 				3A694DE02550B5D000F012CA /* Model */,
 				3A579D2E2533CC1E003AD6A4 /* View */,
 				06A8720325268EAB00AA1740 /* Utility */,
@@ -257,10 +262,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		3A68EA852566D4C900321040 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A68EA862566D4F000321040 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3A694DE02550B5D000F012CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3A694DE92550B67F00F012CA /* Post.swift */,
+				3A68EA802566D10200321040 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -525,6 +539,8 @@
 				3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */,
 				0656A0B02529508600737645 /* CustomUITextField.swift in Sources */,
 				3A6871F52564802C00A0020B /* PostViewController.swift in Sources */,
+				3A68EA872566D4F000321040 /* UserViewModel.swift in Sources */,
+				3A68EA812566D10300321040 /* User.swift in Sources */,
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
 				3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */,

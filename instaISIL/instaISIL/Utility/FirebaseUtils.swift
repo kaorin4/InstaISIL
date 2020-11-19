@@ -16,5 +16,6 @@ class FirebaseUtils {
         return Auth.auth().currentUser?.uid ?? ""
         
     }
+
     
 }

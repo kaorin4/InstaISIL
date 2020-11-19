@@ -14,7 +14,12 @@ class ResetPasswordEmailViewController: UIViewController {
     @IBAction func goBackButtonPressed(_ sender: Any) {
         
         // Go to login page
-        self.performSegue(withIdentifier: "resetPasswordEmailToLoginvc",sender: self)
+        guard let controller = self.navigationController?.viewControllers.first(where: {$0 is LoginViewController})
+        else {
+            return
+            
+        }
+        self.navigationController?.popToViewController(controller, animated: true)
     }
     
     override func viewDidLoad() {

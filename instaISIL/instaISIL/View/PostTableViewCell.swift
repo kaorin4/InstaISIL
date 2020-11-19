@@ -113,6 +113,7 @@ class PostTableViewCell: UITableViewCell {
         self.numOfLikes.setTitle("\(self.objPost.numOfLikes) Likes", for: .normal)
         
         if self.objPost.userImage != nil {
+
             self.userImage.setImage(from: self.objPost.userImage!) { (image, urlString) in
         
                 if self.objPost.userImage == urlString {
@@ -125,6 +126,7 @@ class PostTableViewCell: UITableViewCell {
         }
         
         if self.objPost.postImage != nil {
+            
             self.postImage.setImage(from: self.objPost.postImage!) { (image, urlString) in
                 
                 if self.objPost.postImage == urlString {
