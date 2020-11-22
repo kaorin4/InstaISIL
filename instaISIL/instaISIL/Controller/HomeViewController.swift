@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
         
         // Update posts if there are changes to the db
         checkForUpdates()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +54,8 @@ class HomeViewController: UIViewController {
     }
     
     func loadData() {
+        
+        print("load everything")
         
         db.collection("posts").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -85,7 +88,7 @@ class HomeViewController: UIViewController {
                                     print(error)
                                 }
                             }
-                        
+                            
                             self.posts.append(Post(id: document.documentID,
                                                    user: username,
                                                    postText: document.get("text") as? String ?? "",
@@ -96,8 +99,8 @@ class HomeViewController: UIViewController {
                                                    comments: commentsArr
                                                    ))
                             
-                            DispatchQueue.main.async {
-                                self.table.reloadData()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                   self.table.reloadData()
                             }
                             
                         }
@@ -109,6 +112,7 @@ class HomeViewController: UIViewController {
     
     func checkForUpdates() {
         
+        print("update")
         // listen to changes
         db.collection("posts").whereField("timestamp", isGreaterThan: Date())
             .addSnapshotListener { querySnapshot, error in
@@ -141,6 +145,7 @@ class HomeViewController: UIViewController {
                                 print(error)
                             }
                         }
+
                         
                         self.posts.append(Post(id: diff.document.documentID,
                                                user: username,

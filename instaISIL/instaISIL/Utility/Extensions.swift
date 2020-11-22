@@ -21,7 +21,6 @@ extension UIImageView {
 
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
-                //self.image = image
                 success(image, urlString)
             }
         }

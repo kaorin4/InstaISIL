@@ -125,13 +125,13 @@ class PostTableViewCell: UITableViewCell {
             self.userImage.image = UIImage(named:"user")
         }
         
-        if self.objPost.postImage != nil {
+        if self.objPost.postImage != "" {
             
             self.postImage.setImage(from: self.objPost.postImage!) { (image, urlString) in
                 
-                if self.objPost.postImage == urlString {
+               if self.objPost.postImage == urlString {
                     self.postImage.image = image
-                }
+               }
                 
             }            
         } else {

@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
+
 
 class CreatePostViewController: UIViewController {
     
@@ -16,58 +18,83 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var prevImg: UIImageView!
     
     let pickerController = UIImagePickerController()
+    
+    private let storage = Storage.storage().reference()
+    
+    var imageData: Data?
+    
+    let fireUtil = FirebaseUtils()
 
     @IBAction func pickPhotoButtonPressed(_ sender: Any) {
         
         pickerController.sourceType = .photoLibrary
         pickerController.allowsEditing = true
+        pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
         
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
         
-        let db = Firestore.firestore()
+        let userId = FirebaseUtils.getCurrentUserUid()
         
-        if let userId = Auth.auth().currentUser?.uid {
+        if userId != "" {
+            
+            let uuid = UUID().uuidString
+            let path = "images/\(userId)/posts/\(uuid)"
 
-            let collectionRef = db.collection("users")
-            let thisUserDoc = collectionRef.document(userId)
-            thisUserDoc.getDocument(completion: { document, error in
+            var urlString = ""
+            
+            if self.imageData != nil {
                 
-                if let err = error {
-                    print(err.localizedDescription)
-                    return
-                }
-                if document != nil {
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+
+                
+                // store image to firebase storage
+                self.storage.child(path).putData(self.imageData!,
+                                                 metadata: metaData) {
+                    (_, error) in
                     
-                    let post = [
-                        "uid": document!.documentID,
-                        "text": self.postText.text!,
-                        "likes": 0,
-                        "timestamp": FieldValue.serverTimestamp()
-                    ] as [String : Any]
+                    guard error == nil else {
+                        print("error")
+                        return
+                    }
                     
-                    // new document with a generated id.
-                    var ref: DocumentReference? = nil
-                    ref = db.collection("posts").addDocument(data: post) {
-                        err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
+                    // get url
+                    self.storage.child(path).downloadURL { (url, error) in
+                        guard let url = url, error == nil else {
+                            return
+                        }
+                        
+                        urlString = url.absoluteString
+
+                        // save post to cloud firestore
+                        self.fireUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: urlString) { () in
                             
                             // redirect to home tab
                             let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                                 tabBarVC.selectedIndex = 0
                             self.navigationController?.pushViewController(tabBarVC, animated: true)
+                            
                         }
+                        
                     }
+                    
                 }
+            } else {
                 
-            })
-        }
+                self.fireUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: nil) { () in
+                    
+                    // redirect to home tab
+                    let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                        tabBarVC.selectedIndex = 0
+                    self.navigationController?.pushViewController(tabBarVC, animated: true)
+                    
+                }
 
+            }
+        }
         
     }
 
@@ -84,9 +111,17 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
         
-        print("\(info)")
-        //let image = info.
+        guard let d: Data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        imageData = d
+        
+        prevImg.image = image
+        picker.dismiss(animated: true, completion: nil)
         
     }
     
