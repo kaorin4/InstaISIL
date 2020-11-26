@@ -31,6 +31,13 @@
 		3A6422F225266226008E1D6C /* InstaISILTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422F125266226008E1D6C /* InstaISILTests.swift */; };
 		3A6422FD25266226008E1D6C /* InstaISILUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6422FC25266226008E1D6C /* InstaISILUITests.swift */; };
 		3A648A07255466870007E131 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A648A06255466870007E131 /* CreatePostViewController.swift */; };
+		3A67690625700F2C00D9F8FB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A67690525700F2C00D9F8FB /* Profile.storyboard */; };
+		3A67690F2570151B00D9F8FB /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A67690E2570151B00D9F8FB /* Pickers.storyboard */; };
+		3A676914257016DE00D9F8FB /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A676913257016DE00D9F8FB /* Post.storyboard */; };
+		3A6769192570181000D9F8FB /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6769182570181000D9F8FB /* Search.storyboard */; };
+		3A67691E257018BE00D9F8FB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A67691D257018BE00D9F8FB /* Home.storyboard */; };
+		3A676923257018DA00D9F8FB /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A676922257018DA00D9F8FB /* TabBar.storyboard */; };
+		3A67692825701AED00D9F8FB /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A67692725701AED00D9F8FB /* SearchUserViewController.swift */; };
 		3A68390D25520213001101F2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68390C25520213001101F2 /* EditProfileViewController.swift */; };
 		3A6871F52564802C00A0020B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6871F42564802B00A0020B /* PostViewController.swift */; };
 		3A68EA812566D10300321040 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68EA802566D10200321040 /* User.swift */; };
@@ -98,6 +105,13 @@
 		3A6422FC25266226008E1D6C /* InstaISILUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaISILUITests.swift; sourceTree = "<group>"; };
 		3A6422FE25266226008E1D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A648A06255466870007E131 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = instaISIL/Controller/CreatePostViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A67690525700F2C00D9F8FB /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = instaISIL/Storyboards/Profile.storyboard; sourceTree = SOURCE_ROOT; };
+		3A67690E2570151B00D9F8FB /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Pickers.storyboard; path = instaISIL/Storyboards/Pickers.storyboard; sourceTree = SOURCE_ROOT; };
+		3A676913257016DE00D9F8FB /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Post.storyboard; path = instaISIL/Storyboards/Post.storyboard; sourceTree = SOURCE_ROOT; };
+		3A6769182570181000D9F8FB /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Search.storyboard; path = instaISIL/Storyboards/Search.storyboard; sourceTree = SOURCE_ROOT; };
+		3A67691D257018BE00D9F8FB /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = instaISIL/Storyboards/Home.storyboard; sourceTree = SOURCE_ROOT; };
+		3A676922257018DA00D9F8FB /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = TabBar.storyboard; path = instaISIL/Storyboards/TabBar.storyboard; sourceTree = SOURCE_ROOT; };
+		3A67692725701AED00D9F8FB /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUserViewController.swift; path = instaISIL/Controller/SearchUserViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A68390C25520213001101F2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = instaISIL/Controller/EditProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6871F42564802B00A0020B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewController.swift; path = instaISIL/Controller/PostViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A68EA802566D10200321040 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = instaISIL/Model/User.swift; sourceTree = SOURCE_ROOT; };
@@ -207,6 +221,7 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
+				3A67690425700ECD00D9F8FB /* Storyboards */,
 				3A68EA852566D4C900321040 /* ViewModel */,
 				3A694DE02550B5D000F012CA /* Model */,
 				3A579D2E2533CC1E003AD6A4 /* View */,
@@ -258,8 +273,22 @@
 				3A648A06255466870007E131 /* CreatePostViewController.swift */,
 				3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */,
 				3A6871F42564802B00A0020B /* PostViewController.swift */,
+				3A67692725701AED00D9F8FB /* SearchUserViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3A67690425700ECD00D9F8FB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3A67690525700F2C00D9F8FB /* Profile.storyboard */,
+				3A67690E2570151B00D9F8FB /* Pickers.storyboard */,
+				3A676913257016DE00D9F8FB /* Post.storyboard */,
+				3A6769182570181000D9F8FB /* Search.storyboard */,
+				3A67691D257018BE00D9F8FB /* Home.storyboard */,
+				3A676922257018DA00D9F8FB /* TabBar.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		3A68EA852566D4C900321040 /* ViewModel */ = {
@@ -402,10 +431,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6422E725266226008E1D6C /* LaunchScreen.storyboard in Resources */,
+				3A67691E257018BE00D9F8FB /* Home.storyboard in Resources */,
 				3A616840253035FB00E77484 /* Colors.xcassets in Resources */,
+				3A67690F2570151B00D9F8FB /* Pickers.storyboard in Resources */,
+				3A676923257018DA00D9F8FB /* TabBar.storyboard in Resources */,
 				3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */,
+				3A6769192570181000D9F8FB /* Search.storyboard in Resources */,
+				3A676914257016DE00D9F8FB /* Post.storyboard in Resources */,
 				3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
+				3A67690625700F2C00D9F8FB /* Profile.storyboard in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +595,7 @@
 				3A5DF0382564D4C900CE05C4 /* PostCommentTableViewCell.swift in Sources */,
 				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
 				3A694DEA2550B67F00F012CA /* Post.swift in Sources */,
+				3A67692825701AED00D9F8FB /* SearchUserViewController.swift in Sources */,
 				3AAF4B702534144500989925 /* HomeViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
 			);

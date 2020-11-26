@@ -12,6 +12,7 @@ import Firebase
 class HomeViewController: UIViewController {
     
     var posts:[Post] = []
+    private var messageListener: ListenerRegistration?
         
     @IBOutlet weak var table: UITableView!
     @IBOutlet var welcomeLabel: UILabel!
@@ -28,9 +29,6 @@ class HomeViewController: UIViewController {
         loadData()
 
         table.tableFooterView = UIView()
-        
-        // Update posts if there are changes to the db
-        checkForUpdates()
         
     }
     
@@ -53,11 +51,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    deinit {
+      messageListener?.remove()
+    }
+    
     func loadData() {
         
-        print("load everything")
-        
-        db.collection("posts").getDocuments() { (querySnapshot, err) in
+        messageListener = db.collection("posts").addSnapshotListener() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
