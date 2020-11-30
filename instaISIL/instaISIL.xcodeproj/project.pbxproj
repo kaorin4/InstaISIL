@@ -46,6 +46,8 @@
 		3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B5FF42536AD6100AA949E /* Constants.swift */; };
 		3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F07E92551C93000C99C63 /* ProfileViewController.swift */; };
 		3A6FD210253547F000FCCD98 /* ResetPasswordEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */; };
+		3A70508D25748E1F0042A2A5 /* Post2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A70508C25748E1F0042A2A5 /* Post2.swift */; };
+		3A705092257499FB0042A2A5 /* UserPostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A705091257499FB0042A2A5 /* UserPostsListViewController.swift */; };
 		3AAF4B702534144500989925 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF4B6F2534144500989925 /* HomeViewController.swift */; };
 		3AC51DEE255C53480065DB80 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC51DED255C53480065DB80 /* FirebaseUtils.swift */; };
 		3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECABBC254FD016006B915A /* PostTableViewCell.swift */; };
@@ -120,6 +122,8 @@
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
 		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A70508C25748E1F0042A2A5 /* Post2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post2.swift; path = instaISIL/Model/Post2.swift; sourceTree = SOURCE_ROOT; };
+		3A705091257499FB0042A2A5 /* UserPostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPostsListViewController.swift; path = instaISIL/Controller/UserPostsListViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AC51DED255C53480065DB80 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseUtils.swift; path = instaISIL/Utility/FirebaseUtils.swift; sourceTree = SOURCE_ROOT; };
 		3AECABBC254FD016006B915A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = instaISIL/View/PostTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -274,6 +278,7 @@
 				3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */,
 				3A6871F42564802B00A0020B /* PostViewController.swift */,
 				3A67692725701AED00D9F8FB /* SearchUserViewController.swift */,
+				3A705091257499FB0042A2A5 /* UserPostsListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			children = (
 				3A694DE92550B67F00F012CA /* Post.swift */,
 				3A68EA802566D10200321040 /* User.swift */,
+				3A70508C25748E1F0042A2A5 /* Post2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,12 +593,14 @@
 				3A648A07255466870007E131 /* CreatePostViewController.swift in Sources */,
 				0656A0AE2529422800737645 /* ResetPasswordViewController.swift in Sources */,
 				3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */,
+				3A705092257499FB0042A2A5 /* UserPostsListViewController.swift in Sources */,
 				3A6422E225266225008E1D6C /* InstaISIL.xcdatamodeld in Sources */,
 				3A56F8C5255895C30060A815 /* Extensions.swift in Sources */,
 				06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */,
 				3AECABBE254FD017006B915A /* PostTableViewCell.swift in Sources */,
 				06A8720825268EF200AA1740 /* Common.swift in Sources */,
 				3A5DF0382564D4C900CE05C4 /* PostCommentTableViewCell.swift in Sources */,
+				3A70508D25748E1F0042A2A5 /* Post2.swift in Sources */,
 				064FD635252FC1D5008003C6 /* PickerOptionViewController.swift in Sources */,
 				3A694DEA2550B67F00F012CA /* Post.swift in Sources */,
 				3A67692825701AED00D9F8FB /* SearchUserViewController.swift in Sources */,

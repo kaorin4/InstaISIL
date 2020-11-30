@@ -191,25 +191,13 @@
                                     <outlet property="delegate" destination="dCj-jb-04E" id="MKj-ge-lLK"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-Vm-hRZ">
-                                <rect key="frame" x="184" y="437.5" width="46" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="nUm-Gb-EYf"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="yeV-rA-kSy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JS0-xI-hxY"/>
                         <color key="backgroundColor" name="app_gray"/>
                         <constraints>
-                            <constraint firstItem="EzT-1q-1JL" firstAttribute="centerX" secondItem="AuA-Vm-hRZ" secondAttribute="centerX" id="4xR-Gn-WfI"/>
                             <constraint firstItem="EzT-1q-1JL" firstAttribute="leading" secondItem="JS0-xI-hxY" secondAttribute="leading" id="Ac1-i9-YuG"/>
+                            <constraint firstItem="EzT-1q-1JL" firstAttribute="centerX" secondItem="Obk-cG-8GL" secondAttribute="centerX" id="I45-Yb-SmS"/>
                             <constraint firstItem="EzT-1q-1JL" firstAttribute="top" secondItem="Obk-cG-8GL" secondAttribute="topMargin" constant="-56" id="UJG-A7-2Gi"/>
-                            <constraint firstItem="AuA-Vm-hRZ" firstAttribute="centerX" secondItem="Obk-cG-8GL" secondAttribute="centerX" id="kKf-OS-dN2"/>
-                            <constraint firstItem="AuA-Vm-hRZ" firstAttribute="centerY" secondItem="Obk-cG-8GL" secondAttribute="centerY" id="le9-SX-tzN"/>
                             <constraint firstItem="EzT-1q-1JL" firstAttribute="bottom" secondItem="JS0-xI-hxY" secondAttribute="bottom" id="wid-YP-5uy"/>
                         </constraints>
                     </view>
@@ -217,7 +205,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="EzT-1q-1JL" id="arh-Gm-wWM"/>
-                        <outlet property="welcomeLabel" destination="AuA-Vm-hRZ" id="sgz-IO-ohY"/>
                         <segue destination="fdA-zp-uQ7" kind="show" identifier="homeToPostVC" id="IzC-ZK-fdF"/>
                         <segue destination="biD-wg-ikS" kind="show" identifier="homeToPostLikeListVC" id="nIU-HM-nrU"/>
                     </connections>

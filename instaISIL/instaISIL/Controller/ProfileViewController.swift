@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
             
             if user?.image != nil {
 
-                self.userImage.setImage(from: user!.image) { (image, urlString) in
+                self.userImage.setImage(from: user!.image!) { (image, urlString) in
             
                     if user?.image == urlString {
                         self.userImage.image = image

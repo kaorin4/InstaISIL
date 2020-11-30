@@ -15,15 +15,12 @@ class HomeViewController: UIViewController {
     private var messageListener: ListenerRegistration?
         
     @IBOutlet weak var table: UITableView!
-    @IBOutlet var welcomeLabel: UILabel!
        
     private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        welcomeLabel.text = ""
         
         // Get all posts from posts collections in firebase
         loadData()
