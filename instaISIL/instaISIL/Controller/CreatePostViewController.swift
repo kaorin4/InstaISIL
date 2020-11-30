@@ -23,7 +23,7 @@ class CreatePostViewController: UIViewController {
     
     var imageData: Data?
     
-    let fireUtil = FirebaseUtils()
+    let firebaseUtil = FirebaseUtils()
 
     @IBAction func pickPhotoButtonPressed(_ sender: Any) {
         
@@ -36,7 +36,7 @@ class CreatePostViewController: UIViewController {
     
     @IBAction func postButtonPressed(_ sender: Any) {
         
-        let userId = FirebaseUtils.getCurrentUserUid()
+        let userId = firebaseUtil.getCurrentUserUid()
         
         if userId != "" {
             
@@ -70,10 +70,10 @@ class CreatePostViewController: UIViewController {
                         urlString = url.absoluteString
 
                         // save post to cloud firestore
-                        self.fireUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: urlString) { () in
+                        self.firebaseUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: urlString) { () in
                             
                             // redirect to home tab
-                            let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                            let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                                 tabBarVC.selectedIndex = 0
                             self.navigationController?.pushViewController(tabBarVC, animated: true)
                             
@@ -84,7 +84,7 @@ class CreatePostViewController: UIViewController {
                 }
             } else {
                 
-                self.fireUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: nil) { () in
+                self.firebaseUtil.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: nil) { () in
                     
                     // redirect to home tab
                     let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController

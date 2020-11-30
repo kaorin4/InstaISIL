@@ -14,6 +14,12 @@ class UserViewModel {
     
     private var db = Firestore.firestore()
     
+    func getCurrentUserUid() -> String {
+        
+        return Auth.auth().currentUser?.uid ?? ""
+        
+    }
+    
     func createUser(user: User) {
         
         do {
@@ -26,5 +32,25 @@ class UserViewModel {
         }
         
     }
+    
+    func getUserData(userID: String, completion: @escaping (_ user: User?) -> Void) {
+        
+        let docRef = db.collection("users").document(userID)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let user = try? document.data(as: User.self)
+                
+                completion(user)
+
+            } else {
+                print("Document does not exist")
+            }
+        }
+    
+    }
+    
+
     
 }

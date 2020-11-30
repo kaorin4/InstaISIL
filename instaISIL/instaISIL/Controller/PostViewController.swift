@@ -27,11 +27,13 @@ class PostViewController: UIViewController {
     
     let db = Firestore.firestore()
     
+    let firebaseUtil = FirebaseUtils()
+    
     @IBAction func postCommentButtonPressed(_ sender: Any) {
         
         let comment = postCommentTextfield.text
         
-        let currentUserUid = FirebaseUtils.getCurrentUserUid()
+        let currentUserUid = firebaseUtil.getCurrentUserUid()
         
         let firebaseComment = ["comment": comment, "user": currentUserUid]
         

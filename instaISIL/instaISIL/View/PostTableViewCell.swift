@@ -39,11 +39,13 @@ class PostTableViewCell: UITableViewCell {
     
     let db = Firestore.firestore()
     
+    let firebaseUtil = FirebaseUtils()
+    
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         
         let postRef = db.collection("posts").document(objPost.id)
         
-        let currentUserUid = FirebaseUtils.getCurrentUserUid()
+        let currentUserUid = firebaseUtil.getCurrentUserUid()
         
         var didLiked = false
         

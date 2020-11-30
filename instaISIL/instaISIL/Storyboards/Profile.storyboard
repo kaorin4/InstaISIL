@@ -23,7 +23,6 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-2t-Nlj">
                                         <rect key="frame" x="10" y="15" width="140" height="167"/>
-                                        <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uS6-2t-Nlj" secondAttribute="height" multiplier="160:191" id="99c-le-HmE"/>
                                             <constraint firstAttribute="width" constant="140" id="BgS-Gp-FXD"/>
@@ -108,6 +107,9 @@
                                 <state key="normal" title="Ver publicaciones">
                                     <color key="titleColor" name="app_black"/>
                                 </state>
+                                <connections>
+                                    <action selector="showUserPostsButtonTapped:" destination="ObR-cJ-qAb" eventType="touchUpInside" id="tV0-4g-EAy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcz-NP-Lch">
                                 <rect key="frame" x="20" y="341" width="159" height="30"/>
@@ -141,10 +143,35 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="user" id="O6a-IE-88L"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="birthdateLabel" destination="wyP-ty-LYc" id="pYt-di-rbW"/>
+                        <outlet property="campusLabel" destination="vPx-8m-sHy" id="ENT-Pf-H8t"/>
+                        <outlet property="degreeLabel" destination="XLR-to-3Hw" id="aTL-0J-wCd"/>
+                        <outlet property="lastnameLabel" destination="2Ym-b4-Hmg" id="DfL-q7-jco"/>
+                        <outlet property="nameLabel" destination="2JO-va-zSn" id="24R-HY-kw8"/>
+                        <outlet property="userImage" destination="uS6-2t-Nlj" id="AM8-ps-LvV"/>
+                        <segue destination="ipD-KN-tbP" kind="show" identifier="profileToUserPostsVC" id="A0R-jo-Ys2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQa-dP-CgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4152" y="1548"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2xZ-Uc-DI6">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="ipD-KN-tbP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b7F-7D-AUw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6ni-Mn-bXS"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t7O-zE-ptu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytv-HI-Fz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5374" y="1548"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="BSe-pH-QsA">
@@ -354,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Sh-rO-yQB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5272" y="1548"/>
+            <point key="canvasLocation" x="5375" y="827"/>
         </scene>
         <!--PickerOptionViewController-->
         <scene sceneID="Yiq-Rc-Lq1">
@@ -362,7 +389,7 @@
                 <viewControllerPlaceholder storyboardName="Pickers" referencedIdentifier="PickerOptionViewController" id="tlY-Pq-d2g" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDD-nO-X9d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6016" y="1468"/>
+            <point key="canvasLocation" x="6520" y="611"/>
         </scene>
         <!--DatePickerSelectViewController-->
         <scene sceneID="dZj-uf-2jk">
@@ -370,7 +397,7 @@
                 <viewControllerPlaceholder storyboardName="Pickers" referencedIdentifier="DatePickerSelectViewController" id="mMU-W1-hnI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pN5-Ul-gUC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6035" y="1630"/>
+            <point key="canvasLocation" x="6539" y="1019"/>
         </scene>
     </scenes>
     <resources>
@@ -383,6 +410,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
