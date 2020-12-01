@@ -51,42 +51,6 @@ class UserViewModel {
             }
         }
     }
-    /*
-    func getUserPosts(userID: String, completion: @escaping (_ posts: [Post]?) -> Void) {
-        
-        
-        let docRef = db.collection("users").document(userID)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                
-                do {
-
-                    guard let postsID = document.get("posts") else {
-                        return
-                    }
-                    
-                    var posts = [Post]()
-                    
-                    for post in postsID as! [String] {
-                        
-                        //
-                        
-                        
-                    }
-                    
-                    let user = try document.data(as: User.self)
-                    //completion(user)
-
-                } catch { print(error) }
-                
-                //completion(user)
-
-            } else {
-                print("Document does not exist")
-            }
-        }
-    }*/
 
     
 }

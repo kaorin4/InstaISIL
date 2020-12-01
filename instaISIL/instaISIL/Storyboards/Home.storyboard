@@ -245,14 +245,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="lHF-hC-NEk" firstAttribute="leading" secondItem="x3m-rb-dV4" secondAttribute="trailing" constant="224.5" id="3u1-Yk-fzB"/>
                                     <constraint firstItem="x3m-rb-dV4" firstAttribute="top" secondItem="iPc-Lm-HFF" secondAttribute="top" constant="10" id="7Lw-WB-QZB"/>
                                     <constraint firstItem="HVi-EO-eka" firstAttribute="top" secondItem="iPc-Lm-HFF" secondAttribute="top" constant="5" id="FlN-Qt-1iY"/>
                                     <constraint firstAttribute="height" constant="60" id="GOT-L1-SJS"/>
                                     <constraint firstAttribute="bottom" secondItem="HVi-EO-eka" secondAttribute="bottom" constant="5" id="J6m-GN-9hy"/>
                                     <constraint firstAttribute="trailing" secondItem="lHF-hC-NEk" secondAttribute="trailing" constant="10" id="JCG-Lg-Yf3"/>
-                                    <constraint firstItem="x3m-rb-dV4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HVi-EO-eka" secondAttribute="trailing" constant="8" symbolic="YES" id="Lpl-po-Z0s"/>
                                     <constraint firstItem="lHF-hC-NEk" firstAttribute="top" secondItem="iPc-Lm-HFF" secondAttribute="top" constant="10" id="M6j-kW-Iut"/>
+                                    <constraint firstItem="x3m-rb-dV4" firstAttribute="leading" secondItem="HVi-EO-eka" secondAttribute="trailing" constant="10" id="NCD-XS-cYp"/>
                                     <constraint firstAttribute="bottom" secondItem="lHF-hC-NEk" secondAttribute="bottom" constant="10" id="VZy-rt-xCZ"/>
                                     <constraint firstItem="HVi-EO-eka" firstAttribute="leading" secondItem="iPc-Lm-HFF" secondAttribute="leading" constant="5" id="ZMF-lD-eBD"/>
                                     <constraint firstAttribute="bottom" secondItem="x3m-rb-dV4" secondAttribute="bottom" constant="10" id="mDq-ja-zNa"/>

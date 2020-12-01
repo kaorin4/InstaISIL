@@ -12,6 +12,8 @@ class PostCommentTableViewCell: UITableViewCell {
     
     static let identifier = "PostCommentTableViewCell"
     
+    private let userViewModel = UserViewModel()
+    
     var postComment: Comment! {
         didSet {
             self.updateData()
@@ -33,8 +35,17 @@ class PostCommentTableViewCell: UITableViewCell {
     }
     
     func updateData() {
-        username.text = postComment.user
-        comment.text = postComment.comment
+        
+        userViewModel.getUserData(userID: postComment.user) { (user) in
+            
+            guard let user = user else {
+                return
+            }
+            
+            self.username.text = "\(user.firstname ?? "") \(user.lastname ?? "")"
+            self.comment.text = self.postComment.comment
+        }
+
     }
 
 }

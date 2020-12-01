@@ -10,17 +10,16 @@ import UIKit
 
 class UserPostsListViewController: UIViewController {
     
-    
     let userViewModel = UserViewModel()
     
-    let firebaseUtils = FirebaseUtils()
+    let postViewModel = PostViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let user = userViewModel.getCurrentUserUid()
         
-        firebaseUtils.getPostsByUser(with: user) { (posts) in
+        postViewModel.getPostsByUser(with: user) { (posts) in
             print(posts?.count)
         }
         

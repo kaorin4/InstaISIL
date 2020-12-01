@@ -1,27 +1,22 @@
 //
-//  FirebaseUtils.swift
+//  PostViewModel.swift
 //  InstaISIL
 //
-//  Created by Kaori on 11/11/20.
+//  Created by Kaori on 11/30/20.
 //  Copyright © 2020 Kaori Murakami. All rights reserved.
 //
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
-class FirebaseUtils {
+class PostViewModel {
     
-    private let db = Firestore.firestore()
+    private var db = Firestore.firestore()
     
     private let userViewModel = UserViewModel()
     
-    func getCurrentUserUid() -> String {
-        
-        return Auth.auth().currentUser?.uid ?? ""
-        
-    }
-    
-    func getPost(with postID: String, completion: @escaping (_ post: Post2?) -> Void) {
+    func getPost(with postID: String, completion: @escaping (_ post: Post?) -> Void) {
         
         let docRef = db.collection("posts").document(postID)
 
@@ -31,7 +26,7 @@ class FirebaseUtils {
                 do {
                     
                     let userID = document.get("uid") as! String
-                    let post = try document.data(as: Post2.self)
+                    let post = try document.data(as: Post.self)
                     
                     post!.id = docRef.documentID
                     
@@ -49,7 +44,7 @@ class FirebaseUtils {
         
     }
     
-    func getPostsByUser(with userID: String, completion: @escaping (_ posts: [Post2]?) -> Void) {
+    func getPostsByUser(with userID: String, completion: @escaping (_ posts: [Post]?) -> Void) {
         
         let docRef = db.collection("users").document(userID)
 
@@ -60,7 +55,7 @@ class FirebaseUtils {
                     return
                 }
                 
-                var posts = [Post2]()
+                var posts = [Post]()
                 
                 let group = DispatchGroup()
                 for postID in postsID as! [String] {
@@ -117,7 +112,7 @@ class FirebaseUtils {
     
     func addToUserPostList(postId: String) {
         
-        let currentUser = getCurrentUserUid()
+        let currentUser = userViewModel.getCurrentUserUid()
         
         let userRef = db.collection("users").document(currentUser)
         
@@ -129,6 +124,67 @@ class FirebaseUtils {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func updatePostLike(objPost: Post, didLiked: Bool = false) {
+        
+        let postRef = db.collection("posts").document(objPost.id)
+        let currentUserUid = userViewModel.getCurrentUserUid()
+        
+        // update database
+        
+        postRef.updateData([
+            "likes": objPost.userLikes.count,
+            "userLikes": didLiked ? FieldValue.arrayUnion([currentUserUid]) : FieldValue.arrayRemove([currentUserUid])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func addComment(objPost: Post, comment: [String: String?]) {
+        
+        let postRef = db.collection("posts").document(objPost.id)
+        // add comment to firebase
+        postRef.updateData([
+            "comments": FieldValue.arrayUnion([comment])
+        ])
+        
+    }
+    
+    func getComments(fromPost objPost: Post, completion: @escaping (_ comments: [Comment]?) -> Void) {
+        
+        let postRef = db.collection("posts").document(objPost.id)
+        
+        postRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let commentsFirebase = document.get("comments")
+
+                var commentsArr = [Comment]()
+                
+                if commentsFirebase != nil {
+                    do {
+                        let json = try JSONSerialization.data(withJSONObject: commentsFirebase as Any)
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        commentsArr = try decoder.decode([Comment].self, from: json)
+                        
+                        completion(commentsArr)
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
             }
         }
         

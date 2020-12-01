@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--tabBarController-->
         <scene sceneID="fnL-lP-Nbj">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" id="Q21-2g-vTz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" title="tabBarController" id="Q21-2g-vTz" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="BbD-Un-6lM"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gIF-I0-3Gc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

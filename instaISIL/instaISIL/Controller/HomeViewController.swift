@@ -11,12 +11,15 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var posts:[Post] = []
+    var posts :[Post] = []
+    
     private var messageListener: ListenerRegistration?
         
     @IBOutlet weak var table: UITableView!
        
     private let db = Firestore.firestore()
+    
+    private let userViewModel = UserViewModel()
     
     override func viewDidLoad() {
         
@@ -24,7 +27,7 @@ class HomeViewController: UIViewController {
         
         // Get all posts from posts collections in firebase
         loadData()
-
+        
         table.tableFooterView = UIView()
         
     }
@@ -52,9 +55,10 @@ class HomeViewController: UIViewController {
       messageListener?.remove()
     }
     
+    
     func loadData() {
         
-        messageListener = db.collection("posts").addSnapshotListener() { (querySnapshot, err) in
+        messageListener = db.collection("posts").order(by: "timestamp", descending: true).addSnapshotListener() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -70,35 +74,38 @@ class HomeViewController: UIViewController {
                         
                         if let userDoc = userDoc {
                             
-                            let username: String = "\(userDoc.get("firstname") ?? "") \(userDoc.get("lastname") ?? "")"
-                            
-                            let commentsFirebase = document.get("comments")
-                            var commentsArr = [Comment]()
-                            
-                            if commentsFirebase != nil {
-                                do {
-                                    let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
-                                    let decoder = JSONDecoder()
-                                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                    commentsArr = try decoder.decode([Comment].self, from: json)
-                                } catch {
-                                    print(error)
+                            do {
+                                let user = try userDoc.data(as: User.self)
+                                
+                                let commentsFirebase = document.get("comments")
+
+                                var commentsArr = [Comment]()
+                                
+                                if commentsFirebase != nil {
+                                    do {
+                                        let json = try JSONSerialization.data(withJSONObject: commentsFirebase as Any)
+                                        let decoder = JSONDecoder()
+                                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                                        commentsArr = try decoder.decode([Comment].self, from: json)
+                                    } catch {
+                                        print(error)
+                                    }
                                 }
-                            }
-                            
-                            self.posts.append(Post(id: document.documentID,
-                                                   user: username,
-                                                   postText: document.get("text") as? String ?? "",
-                                                   date: timestamp.dateValue(),
-                                                   userImage: userDoc.get("image") as? String ?? "",
-                                                   postImage: document.get("image") as? String,
-                                                   userLikes: Set(document.get("userLikes") as? [String] ?? [String]()),
-                                                   comments: commentsArr
-                                                   ))
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                                   self.table.reloadData()
-                            }
+                                
+                                self.posts.append(Post(id: document.documentID,
+                                                       user: user!,
+                                                       postText: document.get("text") as? String ?? "",
+                                                       date: timestamp.dateValue(),
+                                                       postImage: document.get("image") as? String,
+                                                       userLikes: Set(document.get("userLikes") as? [String] ?? [String]()),
+                                                       comments: commentsArr
+                                                       ))
+                                
+                                DispatchQueue.main.async {
+                                       self.table.reloadData()
+                                }
+                            } catch { print(error) }
+
                             
                         }
                     }
@@ -107,6 +114,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    /*
     func checkForUpdates() {
         
         print("update")
@@ -160,7 +168,7 @@ class HomeViewController: UIViewController {
                     }
                 }
             }
-    }
+    }*/
     
 }
 
