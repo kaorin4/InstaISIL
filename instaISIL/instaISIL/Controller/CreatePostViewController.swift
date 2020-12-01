@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
 
 
 class CreatePostViewController: UIViewController {
@@ -19,13 +17,13 @@ class CreatePostViewController: UIViewController {
     
     let pickerController = UIImagePickerController()
     
-    private let storage = Storage.storage().reference()
-    
     var imageData: Data?
     
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
+    
+    let firebaseUtil = FirebaseUtils()
 
     @IBAction func pickPhotoButtonPressed(_ sender: Any) {
         
@@ -37,54 +35,27 @@ class CreatePostViewController: UIViewController {
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
-        
+        createPost()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+
+        pickerController.delegate = self
+    }
+    
+    func createPost() {
+
         let userId = userViewModel.getCurrentUserUid()
         
         if userId != "" {
             
             let uuid = UUID().uuidString
             let path = "images/\(userId)/posts/\(uuid)"
-
-            var urlString = ""
             
-            if self.imageData != nil {
-                
-                let metaData = StorageMetadata()
-                metaData.contentType = "image/jpg"
-
-                
-                // store image to firebase storage
-                self.storage.child(path).putData(self.imageData!,
-                                                 metadata: metaData) {
-                    (_, error) in
-                    
-                    guard error == nil else {
-                        print("error")
-                        return
-                    }
-                    
-                    // get url
-                    self.storage.child(path).downloadURL { (url, error) in
-                        guard let url = url, error == nil else {
-                            return
-                        }
-                        
-                        urlString = url.absoluteString
-
-                        // save post to cloud firestore
-                        self.postViewModel.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: urlString) { () in
-                            
-                            // redirect to home tab
-                            let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-                                tabBarVC.selectedIndex = 0
-                            self.navigationController?.pushViewController(tabBarVC, animated: true)
-                            
-                        }
-                        
-                    }
-                    
-                }
-            } else {
+            guard let img = self.imageData else {
                 
                 self.postViewModel.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: nil) { () in
                     
@@ -94,18 +65,25 @@ class CreatePostViewController: UIViewController {
                     self.navigationController?.pushViewController(tabBarVC, animated: true)
                     
                 }
-
+                return
             }
+
+            firebaseUtil.saveFileStorage(data: img, path: path) { (url) in
+                
+                // save post to cloud firestore
+                self.postViewModel.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: url) { () in
+                    
+                    // redirect to home tab
+                    let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                        tabBarVC.selectedIndex = 0
+                    self.navigationController?.pushViewController(tabBarVC, animated: true)
+                    
+                }
+                
+            }
+
         }
         
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-
-        pickerController.delegate = self
     }
 
 }

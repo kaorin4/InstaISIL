@@ -28,7 +28,7 @@ class PostLikesViewController: UIViewController {
 extension PostLikesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // llamar segue al post
+
     }
     
 }

@@ -20,7 +20,8 @@ class UserPostsListViewController: UIViewController {
         let user = userViewModel.getCurrentUserUid()
         
         postViewModel.getPostsByUser(with: user) { (posts) in
-            print(posts?.count)
+            print(posts?[0].id as Any)
+            print(posts?[0].comments as Any)
         }
         
     }

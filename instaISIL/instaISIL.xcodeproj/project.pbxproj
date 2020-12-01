@@ -19,6 +19,7 @@
 		3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */; };
 		3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */; };
 		3A5CACE8255DE8C600566E1D /* PostLikesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE7255DE8C600566E1D /* PostLikesViewCell.swift */; };
+		3A5DD3382576A58100C807ED /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DD3372576A58100C807ED /* FirebaseUtils.swift */; };
 		3A5DF0382564D4C900CE05C4 /* PostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DF0372564D4C900CE05C4 /* PostCommentTableViewCell.swift */; };
 		3A61683B25300BC200E77484 /* DatePickerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */; };
 		3A616840253035FB00E77484 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A61683F253035FB00E77484 /* Colors.xcassets */; };
@@ -88,6 +89,7 @@
 		3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewController.swift; path = instaISIL/Controller/PostLikesViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A5CACE7255DE8C600566E1D /* PostLikesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewCell.swift; path = instaISIL/View/PostLikesViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3A5DD3372576A58100C807ED /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseUtils.swift; path = instaISIL/Utility/FirebaseUtils.swift; sourceTree = SOURCE_ROOT; };
 		3A5DF0372564D4C900CE05C4 /* PostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCommentTableViewCell.swift; path = instaISIL/View/PostCommentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3A61683A25300BC200E77484 /* DatePickerSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerSelectViewController.swift; path = instaISIL/Controller/DatePickerSelectViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A61683F253035FB00E77484 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = instaISIL/Colors.xcassets; sourceTree = SOURCE_ROOT; };
@@ -169,6 +171,7 @@
 				06A8720725268EF200AA1740 /* Common.swift */,
 				3A6B5FF42536AD6100AA949E /* Constants.swift */,
 				3A56F8C4255895C30060A815 /* Extensions.swift */,
+				3A5DD3372576A58100C807ED /* FirebaseUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				3A68EA812566D10300321040 /* User.swift in Sources */,
 				0656A0AC2529205B00737645 /* SignUpViewController.swift in Sources */,
 				065797402532A47A00D91853 /* CustomUIButton.swift in Sources */,
+				3A5DD3382576A58100C807ED /* FirebaseUtils.swift in Sources */,
 				3A6B5FF52536AD6100AA949E /* Constants.swift in Sources */,
 				3A6F07EA2551C93000C99C63 /* ProfileViewController.swift in Sources */,
 				3A68390D25520213001101F2 /* EditProfileViewController.swift in Sources */,

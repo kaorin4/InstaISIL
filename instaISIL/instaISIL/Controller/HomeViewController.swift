@@ -59,117 +59,38 @@ class HomeViewController: UIViewController {
     
     func loadData() {
         
-        messageListener = db.collection("posts").order(by: "timestamp", descending: true).addSnapshotListener() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    
-                    guard let timestamp = document.get("timestamp") as? Timestamp else {
-                         return
-                     }
-                    
-                    let docRef = self.db.collection("users").document(document.get("uid") as! String)
+        messageListener = db.collection("posts").order(by: "timestamp", descending: true).addSnapshotListener() { querySnapshot, error in
 
-                    docRef.getDocument(source: .server) { (userDoc, error) in
-                        
-                        if let userDoc = userDoc {
-                            
-                            do {
-                                let user = try userDoc.data(as: User.self)
-                                
-                                let commentsFirebase = document.get("comments")
-
-                                var commentsArr = [Comment]()
-                                
-                                if commentsFirebase != nil {
-                                    do {
-                                        let json = try JSONSerialization.data(withJSONObject: commentsFirebase as Any)
-                                        let decoder = JSONDecoder()
-                                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                        commentsArr = try decoder.decode([Comment].self, from: json)
-                                    } catch {
-                                        print(error)
-                                    }
-                                }
-                                
-                                self.posts.append(Post(id: document.documentID,
-                                                       user: user!,
-                                                       postText: document.get("text") as? String ?? "",
-                                                       date: timestamp.dateValue(),
-                                                       postImage: document.get("image") as? String,
-                                                       userLikes: Set(document.get("userLikes") as? [String] ?? [String]()),
-                                                       comments: commentsArr
-                                                       ))
-                                
-                                DispatchQueue.main.async {
-                                       self.table.reloadData()
-                                }
-                            } catch { print(error) }
-
-                            
-                        }
-                    }
-                }
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshots: \(error!)")
+                return
             }
-        }
-    }
-    
-    /*
-    func checkForUpdates() {
-        
-        print("update")
-        // listen to changes
-        db.collection("posts").whereField("timestamp", isGreaterThan: Date())
-            .addSnapshotListener { querySnapshot, error in
-                if let error = error {
-                    print("Error retreiving collection: \(error)")
-                }
-                guard let snapshot = querySnapshot else {return}
+
+            for document in snapshot.documents {
                 
-                snapshot.documentChanges.forEach { (diff) in
+                do {
                     
-                    // append new posts
-                    if diff.type == .added {
-
-                        let username: String = "\(diff.document.get("firstname") ?? "") \(diff.document.get("lastname") ?? "")"
-                        //let timestamp: Timestamp = diff.document.get("timestamp") as! Timestamp
-                        guard let timestamp = diff.document.get("timestamp") as? Timestamp else {
-                             return
-                         }
-                        
-                        let commentsFirebase = diff.document.get("comments")
-                        var commentsArr = [Comment]()
-                        
-                        if commentsFirebase != nil {
-                            do {
-                                let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
-                                let decoder = JSONDecoder()
-                                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                commentsArr = try decoder.decode([Comment].self, from: json)
-                            } catch {
-                                print(error)
-                            }
-                        }
-
-                        
-                        self.posts.append(Post(id: diff.document.documentID,
-                                               user: username,
-                                               postText: diff.document.get("text") as? String ?? "",
-                                               date: timestamp.dateValue(),
-                                               userImage: diff.document.get("image") as? String ?? "",
-                                               postImage: diff.document.get("image") as? String,
-                                               userLikes: Set(diff.document.get("userLikes") as? [String] ?? [String]()),
-                                               comments: commentsArr
-                                               ))
+                    let userID = document.get("uid") as! String
+                    let post = try document.data(as: Post.self)
+                    
+                    post!.id = document.documentID
+                    
+                    self.userViewModel.getUserData(userID: userID, completion: { (user) in
+                        post!.user = user!
+                        self.posts.append(post!)
                         
                         DispatchQueue.main.async {
-                            self.table.reloadData()
+                               self.table.reloadData()
                         }
-                    }
-                }
+                        
+                    })
+
+                } catch { print(error) }
+                
             }
-    }*/
+            
+        }
+    }
     
 }
 

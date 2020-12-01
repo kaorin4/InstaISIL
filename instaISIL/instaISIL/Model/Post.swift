@@ -34,7 +34,8 @@ class Post: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         postText = try values.decodeIfPresent(String.self, forKey: .postText) ?? ""
-        date = try values.decodeIfPresent(Date.self, forKey: .date)!
+        postImage = try values.decodeIfPresent(String.self, forKey: .postImage) ?? ""
+        date = try values.decodeIfPresent(Date.self, forKey: .date) ?? Date()
         numOfLikes = try values.decodeIfPresent(Int.self, forKey: .numOfLikes) ?? 0
         userLikes = try values.decodeIfPresent(Set<String>.self, forKey: .userLikes) ?? Set<String>()
         comments = try values.decodeIfPresent([Comment].self, forKey: .comments) ?? [Comment]()

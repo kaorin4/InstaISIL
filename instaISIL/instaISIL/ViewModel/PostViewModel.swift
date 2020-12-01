@@ -110,6 +110,7 @@ class PostViewModel {
         }
     }
     
+    
     func addToUserPostList(postId: String) {
         
         let currentUser = userViewModel.getCurrentUserUid()
