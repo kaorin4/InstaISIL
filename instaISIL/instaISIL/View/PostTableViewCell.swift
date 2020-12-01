@@ -11,7 +11,7 @@ import UIKit
 
 protocol PostTableViewCellDelegate {
     
-    func callSegueFromCell(_ controller: PostTableViewCell)
+    func callSegueFromCell(sender: Any, cell: PostTableViewCell)
     
 }
 
@@ -27,6 +27,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var numOfLikes: UIButton!
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
     
     var delegate: PostTableViewCellDelegate?
     
@@ -66,7 +67,16 @@ class PostTableViewCell: UITableViewCell {
     @IBAction func listLikesButtonPressed(_ sender: Any) {
 
         if(self.delegate != nil){
-            self.delegate?.callSegueFromCell(self)
+            self.delegate?.callSegueFromCell(sender: sender, cell: self)
+        }
+        
+    }
+    
+    
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        
+        if(self.delegate != nil){
+            self.delegate?.callSegueFromCell(sender: sender, cell: self)
         }
         
     }

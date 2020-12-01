@@ -108,6 +108,9 @@
                                                                         <constraint firstAttribute="height" constant="25" id="uy1-Hw-f60"/>
                                                                     </constraints>
                                                                     <state key="normal" image="comment"/>
+                                                                    <connections>
+                                                                        <action selector="commentButtonTapped:" destination="90V-9j-a2U" eventType="touchUpInside" id="5xT-iV-VCT"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -175,6 +178,7 @@
                                         <viewLayoutGuide key="safeArea" id="WX6-sQ-1SG"/>
                                         <color key="backgroundColor" name="app_gray"/>
                                         <connections>
+                                            <outlet property="commentButton" destination="440-lH-4jJ" id="vNi-Zb-dj8"/>
                                             <outlet property="constraintPostImageHeight" destination="Lwp-Jd-DU7" id="wda-RW-esq"/>
                                             <outlet property="dateLabel" destination="pVe-dJ-1Ae" id="LqM-cL-Tox"/>
                                             <outlet property="likeButton" destination="l31-xa-nly" id="abR-Bj-v8c"/>

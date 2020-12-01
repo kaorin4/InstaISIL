@@ -48,6 +48,7 @@ class HomeViewController: UIViewController {
             if let cell = sender as? IndexPath {
                 controller.objPost = posts[cell.row]
             }
+
         }
     }
     
@@ -203,8 +204,18 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
 
 extension HomeViewController: PostTableViewCellDelegate {
     
-    func callSegueFromCell(_ controller: PostTableViewCell) {
-        self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: controller )
+    func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
+
+        if sender as? UIButton == cell.numOfLikes {
+            self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: cell)
+        }
+        
+        if sender as? UIButton == cell.commentButton {
+
+            let indexPath = self.table.indexPath(for: cell)
+            self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        }
+        
     }
     
 }
