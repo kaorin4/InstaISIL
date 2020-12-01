@@ -46,7 +46,11 @@ extension PostLikesViewController: UITableViewDataSource {  // number, number, c
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: PostLikesViewCell.identifier, for: indexPath) as! PostLikesViewCell
         
-        cell.username.text = userlikes[indexPath.row]
+        userViewModel.getUserFullname(userID: userlikes[indexPath.row]) { (fullname) in
+            cell.username.text = fullname
+        }
+        
+        //cell.username.text = userlikes[indexPath.row]
         return cell
     }
     

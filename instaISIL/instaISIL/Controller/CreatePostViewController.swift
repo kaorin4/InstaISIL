@@ -15,6 +15,8 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var prevImg: UIImageView!
     
+    @IBOutlet weak var previewLabel: UILabel!
+    
     let pickerController = UIImagePickerController()
     
     var imageData: Data?
@@ -42,7 +44,7 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        previewLabel.isHidden = true
         pickerController.delegate = self
     }
     
@@ -100,6 +102,7 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         
         imageData = d
         
+        previewLabel.isHidden = false
         prevImg.image = image
         picker.dismiss(animated: true, completion: nil)
         

@@ -43,37 +43,52 @@
                                     <action selector="postButtonPressed:" destination="oTd-VW-wwG" eventType="touchUpInside" id="vMh-i3-qdB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3H-AN-ACD">
-                                <rect key="frame" x="151" y="232" width="112" height="30"/>
-                                <color key="backgroundColor" name="app_gray"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3H-AN-ACD" customClass="CustomUIButton" customModule="InstaISIL" customModuleProvider="target">
+                                <rect key="frame" x="15" y="232" width="384" height="30"/>
+                                <color key="backgroundColor" name="app_black"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xq5-pk-Trl"/>
                                 </constraints>
                                 <state key="normal" title="Adjuntar imagen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pickPhotoButtonPressed:" destination="oTd-VW-wwG" eventType="touchUpInside" id="Qop-D0-480"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nEP-L2-STm">
-                                <rect key="frame" x="87" y="462" width="240" height="172"/>
+                                <rect key="frame" x="20" y="433" width="374" height="201"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview de imagen:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-mv-aSa">
+                                <rect key="frame" x="10" y="362" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uvX-up-lTy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uvX-up-lTy" firstAttribute="trailing" secondItem="Rck-It-kgs" secondAttribute="trailing" constant="15" id="1E1-hB-mF5"/>
                             <constraint firstItem="Rck-It-kgs" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="15" id="1cL-x9-c98"/>
-                            <constraint firstItem="nEP-L2-STm" firstAttribute="centerX" secondItem="lEC-sE-73W" secondAttribute="centerX" id="2kh-Zz-u08"/>
                             <constraint firstItem="Rck-It-kgs" firstAttribute="top" secondItem="U3H-AN-ACD" secondAttribute="bottom" constant="20" id="9vc-Oo-CtX"/>
+                            <constraint firstItem="uvX-up-lTy" firstAttribute="trailing" secondItem="nEP-L2-STm" secondAttribute="trailing" constant="20" id="AS0-xQ-kWx"/>
                             <constraint firstItem="U3H-AN-ACD" firstAttribute="top" secondItem="F9U-w5-ObD" secondAttribute="bottom" constant="15" id="CLM-2P-XdC"/>
+                            <constraint firstItem="nEP-L2-STm" firstAttribute="top" secondItem="w3r-mv-aSa" secondAttribute="bottom" constant="50" id="JwS-Oq-MWE"/>
+                            <constraint firstItem="uvX-up-lTy" firstAttribute="trailing" secondItem="w3r-mv-aSa" secondAttribute="trailing" constant="10" id="Kkc-o9-Hw1"/>
                             <constraint firstItem="F9U-w5-ObD" firstAttribute="top" secondItem="uvX-up-lTy" secondAttribute="top" constant="45" id="Zps-pX-htT"/>
-                            <constraint firstItem="nEP-L2-STm" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="87" id="crV-7S-gBo"/>
+                            <constraint firstItem="nEP-L2-STm" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="20" id="crV-7S-gBo"/>
+                            <constraint firstItem="w3r-mv-aSa" firstAttribute="top" secondItem="Rck-It-kgs" secondAttribute="bottom" constant="50" id="dJA-Ni-RN2"/>
+                            <constraint firstItem="uvX-up-lTy" firstAttribute="trailing" secondItem="U3H-AN-ACD" secondAttribute="trailing" constant="15" id="eRS-JD-0l6"/>
                             <constraint firstItem="uvX-up-lTy" firstAttribute="trailing" secondItem="F9U-w5-ObD" secondAttribute="trailing" constant="10" id="jJc-20-gGE"/>
-                            <constraint firstItem="U3H-AN-ACD" firstAttribute="centerX" secondItem="lEC-sE-73W" secondAttribute="centerX" id="jK4-le-0GQ"/>
-                            <constraint firstItem="nEP-L2-STm" firstAttribute="top" secondItem="Rck-It-kgs" secondAttribute="bottom" constant="150" id="kfH-3j-6ZA"/>
+                            <constraint firstItem="U3H-AN-ACD" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="15" id="maQ-DS-8WD"/>
                             <constraint firstItem="uvX-up-lTy" firstAttribute="bottom" secondItem="nEP-L2-STm" secondAttribute="bottom" constant="179" id="s6f-ZL-dMb"/>
+                            <constraint firstItem="w3r-mv-aSa" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="10" id="s7O-K1-u40"/>
                             <constraint firstItem="F9U-w5-ObD" firstAttribute="leading" secondItem="uvX-up-lTy" secondAttribute="leading" constant="10" id="xUS-HC-8i2"/>
                         </constraints>
                     </view>
@@ -82,6 +97,7 @@
                     <connections>
                         <outlet property="postText" destination="F9U-w5-ObD" id="3TI-87-fNB"/>
                         <outlet property="prevImg" destination="nEP-L2-STm" id="idy-uf-30h"/>
+                        <outlet property="previewLabel" destination="w3r-mv-aSa" id="ugn-c2-sdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7F-cQ-4N8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -91,11 +107,11 @@
     </scenes>
     <resources>
         <image name="plus" width="16" height="16"/>
+        <namedColor name="app_black">
+            <color red="0.15299999713897705" green="0.18400000035762787" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="app_blue">
             <color red="0.086000002920627594" green="0.47099998593330383" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="app_gray">
-            <color red="0.76899999380111694" green="0.81599998474121094" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

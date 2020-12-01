@@ -51,6 +51,42 @@ class UserViewModel {
             }
         }
     }
+    
+    func getUserFullname(userID: String, completion: @escaping (_ fullname: String) -> Void) {
+        
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let firstname = document.get("firstname")
+                let lastname = document.get("lastname")
+                let fullname = "\(firstname ?? "") \(lastname ?? "")"
+                completion(fullname)
+
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
+    
+    func getUserField(userID: String, field: String, completion: @escaping (_ data: Any) -> Void) {
+        
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let data = document.get(field)
+                completion(data as Any)
+
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
 
     
 }

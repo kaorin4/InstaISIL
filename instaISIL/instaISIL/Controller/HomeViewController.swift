@@ -39,7 +39,9 @@ class HomeViewController: UIViewController {
         if let controller = segue.destination as? PostLikesViewController {
             
             if let cell = sender as? PostTableViewCell {
+
                 controller.userlikes = Array(cell.objPost.userLikes)
+                
             }
         }
         
