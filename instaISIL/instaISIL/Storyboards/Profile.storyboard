@@ -177,7 +177,6 @@
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZIz-vC-BZg">
                                         <rect key="frame" x="155" y="30" width="104" height="120"/>
-                                        <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZIz-vC-BZg" secondAttribute="height" multiplier="13:15" id="Tgx-4i-EX7"/>
                                             <constraint firstAttribute="height" constant="120" id="VJC-2f-KjR"/>
@@ -276,6 +275,9 @@
                                                         <real key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="updateUserButtonTapped:" destination="GPd-69-ArY" eventType="touchUpInside" id="4WN-eI-5gb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -359,6 +361,7 @@
                         <outlet property="formContainer" destination="F6E-Ys-Pmy" id="kD5-G8-UiF"/>
                         <outlet property="lastnameTextField" destination="tgx-O2-OnI" id="AGi-q7-5o9"/>
                         <outlet property="statusLabel" destination="aZF-U7-6bD" id="Ijy-Cv-v0b"/>
+                        <outlet property="userImage" destination="ZIz-vC-BZg" id="bci-Lh-KmI"/>
                         <segue destination="tlY-Pq-d2g" kind="presentation" identifier="editProfileToOptionPickerVC" modalPresentationStyle="overCurrentContext" id="pAr-7m-ZHJ"/>
                         <segue destination="mMU-W1-hnI" kind="presentation" identifier="editProfileToDatePickerVC" modalPresentationStyle="overCurrentContext" id="3aZ-Bf-xEb"/>
                     </connections>

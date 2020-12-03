@@ -87,6 +87,33 @@ class UserViewModel {
         }
         
     }
+    
+    func updateUser(user: User, completion: @escaping () -> Void) {
+        
+        guard let uid = user.uid else {
+            return
+        }
+        
+        let userRef = db.collection("users").document(uid)
+        
+        userRef.updateData([
+            "firstname": user.firstname!,
+            "lastname": user.lastname!,
+            "campus": user.campus!,
+            "degree": user.degree!,
+            "birthdate": user.birthdate!,
+            "image": user.image!
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        completion()
+        
+    }
 
     
 }
