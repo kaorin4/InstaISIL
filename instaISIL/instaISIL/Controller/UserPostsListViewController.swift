@@ -10,23 +10,86 @@ import UIKit
 
 class UserPostsListViewController: UIViewController {
     
+    @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var messageLabel: UILabel!
+    
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
+    
+    var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.messageLabel.isHidden = true
         
         let user = userViewModel.getCurrentUserUid()
         
-        postViewModel.getPostsByUser(with: user) { (posts) in
-            print(posts?[0].id as Any)
-            print(posts?[0].comments as Any)
+        postViewModel.getPostsByUser(with: user) { (userposts) in
+            self.posts = userposts ?? [Post]()
+            
+            if (!(self.posts.count > 0)) {
+                self.messageLabel.isHidden = false
+            }
+            
+            DispatchQueue.main.async {
+                   self.table.reloadData()
+            }
+            
+            self.table.tableFooterView = UIView()
         }
+    }
+    
+}
+
+extension UserPostsListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        //self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+    }
+    
+}
+
+extension UserPostsListViewController: UITableViewDataSource {  // number, number, cellfor
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell =  table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.delegate = self
+        cell.objPost = self.posts[indexPath.row]
+
+        return cell
+    }
+    
+}
+
+
+extension UserPostsListViewController: PostTableViewCellDelegate {
+    
+    func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
+        /*
+        if sender as? UIButton == cell.numOfLikes {
+            self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: cell)
+        }
+        
+        if sender as? UIButton == cell.commentButton {
+
+            let indexPath = self.table.indexPath(for: cell)
+            self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        }*/
         
     }
     
-
 }
+
 
 

@@ -67,30 +67,30 @@ class HomeViewController: UIViewController {
                 print("Error fetching snapshots: \(error!)")
                 return
             }
-
-            for document in snapshot.documents {
-                
-                do {
-                    
-                    let userID = document.get("uid") as! String
-                    let post = try document.data(as: Post.self)
-                    
-                    post!.id = document.documentID
-                    
-                    self.userViewModel.getUserData(userID: userID, completion: { (user) in
-                        post!.user = user!
-                        self.posts.append(post!)
-                        
-                        DispatchQueue.main.async {
-                               self.table.reloadData()
-                        }
-                        
-                    })
-
-                } catch { print(error) }
-                
-            }
             
+            snapshot.documentChanges.forEach { diff in
+                if (diff.type == .added) {
+                    
+                    do {
+                        
+                        let userID = diff.document.get("uid") as! String
+                        let post = try diff.document.data(as: Post.self)
+                        
+                        post!.id = diff.document.documentID
+                        
+                        self.userViewModel.getUserData(userID: userID, completion: { (user) in
+                            post!.user = user!
+                            self.posts.append(post!)
+                            
+                            DispatchQueue.main.async {
+                                   self.table.reloadData()
+                            }
+                            
+                        })
+
+                    } catch { print(error) }
+                }
+            }
         }
     }
     
