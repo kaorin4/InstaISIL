@@ -20,6 +20,8 @@ target 'InstaISIL' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
 	pod 'FirebaseFirestoreSwift'
+        pod 'Firebase/Storage'
+	pod 'CodableFirebase'
 
 
 end

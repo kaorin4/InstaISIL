@@ -11,26 +11,25 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var posts:[Post] = []
+    var posts :[Post] = []
+    
+    private var messageListener: ListenerRegistration?
         
     @IBOutlet weak var table: UITableView!
-    @IBOutlet var welcomeLabel: UILabel!
        
     private let db = Firestore.firestore()
+    
+    private let userViewModel = UserViewModel()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        welcomeLabel.text = ""
-        
         // Get all posts from posts collections in firebase
         loadData()
-
+        
         table.tableFooterView = UIView()
         
-        // Update posts if there are changes to the db
-        checkForUpdates()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,7 +39,9 @@ class HomeViewController: UIViewController {
         if let controller = segue.destination as? PostLikesViewController {
             
             if let cell = sender as? PostTableViewCell {
+
                 controller.userlikes = Array(cell.objPost.userLikes)
+                
             }
         }
         
@@ -49,115 +50,48 @@ class HomeViewController: UIViewController {
             if let cell = sender as? IndexPath {
                 controller.objPost = posts[cell.row]
             }
+
         }
     }
+    
+    deinit {
+      messageListener?.remove()
+    }
+    
     
     func loadData() {
         
-        db.collection("posts").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    
-                    guard let timestamp = document.get("timestamp") as? Timestamp else {
-                         return
-                     }
-                    
-                    let docRef = self.db.collection("users").document(document.get("uid") as! String)
+        messageListener = db.collection("posts").order(by: "timestamp", descending: true).addSnapshotListener() { querySnapshot, error in
 
-                    docRef.getDocument(source: .server) { (userDoc, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { diff in
+                if (diff.type == .added) {
+                    
+                    do {
                         
-                        if let userDoc = userDoc {
-                            
-                            let username: String = "\(userDoc.get("firstname") ?? "") \(userDoc.get("lastname") ?? "")"
-                            
-                            let commentsFirebase = document.get("comments")
-                            var commentsArr = [Comment]()
-                            
-                            if commentsFirebase != nil {
-                                do {
-                                    let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
-                                    let decoder = JSONDecoder()
-                                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                    commentsArr = try decoder.decode([Comment].self, from: json)
-                                } catch {
-                                    print(error)
-                                }
-                            }
+                        let userID = diff.document.get("uid") as! String
+                        let post = try diff.document.data(as: Post.self)
                         
-                            self.posts.append(Post(id: document.documentID,
-                                                   user: username,
-                                                   postText: document.get("text") as? String ?? "",
-                                                   date: timestamp.dateValue(),
-                                                   userImage: userDoc.get("image") as? String ?? "",
-                                                   postImage: document.get("image") as? String,
-                                                   userLikes: Set(document.get("userLikes") as? [String] ?? [String]()),
-                                                   comments: commentsArr
-                                                   ))
+                        post!.id = diff.document.documentID
+                        
+                        self.userViewModel.getUserData(userID: userID, completion: { (user) in
+                            post!.user = user!
+                            self.posts.append(post!)
                             
                             DispatchQueue.main.async {
-                                self.table.reloadData()
+                                   self.table.reloadData()
                             }
                             
-                        }
-                    }
+                        })
+
+                    } catch { print(error) }
                 }
             }
         }
-    }
-    
-    func checkForUpdates() {
-        
-        // listen to changes
-        db.collection("posts").whereField("timestamp", isGreaterThan: Date())
-            .addSnapshotListener { querySnapshot, error in
-                if let error = error {
-                    print("Error retreiving collection: \(error)")
-                }
-                guard let snapshot = querySnapshot else {return}
-                
-                snapshot.documentChanges.forEach { (diff) in
-                    
-                    // append new posts
-                    if diff.type == .added {
-
-                        let username: String = "\(diff.document.get("firstname") ?? "") \(diff.document.get("lastname") ?? "")"
-                        //let timestamp: Timestamp = diff.document.get("timestamp") as! Timestamp
-                        guard let timestamp = diff.document.get("timestamp") as? Timestamp else {
-                             return
-                         }
-                        
-                        let commentsFirebase = diff.document.get("comments")
-                        var commentsArr = [Comment]()
-                        
-                        if commentsFirebase != nil {
-                            do {
-                                let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
-                                let decoder = JSONDecoder()
-                                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                commentsArr = try decoder.decode([Comment].self, from: json)
-                            } catch {
-                                print(error)
-                            }
-                        }
-                        
-                        self.posts.append(Post(id: diff.document.documentID,
-                                               user: username,
-                                               postText: diff.document.get("text") as? String ?? "",
-                                               date: timestamp.dateValue(),
-                                               userImage: diff.document.get("image") as? String ?? "",
-                                               postImage: diff.document.get("image") as? String,
-                                               userLikes: Set(diff.document.get("userLikes") as? [String] ?? [String]()),
-                                               comments: commentsArr
-                                               ))
-                        
-                        DispatchQueue.main.async {
-                            self.table.reloadData()
-                        }
-                    }
-                }
-            }
     }
     
 }
@@ -193,8 +127,18 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
 
 extension HomeViewController: PostTableViewCellDelegate {
     
-    func callSegueFromCell(_ controller: PostTableViewCell) {
-        self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: controller )
+    func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
+
+        if sender as? UIButton == cell.numOfLikes {
+            self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: cell)
+        }
+        
+        if sender as? UIButton == cell.commentButton {
+
+            let indexPath = self.table.indexPath(for: cell)
+            self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        }
+        
     }
     
 }

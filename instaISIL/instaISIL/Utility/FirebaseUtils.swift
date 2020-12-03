@@ -2,20 +2,46 @@
 //  FirebaseUtils.swift
 //  InstaISIL
 //
-//  Created by Kaori on 11/11/20.
+//  Created by Kaori on 12/1/20.
 //  Copyright © 2020 Kaori Murakami. All rights reserved.
 //
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseUtils {
     
-    static func getCurrentUserUid() -> String {
+    private let storage = Storage.storage().reference()
+    
+    func saveFileStorage(data: Data, path: String, completion: @escaping (_ url: String) -> Void) {
         
-        return Auth.auth().currentUser?.uid ?? ""
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        // store image to firebase storage
+        self.storage.child(path).putData(data,
+                                         metadata: metaData) {
+            (_, error) in
+
+            guard error == nil else {
+                print("error")
+                return
+            }
+            
+            // get url
+            self.storage.child(path).downloadURL { (url, error) in
+                guard let url = url, error == nil else {
+                    return
+                }
+                
+                completion(url.absoluteString)
+                
+            }
+            
+        }
         
     }
-
+    
     
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class PostViewController: UIViewController {
     
@@ -23,53 +22,33 @@ class PostViewController: UIViewController {
     @IBOutlet var table: UITableView!
     
     
-    var objPost = Post(id: "", user: "", postText: "", date: Date(), userImage: nil, postImage: nil, userLikes: Set<String>())
+    var objPost = Post(id: "", user: User(), postText: "", date: Date(), postImage: nil, userLikes: Set<String>())
     
-    let db = Firestore.firestore()
+    let userViewModel = UserViewModel()
+    
+    let postViewModel = PostViewModel()
     
     @IBAction func postCommentButtonPressed(_ sender: Any) {
         
         let comment = postCommentTextfield.text
         
-        let currentUserUid = FirebaseUtils.getCurrentUserUid()
+        let currentUserUid = userViewModel.getCurrentUserUid()
         
         let firebaseComment = ["comment": comment, "user": currentUserUid]
         
-        let postRef = db.collection("posts").document(objPost.id)
-        
         // add comment to firebase
-        postRef.updateData([
-            "comments": FieldValue.arrayUnion([firebaseComment])
-        ])
+        postViewModel.addComment(objPost: objPost, comment: firebaseComment)
 
         // refresh data
-        postRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                
-                let commentsFirebase = document.get("comments")
-                var commentsArr = [Comment]()
-                
-                if commentsFirebase != nil {
-                    do {
-                        let json = try JSONSerialization.data(withJSONObject: commentsFirebase)
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        commentsArr = try decoder.decode([Comment].self, from: json)
-                    } catch {
-                        print(error)
-                    }
-                }
-                
-                self.objPost.comments = commentsArr
+        postViewModel.getComments(fromPost: objPost) { (comments) in
+            
+            if comments != nil {
+                self.objPost.comments = comments!
                 self.table.reloadData()
                 
                 self.postCommentTextfield.text = ""
-                
-            } else {
-                print("Document does not exist")
             }
         }
-        
     }
     
 
@@ -83,14 +62,14 @@ class PostViewController: UIViewController {
     }
     
     func updateData() {
-        self.postUsername.text = self.objPost.user
+        self.postUsername.text = self.objPost.user.firstname
         self.postDate.text = self.objPost.date.toDate(dateFormat: "dd/MM/yyyy HH:mm")
         self.postText.text = self.objPost.postText
         self.postLikes.setTitle("\(self.objPost.numOfLikes) Likes", for: .normal)
         
-        if self.objPost.userImage != nil {
-            self.postUsernameImage.setImage(from: self.objPost.userImage!) { (image, urlString) in
-                if self.objPost.userImage == urlString {
+        if self.objPost.user.image != nil {
+            self.postUsernameImage.setImage(from: self.objPost.user.image!) { (image, urlString) in
+                if self.objPost.user.image == urlString {
                     self.postUsernameImage.image = image
                 }
             }
@@ -98,7 +77,7 @@ class PostViewController: UIViewController {
             self.postUsernameImage.image = UIImage(named:"user")
         }
         
-        if self.objPost.postImage != nil {
+        if self.objPost.postImage != "" {
             self.postImage.setImage(from: self.objPost.postImage!) { (image, urlString) in
                 if self.objPost.postImage == urlString {
                     self.postImage.image = image

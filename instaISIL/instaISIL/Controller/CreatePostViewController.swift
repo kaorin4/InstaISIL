@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+
 
 class CreatePostViewController: UIViewController {
     
@@ -15,68 +15,77 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var prevImg: UIImageView!
     
+    @IBOutlet weak var previewLabel: UILabel!
+    
     let pickerController = UIImagePickerController()
+    
+    var imageData: Data?
+    
+    let userViewModel = UserViewModel()
+    
+    let postViewModel = PostViewModel()
+    
+    let firebaseUtil = FirebaseUtils()
 
     @IBAction func pickPhotoButtonPressed(_ sender: Any) {
         
         pickerController.sourceType = .photoLibrary
         pickerController.allowsEditing = true
+        pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
         
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
-        
-        let db = Firestore.firestore()
-        
-        if let userId = Auth.auth().currentUser?.uid {
-
-            let collectionRef = db.collection("users")
-            let thisUserDoc = collectionRef.document(userId)
-            thisUserDoc.getDocument(completion: { document, error in
-                
-                if let err = error {
-                    print(err.localizedDescription)
-                    return
-                }
-                if document != nil {
-                    
-                    let post = [
-                        "uid": document!.documentID,
-                        "text": self.postText.text!,
-                        "likes": 0,
-                        "timestamp": FieldValue.serverTimestamp()
-                    ] as [String : Any]
-                    
-                    // new document with a generated id.
-                    var ref: DocumentReference? = nil
-                    ref = db.collection("posts").addDocument(data: post) {
-                        err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-                            
-                            // redirect to home tab
-                            let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-                                tabBarVC.selectedIndex = 0
-                            self.navigationController?.pushViewController(tabBarVC, animated: true)
-                        }
-                    }
-                }
-                
-            })
-        }
-
-        
+        createPost()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        previewLabel.isHidden = true
         pickerController.delegate = self
+    }
+    
+    func createPost() {
+
+        let userId = userViewModel.getCurrentUserUid()
+        
+        if userId != "" {
+            
+            let uuid = UUID().uuidString
+            let path = "images/\(userId)/posts/\(uuid)"
+            
+            guard let img = self.imageData else {
+                
+                self.postViewModel.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: nil) { () in
+                    
+                    // redirect to home tab
+                    let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                        tabBarVC.selectedIndex = 0
+                    self.navigationController?.pushViewController(tabBarVC, animated: true)
+                    
+                }
+                return
+            }
+
+            firebaseUtil.saveFileStorage(data: img, path: path) { (url) in
+                
+                // save post to cloud firestore
+                self.postViewModel.savePost(withText: self.postText.text!, fromUser: userId, imageUrl: url) { () in
+                    
+                    // redirect to home tab
+                    let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                        tabBarVC.selectedIndex = 0
+                    self.navigationController?.pushViewController(tabBarVC, animated: true)
+                    
+                }
+                
+            }
+
+        }
+        
     }
 
 }
@@ -84,9 +93,18 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
         
-        print("\(info)")
-        //let image = info.
+        guard let d: Data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        imageData = d
+        
+        previewLabel.isHidden = false
+        prevImg.image = image
+        picker.dismiss(animated: true, completion: nil)
         
     }
     

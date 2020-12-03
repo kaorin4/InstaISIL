@@ -12,20 +12,23 @@ class PostLikesViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
     
+    private let userViewModel = UserViewModel()
+    
     var userlikes = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         table.tableFooterView = UIView()
     }
+    
 
 }
 
 extension PostLikesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // llamar segue al post (cuando cree uno :D )
+
     }
     
 }
@@ -42,7 +45,12 @@ extension PostLikesViewController: UITableViewDataSource {  // number, number, c
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: PostLikesViewCell.identifier, for: indexPath) as! PostLikesViewCell
-        cell.username.text = userlikes[indexPath.row]
+        
+        userViewModel.getUserFullname(userID: userlikes[indexPath.row]) { (fullname) in
+            cell.username.text = fullname
+        }
+        
+        //cell.username.text = userlikes[indexPath.row]
         return cell
     }
     
