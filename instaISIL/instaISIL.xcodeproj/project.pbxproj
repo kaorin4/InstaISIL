@@ -16,6 +16,7 @@
 		06A871FB252674A100AA1740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A871FA252674A100AA1740 /* LoginViewController.swift */; };
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
 		3A560720257993AF00FD4EA9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56071F257993AF00FD4EA9 /* UserProfileViewController.swift */; };
+		3A56072A2579A14D00FD4EA9 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5607292579A14D00FD4EA9 /* Authentication.swift */; };
 		3A56F8C5255895C30060A815 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56F8C4255895C30060A815 /* Extensions.swift */; };
 		3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */; };
 		3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */; };
@@ -87,6 +88,7 @@
 		06A8720725268EF200AA1740 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Common.swift; path = instaISIL/Utility/Common.swift; sourceTree = SOURCE_ROOT; };
 		23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL.debug.xcconfig"; path = "Target Support Files/Pods-InstaISIL/Pods-InstaISIL.debug.xcconfig"; sourceTree = "<group>"; };
 		3A56071F257993AF00FD4EA9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = instaISIL/Controller/UserProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		3A5607292579A14D00FD4EA9 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = instaISIL/Utility/Authentication.swift; sourceTree = SOURCE_ROOT; };
 		3A56F8C4255895C30060A815 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = instaISIL/Utility/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewController.swift; path = instaISIL/Controller/PostLikesViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -174,6 +176,7 @@
 				3A6B5FF42536AD6100AA949E /* Constants.swift */,
 				3A56F8C4255895C30060A815 /* Extensions.swift */,
 				3A5DD3372576A58100C807ED /* FirebaseUtils.swift */,
+				3A5607292579A14D00FD4EA9 /* Authentication.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				3A67692825701AED00D9F8FB /* SearchUserViewController.swift in Sources */,
 				3AAF4B702534144500989925 /* HomeViewController.swift in Sources */,
 				3A6422DA25266225008E1D6C /* SceneDelegate.swift in Sources */,
+				3A56072A2579A14D00FD4EA9 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
