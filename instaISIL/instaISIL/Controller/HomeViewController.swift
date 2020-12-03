@@ -52,6 +52,14 @@ class HomeViewController: UIViewController {
             }
 
         }
+        
+        if let controller = segue.destination as? UserProfileViewController {
+            
+            if let cell = sender as? PostTableViewCell {
+                controller.user = cell.objPost.user
+            }
+
+        }
     }
     
     deinit {
@@ -83,7 +91,7 @@ class HomeViewController: UIViewController {
                             self.posts.append(post!)
                             
                             DispatchQueue.main.async {
-                                   self.table.reloadData()
+                                self.table.reloadData()
                             }
                             
                         })
@@ -91,7 +99,9 @@ class HomeViewController: UIViewController {
                     } catch { print(error) }
                 }
             }
+
         }
+
     }
     
 }
@@ -137,6 +147,12 @@ extension HomeViewController: PostTableViewCellDelegate {
 
             let indexPath = self.table.indexPath(for: cell)
             self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        }
+        
+        if sender as? UIButton == cell.usernameLabel {
+            
+            self.performSegue(withIdentifier: "homeToUserProfileVC", sender: cell)
+            
         }
         
     }

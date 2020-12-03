@@ -20,7 +20,7 @@ class PostTableViewCell: UITableViewCell {
     static let identifier = "PostTableViewCell"
     
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postText: UILabel!
     @IBOutlet weak var postImage: UIImageView!
@@ -82,6 +82,15 @@ class PostTableViewCell: UITableViewCell {
     }
     
     
+    @IBAction func usernameButtonTapped(_ sender: Any) {
+        
+        if(self.delegate != nil){
+            self.delegate?.callSegueFromCell(sender: sender, cell: self)
+        }
+        
+    }
+    
+    
     static func nib() -> UINib {
         
         return UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -107,7 +116,8 @@ class PostTableViewCell: UITableViewCell {
     
     func updateData() {
         
-        self.usernameLabel.text = self.objPost.user.firstname
+        self.usernameLabel.setTitle(self.objPost.user.firstname, for: .normal)
+        //self.usernameLabel.text = self.objPost.user.firstname
         self.dateLabel.text = self.objPost.date.toDate(dateFormat: "dd/MM/yyyy HH:mm")
         self.postText.text = self.objPost.postText
         self.numOfLikes.setTitle("\(self.objPost.numOfLikes) Likes", for: .normal)
