@@ -46,6 +46,11 @@ class CreatePostViewController: UIViewController {
         // Do any additional setup after loading the view.
         previewLabel.isHidden = true
         pickerController.delegate = self
+        
+        // dismiss keyboard when no longer editing text view
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     func createPost() {
