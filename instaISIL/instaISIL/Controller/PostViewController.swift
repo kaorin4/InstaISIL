@@ -19,6 +19,10 @@ class PostViewController: UIViewController {
     @IBOutlet var constraintPostImageHeight: NSLayoutConstraint!
     @IBOutlet weak var postCommentTextfield: UITextField!
     
+    
+    @IBOutlet weak var commentContainer: UIStackView!
+    @IBOutlet weak var commentBottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet var table: UITableView!
     
     
@@ -57,6 +61,11 @@ class PostViewController: UIViewController {
         
         updateData()
         
+        // dismiss keyboard when no longer editing text view
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         table.tableFooterView = UIView()
 
     }
@@ -87,6 +96,51 @@ class PostViewController: UIViewController {
             constraintPostImageHeight.constant = 0
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? .zero
+        
+        let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0
+        
+        UIView.animate(withDuration: animationDuration) {
+
+            self.commentBottomConstraint.constant = keyboardFrame.size.height + 5
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
+        let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0
+        
+        UIView.animate(withDuration: animationDuration) {
+            
+            self.commentBottomConstraint.constant = 20
+            self.view.layoutIfNeeded()
+        }
     }
 
 }
