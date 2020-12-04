@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController {
 
         if user == nil {
             let userId = userViewModel.getCurrentUserUid()
+            print(userId)
             userViewModel.getUserData(userID: userId) { (userData) in
                 self.user = userData
             }

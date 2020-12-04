@@ -27,11 +27,28 @@ class UserProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func showUserPostsButtonTapped(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "userProfileToUserPostsVC",sender: self)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? UserPostsListViewController {
+            
+            controller.userId = user?.uid ?? ""
+
+        }
     }
     
     func updateData() {

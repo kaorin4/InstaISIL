@@ -33,7 +33,9 @@ class PostTableViewCell: UITableViewCell {
     
     var objPost : Post! {
         didSet {
-            self.updateData()
+            if usernameLabel != nil {
+                self.updateData()
+            }
         }
     }
     
@@ -116,8 +118,9 @@ class PostTableViewCell: UITableViewCell {
     
     func updateData() {
         
-        self.usernameLabel.setTitle(self.objPost.user.firstname, for: .normal)
+ 
         //self.usernameLabel.text = self.objPost.user.firstname
+        self.usernameLabel.setTitle(self.objPost.user.firstname, for: .normal)
         self.dateLabel.text = self.objPost.date.toDate(dateFormat: "dd/MM/yyyy HH:mm")
         self.postText.text = self.objPost.postText
         self.numOfLikes.setTitle("\(self.objPost.numOfLikes) Likes", for: .normal)

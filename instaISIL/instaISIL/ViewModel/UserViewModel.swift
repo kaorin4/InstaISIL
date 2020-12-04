@@ -24,7 +24,7 @@ class UserViewModel {
         
         do {
             // Add a new document in collection "users"
-            let _ = try db.collection("users").addDocument(from: user)
+            let _ = try db.collection("users").document(user.uid!).setData(from: user)
             print("User created")
         }
         catch {

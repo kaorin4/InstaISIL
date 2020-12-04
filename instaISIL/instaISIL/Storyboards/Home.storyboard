@@ -607,6 +607,9 @@
                                 <state key="normal" title="Ver publicaciones">
                                     <color key="titleColor" name="app_black"/>
                                 </state>
+                                <connections>
+                                    <action selector="showUserPostsButtonTapped:" destination="ngm-rI-kJt" eventType="touchUpInside" id="NcU-pf-30s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xD-Sw-NvN">
                                 <rect key="frame" x="20" y="331" width="159" height="30"/>
@@ -644,11 +647,22 @@
                         <outlet property="lastnameLabel" destination="huV-ER-YRg" id="Hzc-fL-1Mu"/>
                         <outlet property="nameLabel" destination="88z-wX-Xyz" id="xGu-NT-v2M"/>
                         <outlet property="userImage" destination="Bey-f5-GXm" id="ONe-cf-ysE"/>
+                        <segue destination="29m-4o-szC" kind="show" identifier="userProfileToUserPostsVC" id="xnY-jp-DCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4K-cK-e2o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5580" y="-1780"/>
+        </scene>
+        <!--UserPostsListViewController-->
+        <scene sceneID="vIg-Lz-Fy2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProfileDetail" referencedIdentifier="UserPostsListViewController" id="29m-4o-szC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6YF-wE-YbL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWP-Mq-E1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6281" y="-1971"/>
         </scene>
     </scenes>
     <resources>

@@ -17,6 +17,7 @@
 		06A8720825268EF200AA1740 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A8720725268EF200AA1740 /* Common.swift */; };
 		3A560720257993AF00FD4EA9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56071F257993AF00FD4EA9 /* UserProfileViewController.swift */; };
 		3A56072A2579A14D00FD4EA9 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5607292579A14D00FD4EA9 /* Authentication.swift */; };
+		3A5607322579A42E00FD4EA9 /* ProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5607312579A42E00FD4EA9 /* ProfileDetail.storyboard */; };
 		3A56F8C5255895C30060A815 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56F8C4255895C30060A815 /* Extensions.swift */; };
 		3A579D342533EE56003AD6A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */; };
 		3A5CACE3255DCFFD00566E1D /* PostLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */; };
@@ -89,6 +90,7 @@
 		23A0DFABF0D76EBDE7BA8E0B /* Pods-InstaISIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaISIL.debug.xcconfig"; path = "Target Support Files/Pods-InstaISIL/Pods-InstaISIL.debug.xcconfig"; sourceTree = "<group>"; };
 		3A56071F257993AF00FD4EA9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = instaISIL/Controller/UserProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A5607292579A14D00FD4EA9 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = instaISIL/Utility/Authentication.swift; sourceTree = SOURCE_ROOT; };
+		3A5607312579A42E00FD4EA9 /* ProfileDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ProfileDetail.storyboard; path = instaISIL/Storyboards/ProfileDetail.storyboard; sourceTree = SOURCE_ROOT; };
 		3A56F8C4255895C30060A815 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = instaISIL/Utility/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		3A579D332533EE56003AD6A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A5CACE2255DCFFD00566E1D /* PostLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostLikesViewController.swift; path = instaISIL/Controller/PostLikesViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -238,7 +240,6 @@
 				3A64230A252662A6008E1D6C /* Controller */,
 				3A6422D725266225008E1D6C /* AppDelegate.swift */,
 				3A6422D925266225008E1D6C /* SceneDelegate.swift */,
-				3A6422DD25266225008E1D6C /* Main.storyboard */,
 				3A6422E325266226008E1D6C /* Assets.xcassets */,
 				3A6422E525266226008E1D6C /* LaunchScreen.storyboard */,
 				3A6422E825266226008E1D6C /* Info.plist */,
@@ -293,11 +294,13 @@
 			isa = PBXGroup;
 			children = (
 				3A67690525700F2C00D9F8FB /* Profile.storyboard */,
+				3A6422DD25266225008E1D6C /* Main.storyboard */,
 				3A67690E2570151B00D9F8FB /* Pickers.storyboard */,
 				3A676913257016DE00D9F8FB /* Post.storyboard */,
 				3A6769182570181000D9F8FB /* Search.storyboard */,
 				3A67691D257018BE00D9F8FB /* Home.storyboard */,
 				3A676922257018DA00D9F8FB /* TabBar.storyboard */,
+				3A5607312579A42E00FD4EA9 /* ProfileDetail.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				3A676914257016DE00D9F8FB /* Post.storyboard in Resources */,
 				3AECABBF254FD017006B915A /* PostTableViewCell.xib in Resources */,
 				3A6422E425266226008E1D6C /* Assets.xcassets in Resources */,
+				3A5607322579A42E00FD4EA9 /* ProfileDetail.storyboard in Resources */,
 				3A67690625700F2C00D9F8FB /* Profile.storyboard in Resources */,
 				3A6422DF25266225008E1D6C /* Main.storyboard in Resources */,
 			);
