@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -44,23 +43,18 @@ class LoginViewController: UIViewController {
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+        Authentication.login(email: email, password: password) { (error) in
             
-            let errMsg = CommonUtility.getAuthErrorMessage(error)
-            
-            if errMsg != nil {
-                
+            if let errorMsg = error {
                 // sign in error
                 self.statusLabel.isHidden = false
-                self.statusLabel.text = errMsg
-                
+                self.statusLabel.text = errorMsg
             } else {
                 // Go to homepage wohoo
                 self.performSegue(withIdentifier: "loginToTabBarVC",sender: self)
             }
-                
-        }
-        
+            
+        }        
     }
     
     

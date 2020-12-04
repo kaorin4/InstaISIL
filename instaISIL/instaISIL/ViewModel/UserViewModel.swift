@@ -24,7 +24,7 @@ class UserViewModel {
         
         do {
             // Add a new document in collection "users"
-            let _ = try db.collection("users").addDocument(from: user)
+            let _ = try db.collection("users").document(user.uid!).setData(from: user)
             print("User created")
         }
         catch {
@@ -85,6 +85,33 @@ class UserViewModel {
                 print("Document does not exist")
             }
         }
+        
+    }
+    
+    func updateUser(user: User, completion: @escaping () -> Void) {
+        
+        guard let uid = user.uid else {
+            return
+        }
+        
+        let userRef = db.collection("users").document(uid)
+        
+        userRef.updateData([
+            "firstname": user.firstname!,
+            "lastname": user.lastname!,
+            "campus": user.campus!,
+            "degree": user.degree!,
+            "birthdate": user.birthdate!,
+            "image": user.image!
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        completion()
         
     }
 

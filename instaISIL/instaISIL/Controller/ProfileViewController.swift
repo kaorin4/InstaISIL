@@ -19,6 +19,11 @@ class ProfileViewController: UIViewController {
     
     let userViewModel = UserViewModel()
     
+    var user : User? {
+        didSet {
+            self.updateData()
+        }
+    }
     
     @IBAction func showUserPostsButtonTapped(_ sender: Any) {
         
@@ -31,7 +36,42 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        displayProfileData()
+        //displayProfileData()
+
+        if user == nil {
+            let userId = userViewModel.getCurrentUserUid()
+            print(userId)
+            userViewModel.getUserData(userID: userId) { (userData) in
+                self.user = userData
+            }
+        }
+        
+    }
+       
+    func updateData() {
+        
+        guard let userProfile = user else {
+            return
+        }
+
+        nameLabel.text = "Nombre: \(userProfile.firstname ?? "")"
+        lastnameLabel.text = "Apellido: \(userProfile.lastname ?? "")"
+        degreeLabel.text = "Carrera: \(userProfile.degree ?? "")"
+        campusLabel.text = "Campus: \(userProfile.campus ?? "")"
+        birthdateLabel.text = "Nacimiento: \(userProfile.birthdate ?? "")"
+        
+        if userProfile.image != nil {
+
+            self.userImage.setImage(from: userProfile.image!) { (image, urlString) in
+        
+                if userProfile.image == urlString {
+                    self.userImage.image = image
+                }
+                
+            }
+        } else {
+            self.userImage.image = UIImage(named:"user")
+        }
         
     }
     

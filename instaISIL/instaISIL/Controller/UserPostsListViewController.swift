@@ -18,15 +18,23 @@ class UserPostsListViewController: UIViewController {
     
     let postViewModel = PostViewModel()
     
+    var userId = ""
+    
     var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageLabel.isHidden = true
         
-        let user = userViewModel.getCurrentUserUid()
+        print(userId)
         
-        postViewModel.getPostsByUser(with: user) { (userposts) in
+        if userId == "" {
+            userId = userViewModel.getCurrentUserUid()
+        }
+        
+        print(userId)
+
+        postViewModel.getPostsByUser(with: userId) { (userposts) in
             self.posts = userposts ?? [Post]()
             
             if (!(self.posts.count > 0)) {

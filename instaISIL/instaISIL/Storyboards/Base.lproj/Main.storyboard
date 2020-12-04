@@ -287,7 +287,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DMt-6c-X2B" customClass="CustomUITextField" customModule="InstaISIL" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="115" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -382,12 +382,23 @@
                         <outlet property="statusLabel" destination="NHR-tb-LX6" id="vPO-F5-VLS"/>
                         <segue destination="wZo-yG-vI0" kind="presentation" identifier="DatePickerViewController" modalPresentationStyle="overCurrentContext" id="cI3-ik-ZQt"/>
                         <segue destination="xID-qy-xf0" kind="presentation" identifier="DegreePickerViewController" modalPresentationStyle="overCurrentContext" id="eaL-On-t0d"/>
+                        <segue destination="YEo-QE-m75" kind="show" identifier="signupToTabBarVC" id="Q7Y-2i-5Xj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4h0-kB-Tu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Aaj-Do-g9Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1294" y="-449"/>
+        </scene>
+        <!--tabBarController-->
+        <scene sceneID="8kO-S0-8Na">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TabBar" referencedIdentifier="tabBarController" id="YEo-QE-m75" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VQd-OE-Zir"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAC-Mz-TXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2198" y="-731"/>
         </scene>
         <!--PickerOptionViewController-->
         <scene sceneID="2kp-d2-Bze">

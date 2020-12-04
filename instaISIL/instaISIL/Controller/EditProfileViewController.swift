@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class EditProfileViewController: UIViewController {
     
@@ -25,9 +24,22 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var birthdateTextField: UITextField!
     
+    @IBOutlet weak var userImage: UIImageView!
+    
     @IBOutlet weak var formContainer: UIView!
-
+    
+    private let userViewModel = UserViewModel()
+    
+    var currentUser = User()
+    
+    @IBAction func updateUserButtonTapped(_ sender: Any) {
+        
+        saveUser()
+        
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.navigationItem.title = "Editar perfil"
@@ -39,28 +51,10 @@ class EditProfileViewController: UIViewController {
         statusLabel.isHidden = true
         
         
-        // Get user session data
+        // Display user data
         
-        let db = Firestore.firestore()
-        
-        if let userId = Auth.auth().currentUser?.uid {
-            let collectionRef = db.collection("users")
-            let thisUserDoc = collectionRef.document(userId)
-            thisUserDoc.getDocument(completion: { document, error in
-                
-                if let err = error {
-                    print(err.localizedDescription)
-                    return
-                }
-                if let doc = document {
-                    self.firstnameTextField.text = doc.get("firstname") as? String ?? "No Name"
-                    self.lastnameTextField.text = doc.get("lastname") as? String ?? "No lastname"
-                    self.campusTextField.text = doc.get("campus") as? String ?? "No campus"
-                    self.degreeTextField.text = doc.get("degree") as? String ?? "No degree"
-                    self.birthdateTextField.text = doc.get("birthdate") as? String ?? "No date"
-                }
-            })
-        }
+        displayProfileData()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,6 +78,62 @@ class EditProfileViewController: UIViewController {
             controller.delegate = self
             
         }
+    }
+    
+    func displayProfileData() {
+        
+        let userId = userViewModel.getCurrentUserUid()
+        
+        userViewModel.getUserData(userID: userId) { (user) in
+            
+            if user != nil {
+                
+                self.currentUser = user!
+                
+                self.firstnameTextField.text = self.currentUser.firstname ?? ""
+                self.lastnameTextField.text = self.currentUser.lastname ?? ""
+                self.degreeTextField.text = self.currentUser.degree ?? ""
+                self.campusTextField.text = self.currentUser.campus ?? ""
+                self.birthdateTextField.text = self.currentUser.birthdate ?? ""
+                
+                if self.currentUser.image != nil {
+
+                    self.userImage.setImage(from: self.currentUser.image!) { (image, urlString) in
+                
+                        if self.currentUser.image == urlString {
+                            self.userImage.image = image
+                        }
+                        
+                    }
+                } else {
+                    self.userImage.image = UIImage(named:"user")
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    func saveUser() {
+        
+        currentUser.firstname = firstnameTextField.text!
+        currentUser.lastname = lastnameTextField.text!
+        currentUser.degree = degreeTextField.text!
+        currentUser.campus = campusTextField.text!
+        currentUser.birthdate = birthdateTextField.text!
+        
+        userViewModel.updateUser(user: currentUser) {
+            
+            self.displayProfileData()
+
+            // redirect to profile
+            let tabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                tabBarVC.selectedIndex = 3
+            self.navigationController?.pushViewController(tabBarVC, animated: true)
+            
+        }
+        
     }
 
 }
