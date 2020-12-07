@@ -18,8 +18,10 @@ class User: Codable {
     var degree: String?
     var image: String?
     var posts: [String]?
+    var followers: [String]?
+    var following: [String]?
     
-    init(uid: String, firstname: String, lastname: String, birthdate: String, campus: String, degree: String, image: String = Constants.DEFAUL_PROFILE_PIC, posts: [String] = [String]()) {
+    init(uid: String, firstname: String, lastname: String, birthdate: String, campus: String, degree: String, image: String = Constants.DEFAUL_PROFILE_PIC, posts: [String] = [String](), followers: [String] = [String](), following: [String] = [String]()) {
         
         self.uid = uid
         self.firstname = firstname
@@ -29,7 +31,8 @@ class User: Codable {
         self.degree = degree
         self.image = image
         self.posts = posts
-        
+        self.followers = followers
+        self.following = following
     }
     
     init(){

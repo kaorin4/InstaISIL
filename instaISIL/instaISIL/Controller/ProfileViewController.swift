@@ -40,12 +40,21 @@ class ProfileViewController: UIViewController {
 
         if user == nil {
             let userId = userViewModel.getCurrentUserUid()
-            print(userId)
             userViewModel.getUserData(userID: userId) { (userData) in
                 self.user = userData
             }
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? UserPostsListViewController {
+            
+            controller.isDeletingAllowed = true
+        }
     }
        
     func updateData() {

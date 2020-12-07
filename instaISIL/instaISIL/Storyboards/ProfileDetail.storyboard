@@ -81,11 +81,23 @@
                                                                         <action selector="listLikesButtonPressed:" destination="hXT-j2-2NV" eventType="touchUpInside" id="LBw-aI-ZIf"/>
                                                                     </connections>
                                                                 </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTG-XZ-qEr">
+                                                                    <rect key="frame" x="349" y="0.0" width="55" height="55"/>
+                                                                    <state key="normal" title="Eliminar">
+                                                                        <color key="titleColor" systemColor="systemRedColor"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="deleteButtonTapped:" destination="hXT-j2-2NV" eventType="touchUpInside" id="nad-3i-3Ox"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="N4D-G0-6Lc" secondAttribute="bottom" id="QRO-H3-VGM"/>
                                                                 <constraint firstItem="N4D-G0-6Lc" firstAttribute="leading" secondItem="np3-ps-jpV" secondAttribute="leading" constant="10" id="bDR-h4-aWJ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="JTG-XZ-qEr" secondAttribute="bottom" id="cKP-gb-bpA"/>
+                                                                <constraint firstAttribute="trailing" secondItem="JTG-XZ-qEr" secondAttribute="trailing" constant="10" id="ign-2b-bUy"/>
+                                                                <constraint firstItem="JTG-XZ-qEr" firstAttribute="top" secondItem="np3-ps-jpV" secondAttribute="top" id="oDh-Mf-KKx"/>
                                                                 <constraint firstItem="N4D-G0-6Lc" firstAttribute="top" secondItem="np3-ps-jpV" secondAttribute="top" id="tNp-I5-C30"/>
                                                                 <constraint firstAttribute="height" constant="55" id="vop-3B-KBd"/>
                                                             </constraints>
@@ -182,6 +194,7 @@
                                             <outlet property="commentButton" destination="058-th-GdS" id="xr0-l6-0vZ"/>
                                             <outlet property="constraintPostImageHeight" destination="PBQ-4c-VQI" id="el5-Uj-ru1"/>
                                             <outlet property="dateLabel" destination="nsh-qm-An4" id="DzX-Wg-Tkc"/>
+                                            <outlet property="deleteButton" destination="JTG-XZ-qEr" id="k0X-Jj-rLe"/>
                                             <outlet property="likeButton" destination="mwN-Lb-sxE" id="VCY-lA-Ng5"/>
                                             <outlet property="numOfLikes" destination="N4D-G0-6Lc" id="6ze-Wc-cL6"/>
                                             <outlet property="postImage" destination="ZkZ-j7-3MD" id="8Tg-ks-Jqu"/>
@@ -239,6 +252,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -28,6 +28,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton?
     
     var delegate: PostTableViewCellDelegate?
     
@@ -42,6 +43,18 @@ class PostTableViewCell: UITableViewCell {
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
+    
+    var isDeletingAllowed : Bool? {
+        didSet {
+            if deleteButton != nil {
+                if isDeletingAllowed! {
+                    deleteButton?.isHidden = false
+                } else {
+                    deleteButton?.isHidden = true
+                }
+            }
+        }
+    }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         
@@ -92,6 +105,11 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        
+        print("delete me")
+        
+    }
     
     static func nib() -> UINib {
         

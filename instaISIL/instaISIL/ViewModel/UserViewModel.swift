@@ -114,6 +114,115 @@ class UserViewModel {
         completion()
         
     }
+    
+    func followUser(followingUserId: String) {
+        let currentUser = getCurrentUserUid()
+        
+        addToUserFollowingList(followingUserId: followingUserId, followerUserId: currentUser)
+        addToUserFollowerList(followingUserId: followingUserId, followerUserId: currentUser)
+    }
 
+    func addToUserFollowingList(followingUserId: String, followerUserId: String) {
+        
+        let userRef = db.collection("users").document(followerUserId)
+        
+        // update database
+        userRef.updateData([
+            "following": FieldValue.arrayUnion([followingUserId])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func addToUserFollowerList(followingUserId: String, followerUserId: String) {
+        
+        let userRef = db.collection("users").document(followingUserId)
+        
+        // update database
+        userRef.updateData([
+            "followers": FieldValue.arrayUnion([followerUserId])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func unfollowUser(followingUserId: String) {
+        
+        let currentUser = getCurrentUserUid()
+        
+        removeFromUserFollowingList(followingUserId: followingUserId, followerUserId: currentUser)
+        removeFromUserFollowerList(followingUserId: followingUserId, followerUserId: currentUser)
+    }
+    
+    func removeFromUserFollowingList(followingUserId: String, followerUserId: String) {
+        
+        let userRef = db.collection("users").document(followerUserId)
+        
+        // update database
+        userRef.updateData([
+            "following": FieldValue.arrayRemove([followingUserId])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func removeFromUserFollowerList(followingUserId: String, followerUserId: String) {
+        
+        let userRef = db.collection("users").document(followingUserId)
+        
+        // update database
+        userRef.updateData([
+            "followers": FieldValue.arrayRemove([followerUserId])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    func isFollowedByCurrentUser(followingUserId: String, completion: @escaping (_ isFollowed: Bool) -> Void) {
+        
+        let currentUser = getCurrentUserUid()
+        
+        let userRef = db.collection("users").document(currentUser)
+        
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                guard let followingArr = document.get("following") as? [String] else {
+                    completion(false)
+                    return
+                }
+                
+                if followingArr.contains(followingUserId) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
     
 }

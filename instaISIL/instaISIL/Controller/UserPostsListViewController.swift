@@ -21,18 +21,17 @@ class UserPostsListViewController: UIViewController {
     var userId = ""
     
     var posts = [Post]()
-
+    
+    var isDeletingAllowed = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageLabel.isHidden = true
         
-        print(userId)
-        
         if userId == "" {
             userId = userViewModel.getCurrentUserUid()
         }
-        
-        print(userId)
 
         postViewModel.getPostsByUser(with: userId) { (userposts) in
             self.posts = userposts ?? [Post]()
@@ -74,6 +73,10 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
         let cell =  table.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
         cell.delegate = self
         cell.objPost = self.posts[indexPath.row]
+
+        if isDeletingAllowed {
+            cell.isDeletingAllowed = true
+        }
 
         return cell
     }
