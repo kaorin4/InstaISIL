@@ -53,20 +53,6 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        userViewModel.isFollowedByCurrentUser(followingUserId: user?.uid ?? "") {followed in
-            if followed {
-                self.isFollowed = true
-                self.followButton.setTitle("Seguido", for: .normal)
-            } else {
-                self.isFollowed = false
-                self.followButton.setTitle("Seguir", for: .normal)
-            }
-        }
-        let currentUser = userViewModel.getCurrentUserUid()
-        if user?.uid == currentUser {
-            followButton.isHidden = true
-            followButtonHeightConstraint.constant = 0
-        }
         
     }
     
@@ -103,6 +89,22 @@ class UserProfileViewController: UIViewController {
             }
         } else {
             userImage?.image = UIImage(named:"user")
+        }
+        
+        userViewModel.isFollowedByCurrentUser(followingUserId: user?.uid ?? "") {followed in
+
+            if followed {
+                self.isFollowed = true
+                self.followButton.setTitle("Seguido", for: .normal)
+            } else {
+                self.isFollowed = false
+                self.followButton.setTitle("Seguir", for: .normal)
+            }
+        }
+        let currentUser = userViewModel.getCurrentUserUid()
+        if user?.uid == currentUser {
+            followButton.isHidden = true
+            followButtonHeightConstraint.constant = 0
         }
         
     }

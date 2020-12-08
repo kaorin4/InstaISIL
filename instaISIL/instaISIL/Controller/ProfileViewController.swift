@@ -31,6 +31,12 @@ class ProfileViewController: UIViewController {
         
     }
     
+    @IBAction func showFollowingUsersButtonTapped(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "profileToFollowingList",sender: self)
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +60,16 @@ class ProfileViewController: UIViewController {
         if let controller = segue.destination as? UserPostsListViewController {
             
             controller.isDeletingAllowed = true
+        }
+        
+        if let controller = segue.destination as? UserFollowingListViewController {
+            
+            guard let followingList = user?.following else {
+                return
+            }
+            
+            controller.list = followingList
+
         }
     }
        

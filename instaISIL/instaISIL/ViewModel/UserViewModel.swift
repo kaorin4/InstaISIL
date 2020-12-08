@@ -201,12 +201,13 @@ class UserViewModel {
     func isFollowedByCurrentUser(followingUserId: String, completion: @escaping (_ isFollowed: Bool) -> Void) {
         
         let currentUser = getCurrentUserUid()
-        
+
         let userRef = db.collection("users").document(currentUser)
         
         userRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 
+                print(followingUserId)
                 guard let followingArr = document.get("following") as? [String] else {
                     completion(false)
                     return
@@ -222,6 +223,12 @@ class UserViewModel {
                 print("Document does not exist")
             }
         }
+        
+    }
+    
+    func getFollowingUsers(userID: String) {
+        
+        
         
     }
     
