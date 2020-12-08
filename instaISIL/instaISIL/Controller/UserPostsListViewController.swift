@@ -48,6 +48,27 @@ class UserPostsListViewController: UIViewController {
         }
     }
     
+    func deletePost(_ post: Post) {
+        
+        self.showAlert(title: "Warning", message: "¿Deseas eliminar este post?", acceptButton: "Aceptar", cancelButton: "Cancelar", pressAccept: {
+            
+            guard let index = self.posts.firstIndex(where: {
+                $0.id == post.id
+            }) else {
+                return
+            }
+            
+            self.posts.remove(at: index)
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            self.table.deleteRows(at: [indexPath], with: .right)
+            
+            self.postViewModel.deletePost(postId: post.id)
+            
+        }, pressCancel: nil)
+        
+    }
+    
 }
 
 extension UserPostsListViewController: UITableViewDelegate {
@@ -77,7 +98,6 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
         if isDeletingAllowed {
             cell.isDeletingAllowed = true
         }
-
         return cell
     }
     
@@ -85,6 +105,11 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
 
 
 extension UserPostsListViewController: PostTableViewCellDelegate {
+    
+    func showAlert(cell: PostTableViewCell, deletePost objPost: Post) {
+        
+        self.deletePost(objPost)
+    }
     
     func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
         /*
@@ -99,6 +124,8 @@ extension UserPostsListViewController: PostTableViewCellDelegate {
         }*/
         
     }
+    
+    
     
 }
 

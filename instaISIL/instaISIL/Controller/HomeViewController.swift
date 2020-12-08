@@ -98,6 +98,19 @@ class HomeViewController: UIViewController {
 
                     } catch { print(error) }
                 }
+                
+                else if (diff.type == .removed) {
+                    
+                    let postID = diff.document.documentID
+                    
+                    if let index = self.posts.firstIndex(where: {$0.id == postID}) {
+                        self.posts.remove(at: index)
+                        
+                        DispatchQueue.main.async {
+                            self.table.reloadData()
+                        }
+                    }
+                }
             }
 
         }
@@ -136,7 +149,7 @@ extension HomeViewController: UITableViewDataSource {  // number, number, cellfo
 }
 
 extension HomeViewController: PostTableViewCellDelegate {
-    
+
     func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
 
         if sender as? UIButton == cell.numOfLikes {
@@ -155,6 +168,10 @@ extension HomeViewController: PostTableViewCellDelegate {
             
         }
         
+    }
+    
+    func showAlert(cell: PostTableViewCell, deletePost objPost: Post) {
+        // 
     }
     
 }
