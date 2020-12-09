@@ -54,6 +54,28 @@ class UserPostsListViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? PostLikesViewController {
+            
+            if let cell = sender as? PostTableViewCell {
+
+                controller.userlikes = Array(cell.objPost.userLikes)
+                
+            }
+        }
+        
+        if let controller = segue.destination as? PostViewController {
+            
+            if let cell = sender as? IndexPath {
+                controller.objPost = posts[cell.row]
+            }
+
+        }
+    }
+    
     func deletePost(_ post: Post) {
         
         self.showAlert(title: "Warning", message: "¿Deseas eliminar este post?", acceptButton: "Aceptar", cancelButton: "Cancelar", pressAccept: {
@@ -81,7 +103,7 @@ extension UserPostsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        //self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        self.performSegue(withIdentifier: "listToPostVC", sender: indexPath)
     }
     
 }
@@ -121,17 +143,16 @@ extension UserPostsListViewController: PostTableViewCellDelegate {
     }
     
     func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
-        /*
+        
         if sender as? UIButton == cell.numOfLikes {
-            self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: cell)
+            self.performSegue(withIdentifier: "postToUserLikesVC", sender: cell)
         }
         
         if sender as? UIButton == cell.commentButton {
 
             let indexPath = self.table.indexPath(for: cell)
-            self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
-        }*/
-        
+            self.performSegue(withIdentifier: "listToPostVC", sender: indexPath)
+        }
     }
     
     

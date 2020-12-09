@@ -71,7 +71,7 @@ extension UserFollowingListViewController: UITableViewDataSource {  // number, n
         if list.count > 0 {
             cell.user = list[indexPath.row]
         }
-           
+        
         return cell
 
     }

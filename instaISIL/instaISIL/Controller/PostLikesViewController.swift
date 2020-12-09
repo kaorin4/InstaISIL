@@ -12,6 +12,8 @@ class PostLikesViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var messageLabel: UILabel!
+    
     private let userViewModel = UserViewModel()
     
     var userlikes = [String]()
@@ -19,6 +21,9 @@ class PostLikesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if userlikes.count > 0{
+            messageLabel.isHidden = true
+        }
         table.tableFooterView = UIView()
     }
     

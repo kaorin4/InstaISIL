@@ -407,6 +407,26 @@
             </objects>
             <point key="canvasLocation" x="6539" y="1019"/>
         </scene>
+        <!--PostLikesViewController-->
+        <scene sceneID="pRY-LW-6pP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostLikesViewController" id="WyG-au-fQm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iiR-q2-Abx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FDG-Ho-3Ye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6444" y="1489"/>
+        </scene>
+        <!--PostViewController-->
+        <scene sceneID="VNs-Eb-JeT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostViewController" id="PVf-K4-fhT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qov-ei-Mag"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gga-vf-McD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6431" y="1637"/>
+        </scene>
         <!--User Following List View Controller-->
         <scene sceneID="FDu-bA-7P7">
             <objects>
@@ -452,7 +472,7 @@
                                     <outlet property="delegate" destination="rET-0u-JMk" id="qvS-4d-HIt"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tiene seguidores :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DEH-aU-XeI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No sigue a nadie :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DEH-aU-XeI">
                                 <rect key="frame" x="0.0" y="426" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -488,7 +508,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRJ-R3-sgc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6364" y="2218"/>
+            <point key="canvasLocation" x="6519" y="2138"/>
         </scene>
         <!--User Posts List View Controller-->
         <scene sceneID="2Pg-Br-ye1">
@@ -711,6 +731,8 @@
                     <connections>
                         <outlet property="messageLabel" destination="hwB-kn-YJv" id="aUT-32-cqX"/>
                         <outlet property="table" destination="Rvb-cM-2P6" id="Pa0-FR-cMo"/>
+                        <segue destination="WyG-au-fQm" kind="show" identifier="postToUserLikesVC" id="1df-fz-Wan"/>
+                        <segue destination="PVf-K4-fhT" kind="show" identifier="listToPostVC" id="ah0-Oc-Jt8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEO-qg-jFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
