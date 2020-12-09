@@ -204,7 +204,7 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6E-Ys-Pmy">
-                                        <rect key="frame" x="10" y="180" width="394" height="500"/>
+                                        <rect key="frame" x="10" y="210" width="394" height="500"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB6-KH-dWW">
                                                 <rect key="frame" x="10" y="55.5" width="80" height="21"/>
@@ -348,12 +348,24 @@
                                             <constraint firstItem="mPu-Qs-4Ed" firstAttribute="top" secondItem="tgx-O2-OnI" secondAttribute="bottom" constant="8" symbolic="YES" id="zmM-IU-aGm"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV7-n5-mBf">
+                                        <rect key="frame" x="151" y="160" width="112" height="30"/>
+                                        <color key="backgroundColor" name="app_black"/>
+                                        <state key="normal" title="Cambiar imagen">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pickPhotoButtonPressed:" destination="GPd-69-ArY" eventType="touchUpInside" id="q0R-bS-fLW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="vWW-hB-5sO" firstAttribute="top" secondItem="vgZ-oU-2mF" secondAttribute="top" id="0mh-DE-jna"/>
                                     <constraint firstItem="ZIz-vC-BZg" firstAttribute="centerX" secondItem="vgZ-oU-2mF" secondAttribute="centerX" id="CNK-W7-uxU"/>
+                                    <constraint firstItem="F6E-Ys-Pmy" firstAttribute="top" secondItem="GV7-n5-mBf" secondAttribute="bottom" constant="20" id="IO8-ky-dCQ"/>
+                                    <constraint firstItem="GV7-n5-mBf" firstAttribute="centerX" secondItem="ZIz-vC-BZg" secondAttribute="centerX" id="MK6-YW-2eB"/>
                                     <constraint firstAttribute="bottom" secondItem="F6E-Ys-Pmy" secondAttribute="bottom" constant="482" id="Rfg-um-Ol5"/>
-                                    <constraint firstItem="F6E-Ys-Pmy" firstAttribute="top" secondItem="ZIz-vC-BZg" secondAttribute="bottom" constant="30" id="ZoY-1D-1zD"/>
+                                    <constraint firstItem="GV7-n5-mBf" firstAttribute="top" secondItem="ZIz-vC-BZg" secondAttribute="bottom" constant="10" id="aGn-Xt-FKH"/>
                                     <constraint firstAttribute="trailing" secondItem="vWW-hB-5sO" secondAttribute="trailing" id="f6m-2X-Kv4"/>
                                     <constraint firstItem="ZIz-vC-BZg" firstAttribute="top" secondItem="vWW-hB-5sO" secondAttribute="bottom" constant="30" id="fag-yh-Fn0"/>
                                     <constraint firstItem="vWW-hB-5sO" firstAttribute="leading" secondItem="vgZ-oU-2mF" secondAttribute="leading" id="gDW-Hm-O1e"/>

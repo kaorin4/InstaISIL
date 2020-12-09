@@ -28,9 +28,24 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var formContainer: UIView!
     
+    let pickerController = UIImagePickerController()
+    
+    var imageData: Data?
+    
     private let userViewModel = UserViewModel()
     
+    private let firebaseUtil = FirebaseUtils()
+    
     var currentUser = User()
+    
+    @IBAction func pickPhotoButtonPressed(_ sender: Any) {
+        
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+        
+    }
     
     @IBAction func updateUserButtonTapped(_ sender: Any) {
         
@@ -184,3 +199,39 @@ extension EditProfileViewController: UITextFieldDelegate {
         
     }
 }
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        
+        guard let d: Data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        imageData = d
+        
+        userImage.image = image
+        
+        let uuid = UUID().uuidString
+        let path = "images/\(currentUser.uid!)/posts/\(uuid)"
+        
+        guard let img = self.imageData else {
+            return
+        }
+        
+        firebaseUtil.saveFileStorage(data: img, path: path) { (url) in
+            self.currentUser.image = url
+            
+            picker.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
