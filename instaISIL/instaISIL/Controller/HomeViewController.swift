@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
 
         }
         
-        if let controller = segue.destination as? UserProfileViewController {
+        if let controller = segue.destination as? ProfileViewController {
             
             if let cell = sender as? PostTableViewCell {
                 controller.user = cell.objPost.user

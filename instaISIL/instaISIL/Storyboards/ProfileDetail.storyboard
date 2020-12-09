@@ -310,7 +310,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwY-yy-lTM">
-                                <rect key="frame" x="20" y="293" width="135" height="30"/>
+                                <rect key="frame" x="20" y="296" width="135" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="122" id="oCM-GY-qDF"/>
                                     <constraint firstAttribute="height" constant="30" id="yDa-5j-FyJ"/>
@@ -324,22 +324,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHo-eS-p0U">
-                                <rect key="frame" x="20" y="333" width="159" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0fu-Qt-7KP"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="143" id="4pV-j5-SVy"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="L8F-7Z-oP8"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="336" width="159" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Ver amigos seguidos">
                                     <color key="titleColor" name="app_black"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92S-BP-vqQ">
-                                <rect key="frame" x="20" y="253" width="49" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="LMM-xb-LDD"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="253" width="49" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Seguir">
                                     <color key="titleColor" name="app_black"/>
@@ -370,7 +362,6 @@
                         <outlet property="campusLabel" destination="HvL-CF-KNx" id="9q7-16-CoP"/>
                         <outlet property="degreeLabel" destination="yiC-rE-0IL" id="ZJk-Uc-hCh"/>
                         <outlet property="followButton" destination="92S-BP-vqQ" id="XgO-jx-UT7"/>
-                        <outlet property="followButtonHeightConstraint" destination="LMM-xb-LDD" id="zNT-ma-moR"/>
                         <outlet property="lastnameLabel" destination="A2Q-w2-qN8" id="42x-SP-kd9"/>
                         <outlet property="nameLabel" destination="SVn-VO-vel" id="9D0-BT-3XQ"/>
                         <outlet property="userImage" destination="O5v-Nq-5TB" id="SIq-Uo-T2J"/>

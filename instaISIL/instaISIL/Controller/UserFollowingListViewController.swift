@@ -13,13 +13,17 @@ class UserFollowingListViewController: UIViewController {
     var list = [String]()
     
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var message: UILabel!
     
     let userVM = UserViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        if list.count > 0 {
+            message.isHidden = true                        
+        }
+        
         table.tableFooterView = UIView()
     }
     
@@ -27,15 +31,14 @@ class UserFollowingListViewController: UIViewController {
         
         super.prepare(for: segue, sender: sender)
         
-        if let controller = segue.destination as? UserProfileViewController {
+        if let controller = segue.destination as? ProfileViewController {
             
             if let cell = sender as? UserListCell {
                 
-                userVM.getUserData(userID: cell.user ?? "") { (user) in
-                    controller.user = user
-
+                if cell.user != nil {
+                    
+                    controller.userID = cell.user
                 }
-
             }
 
         }
@@ -65,7 +68,9 @@ extension UserFollowingListViewController: UITableViewDataSource {  // number, n
         
         let cell =  table.dequeueReusableCell(withIdentifier: UserListCell.identifier, for: indexPath) as! UserListCell
         cell.delegate = self
-        cell.user = list[indexPath.row]
+        if list.count > 0 {
+            cell.user = list[indexPath.row]
+        }
            
         return cell
 

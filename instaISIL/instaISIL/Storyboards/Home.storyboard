@@ -214,8 +214,8 @@
                     <connections>
                         <outlet property="table" destination="EzT-1q-1JL" id="arh-Gm-wWM"/>
                         <segue destination="fdA-zp-uQ7" kind="show" identifier="homeToPostVC" id="IzC-ZK-fdF"/>
-                        <segue destination="LXY-FZ-Eu8" kind="show" identifier="homeToUserProfileVC" id="C4P-xi-4V9"/>
                         <segue destination="jfX-r1-Cu4" kind="show" identifier="homeToPostLikeListVC" id="lI6-xM-wzH"/>
+                        <segue destination="ItC-wg-5DE" kind="show" identifier="homeToUserProfileVC" id="p7S-nI-KOj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8q-T7-TZi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -471,75 +471,14 @@
             <point key="canvasLocation" x="5580" y="-378"/>
         </scene>
         <!--ProfileViewController-->
-        <scene sceneID="Ucv-QQ-wtg">
+        <scene sceneID="zXO-yc-Myo">
             <objects>
-                <viewControllerPlaceholder storyboardName="ProfileDetail" referencedIdentifier="ProfileViewController" id="LXY-FZ-Eu8" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="jWf-nZ-g7P"/>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="ItC-wg-5DE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bsh-zn-Kfn"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sW5-eG-BoV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fr-Vl-eyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5483" y="-1586"/>
-        </scene>
-        <!--Post Likes View Controller-->
-        <scene sceneID="nEI-bi-pJf">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="biD-wg-ikS" customClass="PostLikesViewController" customModule="InstaISIL" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9bF-Iq-t6Y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jy9-Iq-oOg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostLikesViewCell" rowHeight="93" id="mQg-n7-BYg" customClass="PostLikesViewCell" customModule="InstaISIL" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="93"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mQg-n7-BYg" id="aYq-rb-77S">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usuario" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-A2-jOm">
-                                                    <rect key="frame" x="10" y="20" width="58.5" height="53"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uRh-A2-jOm" secondAttribute="bottom" constant="20" id="CQ8-WA-OMa"/>
-                                                <constraint firstItem="uRh-A2-jOm" firstAttribute="leading" secondItem="aYq-rb-77S" secondAttribute="leading" constant="10" id="b9U-Ki-kpY"/>
-                                                <constraint firstItem="uRh-A2-jOm" firstAttribute="top" secondItem="aYq-rb-77S" secondAttribute="top" constant="20" id="uGx-Na-9Rp"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="username" destination="uRh-A2-jOm" id="P43-KW-hTc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="biD-wg-ikS" id="tFE-f8-L7c"/>
-                                    <outlet property="delegate" destination="biD-wg-ikS" id="pLj-al-90B"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="zbB-wT-4Ux"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zbB-wT-4Ux" firstAttribute="bottom" secondItem="Jy9-Iq-oOg" secondAttribute="bottom" id="Awl-Ea-aqN"/>
-                            <constraint firstItem="zbB-wT-4Ux" firstAttribute="trailing" secondItem="Jy9-Iq-oOg" secondAttribute="trailing" id="ONu-2m-ZOA"/>
-                            <constraint firstItem="Jy9-Iq-oOg" firstAttribute="leading" secondItem="zbB-wT-4Ux" secondAttribute="leading" id="ZBI-g9-FIn"/>
-                            <constraint firstItem="Jy9-Iq-oOg" firstAttribute="top" secondItem="zbB-wT-4Ux" secondAttribute="top" id="bqe-CU-W0z"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="PwE-Dz-Zyj"/>
-                    <connections>
-                        <outlet property="table" destination="Jy9-Iq-oOg" id="dmb-Qh-CIt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-Zo-65A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5580" y="-1065"/>
+            <point key="canvasLocation" x="5480" y="-1665"/>
         </scene>
         <!--Post Likes View Controller-->
         <scene sceneID="q1r-8d-SRb">
@@ -603,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhA-ZL-TOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6251" y="-1065"/>
+            <point key="canvasLocation" x="5597" y="-1057"/>
         </scene>
     </scenes>
     <resources>

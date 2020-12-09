@@ -14,6 +14,8 @@ class UserPostsListViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
@@ -28,9 +30,13 @@ class UserPostsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageLabel.isHidden = true
-        
+
         if userId == "" {
             userId = userViewModel.getCurrentUserUid()
+        }
+
+        if userId == userViewModel.getCurrentUserUid() {
+            isDeletingAllowed = true
         }
 
         postViewModel.getPostsByUser(with: userId) { (userposts) in
@@ -95,8 +101,11 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
         cell.delegate = self
         cell.objPost = self.posts[indexPath.row]
 
+        print(isDeletingAllowed)
         if isDeletingAllowed {
             cell.isDeletingAllowed = true
+        } else {
+            cell.isDeletingAllowed = false
         }
         return cell
     }
