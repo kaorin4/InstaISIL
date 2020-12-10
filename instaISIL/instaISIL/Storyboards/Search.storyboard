@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,19 +17,119 @@
                     <view key="view" contentMode="scaleToFill" id="Swx-QL-g2k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bBg-nT-nmD">
+                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserListCell" rowHeight="91" id="hrv-SH-wcj" customClass="UserListCell" customModule="InstaISIL" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hrv-SH-wcj" id="OTx-xk-Sr6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4t-Ne-aPc">
+                                                    <rect key="frame" x="15" y="10" width="53" height="71"/>
+                                                    <state key="normal" title="Usuario">
+                                                        <color key="titleColor" name="app_black"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="seeUserButtonTapped:" destination="hrv-SH-wcj" eventType="touchUpInside" id="sex-Wh-OZx"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="i4t-Ne-aPc" firstAttribute="leading" secondItem="OTx-xk-Sr6" secondAttribute="leading" constant="15" id="3Gz-w8-J5h"/>
+                                                <constraint firstAttribute="bottom" secondItem="i4t-Ne-aPc" secondAttribute="bottom" constant="10" id="mf9-9b-7eM"/>
+                                                <constraint firstItem="i4t-Ne-aPc" firstAttribute="top" secondItem="OTx-xk-Sr6" secondAttribute="top" constant="10" id="vdd-RC-5BL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="username" destination="i4t-Ne-aPc" id="HLV-Iv-YMQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RdU-G9-VHX" id="Nh6-vb-SIv"/>
+                                    <outlet property="delegate" destination="RdU-G9-VHX" id="HJ0-0e-DYd"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Buscar por nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCe-ZX-aFe">
+                                <rect key="frame" x="10" y="54" width="331" height="34"/>
+                                <color key="backgroundColor" name="app_gray"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFb-Wy-8Dx" customClass="CustomUIButton" customModule="InstaISIL" customModuleProvider="target">
+                                <rect key="frame" x="346" y="56" width="58" height="30"/>
+                                <color key="backgroundColor" name="app_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="996-3g-fHI"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="Buscar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchUser:" destination="RdU-G9-VHX" eventType="touchUpInside" id="f6h-MW-wK5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="i51-MX-1rX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="app_black"/>
+                        <constraints>
+                            <constraint firstItem="i51-MX-1rX" firstAttribute="bottom" secondItem="bBg-nT-nmD" secondAttribute="bottom" id="9hj-T1-fK6"/>
+                            <constraint firstItem="i51-MX-1rX" firstAttribute="trailing" secondItem="xFb-Wy-8Dx" secondAttribute="trailing" constant="10" id="Gu2-GC-rIn"/>
+                            <constraint firstItem="xFb-Wy-8Dx" firstAttribute="top" secondItem="i51-MX-1rX" secondAttribute="top" constant="12" id="HbT-tp-bbn"/>
+                            <constraint firstItem="bBg-nT-nmD" firstAttribute="leading" secondItem="i51-MX-1rX" secondAttribute="leading" id="QVs-PR-lib"/>
+                            <constraint firstItem="xFb-Wy-8Dx" firstAttribute="leading" secondItem="fCe-ZX-aFe" secondAttribute="trailing" constant="5" id="S96-i6-kWn"/>
+                            <constraint firstItem="fCe-ZX-aFe" firstAttribute="leading" secondItem="i51-MX-1rX" secondAttribute="leading" constant="10" id="WNV-uc-0b4"/>
+                            <constraint firstItem="bBg-nT-nmD" firstAttribute="top" secondItem="fCe-ZX-aFe" secondAttribute="bottom" constant="10" id="Wud-Ee-HYM"/>
+                            <constraint firstItem="bBg-nT-nmD" firstAttribute="top" secondItem="xFb-Wy-8Dx" secondAttribute="bottom" constant="12" id="sfG-Ek-ggv"/>
+                            <constraint firstItem="fCe-ZX-aFe" firstAttribute="top" secondItem="i51-MX-1rX" secondAttribute="top" constant="10" id="vi1-NF-LCb"/>
+                            <constraint firstItem="i51-MX-1rX" firstAttribute="trailing" secondItem="bBg-nT-nmD" secondAttribute="trailing" id="w9M-S1-3FK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="search" id="n06-0p-dEx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="fCe-ZX-aFe" id="Btk-E7-lga"/>
+                        <outlet property="table" destination="bBg-nT-nmD" id="Sub-dP-RKJ"/>
+                        <segue destination="Mw4-l3-dAL" kind="show" identifier="searchToProfileVC" id="qVQ-g6-Wwj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0e9-AQ-zdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4151" y="7"/>
+            <point key="canvasLocation" x="4150.7246376811599" y="6.6964285714285712"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="2FQ-Aj-VR6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="Mw4-l3-dAL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xhr-zz-ETQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43z-4y-g4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5087" y="-88"/>
         </scene>
     </scenes>
     <resources>
         <image name="search" width="24" height="24"/>
+        <namedColor name="app_black">
+            <color red="0.15299999713897705" green="0.18400000035762787" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="app_blue">
+            <color red="0.086000002920627594" green="0.47099998593330383" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="app_gray">
+            <color red="0.76899999380111694" green="0.81599998474121094" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

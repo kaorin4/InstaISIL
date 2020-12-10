@@ -226,8 +226,25 @@ class UserViewModel {
         
     }
     
-    func getFollowingUsers(userID: String) {
+    func findUsers(withName: String, completion: @escaping (_ list: [String]?) -> Void) {
         
+        let userRef = db.collection("users")
+        
+        userRef.whereField("firstname", isGreaterThanOrEqualTo: withName).whereField("firstname", isLessThanOrEqualTo: withName).getDocuments { (querySnapshot, error) in
+
+            if let err = error {
+                print("Error getting documents: \(err)")
+            } else {
+                var userList = [String]()
+                
+                for document in querySnapshot!.documents {
+                    userList.append(document.documentID)
+                    print(document.documentID)
+                }
+                completion(userList)
+            }
+
+        }
         
         
     }
