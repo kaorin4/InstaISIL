@@ -13,6 +13,8 @@ protocol PostTableViewCellDelegate {
     
     func callSegueFromCell(sender: Any, cell: PostTableViewCell)
     
+    func showAlert(cell: PostTableViewCell, deletePost objPost: Post)
+    
 }
 
 class PostTableViewCell: UITableViewCell {
@@ -28,6 +30,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var constraintPostImageHeight: NSLayoutConstraint!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton?
     
     var delegate: PostTableViewCellDelegate?
     
@@ -42,6 +45,18 @@ class PostTableViewCell: UITableViewCell {
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
+    
+    var isDeletingAllowed : Bool? {
+        didSet {
+            if deleteButton != nil {
+                if isDeletingAllowed! {
+                    deleteButton?.isHidden = false
+                } else {
+                    deleteButton?.isHidden = true
+                }
+            }
+        }
+    }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         
@@ -92,6 +107,11 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        
+        self.delegate?.showAlert(cell: self, deletePost: objPost)
+        
+    }
     
     static func nib() -> UINib {
         
@@ -118,7 +138,6 @@ class PostTableViewCell: UITableViewCell {
     
     func updateData() {
         
- 
         //self.usernameLabel.text = self.objPost.user.firstname
         self.usernameLabel.setTitle(self.objPost.user.firstname, for: .normal)
         self.dateLabel.text = self.objPost.date.toDate(dateFormat: "dd/MM/yyyy HH:mm")
@@ -145,7 +164,6 @@ class PostTableViewCell: UITableViewCell {
                if self.objPost.postImage == urlString {
                     self.postImage.image = image
                }
-                
             }            
         } else {
             constraintPostImageHeight.constant = 0

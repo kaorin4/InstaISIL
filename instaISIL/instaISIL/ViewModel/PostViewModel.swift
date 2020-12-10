@@ -191,5 +191,36 @@ class PostViewModel {
         
     }
 
+    func deletePost(postId: String) {
+        
+        db.collection("posts").document(postId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                self.removeFromUserPostList(postId: postId)
+                print("Document successfully removed!")
+            }
+        }
+        
+    }
+    
+    func removeFromUserPostList(postId: String) {
+        
+        let currentUser = userViewModel.getCurrentUserUid()
+        
+        let userRef = db.collection("users").document(currentUser)
+        
+        // update database
+        userRef.updateData([
+            "posts": FieldValue.arrayRemove([postId])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
     
 }

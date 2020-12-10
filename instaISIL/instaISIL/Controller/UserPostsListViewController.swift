@@ -14,6 +14,8 @@ class UserPostsListViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
@@ -21,18 +23,21 @@ class UserPostsListViewController: UIViewController {
     var userId = ""
     
     var posts = [Post]()
-
+    
+    var isDeletingAllowed = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageLabel.isHidden = true
-        
-        print(userId)
-        
+
         if userId == "" {
             userId = userViewModel.getCurrentUserUid()
         }
-        
-        print(userId)
+
+        if userId == userViewModel.getCurrentUserUid() {
+            isDeletingAllowed = true
+        }
 
         postViewModel.getPostsByUser(with: userId) { (userposts) in
             self.posts = userposts ?? [Post]()
@@ -49,13 +54,56 @@ class UserPostsListViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? PostLikesViewController {
+            
+            if let cell = sender as? PostTableViewCell {
+
+                controller.userlikes = Array(cell.objPost.userLikes)
+                
+            }
+        }
+        
+        if let controller = segue.destination as? PostViewController {
+            
+            if let cell = sender as? IndexPath {
+                controller.objPost = posts[cell.row]
+            }
+
+        }
+    }
+    
+    func deletePost(_ post: Post) {
+        
+        self.showAlert(title: "Warning", message: "¿Deseas eliminar este post?", acceptButton: "Aceptar", cancelButton: "Cancelar", pressAccept: {
+            
+            guard let index = self.posts.firstIndex(where: {
+                $0.id == post.id
+            }) else {
+                return
+            }
+            
+            self.posts.remove(at: index)
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            self.table.deleteRows(at: [indexPath], with: .right)
+            
+            self.postViewModel.deletePost(postId: post.id)
+            
+        }, pressCancel: nil)
+        
+    }
+    
 }
 
 extension UserPostsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        //self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
+        self.performSegue(withIdentifier: "listToPostVC", sender: indexPath)
     }
     
 }
@@ -75,6 +123,12 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
         cell.delegate = self
         cell.objPost = self.posts[indexPath.row]
 
+        print(isDeletingAllowed)
+        if isDeletingAllowed {
+            cell.isDeletingAllowed = true
+        } else {
+            cell.isDeletingAllowed = false
+        }
         return cell
     }
     
@@ -83,19 +137,25 @@ extension UserPostsListViewController: UITableViewDataSource {  // number, numbe
 
 extension UserPostsListViewController: PostTableViewCellDelegate {
     
+    func showAlert(cell: PostTableViewCell, deletePost objPost: Post) {
+        
+        self.deletePost(objPost)
+    }
+    
     func callSegueFromCell(sender: Any, cell: PostTableViewCell) {
-        /*
+        
         if sender as? UIButton == cell.numOfLikes {
-            self.performSegue(withIdentifier: "homeToPostLikeListVC", sender: cell)
+            self.performSegue(withIdentifier: "postToUserLikesVC", sender: cell)
         }
         
         if sender as? UIButton == cell.commentButton {
 
             let indexPath = self.table.indexPath(for: cell)
-            self.performSegue(withIdentifier: "homeToPostVC", sender: indexPath)
-        }*/
-        
+            self.performSegue(withIdentifier: "listToPostVC", sender: indexPath)
+        }
     }
+    
+    
     
 }
 

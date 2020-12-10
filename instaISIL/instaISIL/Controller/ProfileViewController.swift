@@ -16,11 +16,30 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var campusLabel: UILabel!
     @IBOutlet weak var birthdateLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var editProfileButton: CustomUIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var followButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var editButtonHeightConstraint: NSLayoutConstraint!
+    
     
     let userViewModel = UserViewModel()
     
+    var isFollowed = false
+    
     var user : User? {
         didSet {
+            loadViewIfNeeded()
+            self.updateData()
+        }
+    }
+    
+    var userID: String? {
+        didSet {
+            
+            userViewModel.getUserData(userID: userID!) { (userData) in
+                self.user = userData
+            }
+            loadViewIfNeeded()
             self.updateData()
         }
     }
@@ -31,21 +50,64 @@ class ProfileViewController: UIViewController {
         
     }
     
+    @IBAction func showFollowingUsersButtonTapped(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "profileToFollowingList",sender: self)
+        
+    }
+    
+    @IBAction func followUser(_ sender: UIButton) {
+        
+        isFollowed = !isFollowed
+        if isFollowed {
+            sender.setTitle("Seguido", for: .normal)
+            userViewModel.followUser(followingUserId: user?.uid ?? "")
+        } else {
+            sender.setTitle("Seguir", for: .normal)
+            userViewModel.unfollowUser(followingUserId: user?.uid ?? "")
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        editProfileButton.isHidden = true
+        followButton.isHidden = true
         // Do any additional setup after loading the view.
-        //displayProfileData()
 
-        if user == nil {
-            let userId = userViewModel.getCurrentUserUid()
-            print(userId)
+        let userId = userViewModel.getCurrentUserUid()
+        if user == nil && userID == nil {
             userViewModel.getUserData(userID: userId) { (userData) in
                 self.user = userData
+                
+                self.editProfileButton.isHidden = false
+                self.followButtonHeightConstraint.constant = 0
             }
+        } else {
+            followButton.isHidden = false
+            editButtonHeightConstraint.constant = 0
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if let controller = segue.destination as? UserPostsListViewController {
+            
+            controller.userId = user?.uid ?? ""
+        }
+        
+        if let controller = segue.destination as? UserFollowingListViewController {
+            
+            guard let followingList = user?.following else {
+                return
+            }
+            controller.list = followingList
+
+        }
     }
        
     func updateData() {
@@ -73,33 +135,21 @@ class ProfileViewController: UIViewController {
             self.userImage.image = UIImage(named:"user")
         }
         
-    }
-    
-    func displayProfileData() {
-        
-        let userId = userViewModel.getCurrentUserUid()
-        
-        userViewModel.getUserData(userID: userId) { (user) in
-            
-            self.nameLabel.text = "Nombre: \(user?.firstname ?? "")"
-            self.lastnameLabel.text = "Apellido: \(user?.lastname ?? "")"
-            self.degreeLabel.text = "Carrera: \(user?.degree ?? "")"
-            self.campusLabel.text = "Campus: \(user?.campus ?? "")"
-            self.birthdateLabel.text = "Nacimiento: \(user?.birthdate ?? "")"
-            
-            if user?.image != nil {
+        userViewModel.isFollowedByCurrentUser(followingUserId: user?.uid ?? "") {followed in
 
-                self.userImage.setImage(from: user!.image!) { (image, urlString) in
-            
-                    if user?.image == urlString {
-                        self.userImage.image = image
-                    }
-                    
-                }
+            if followed {
+                self.isFollowed = true
+                self.followButton.setTitle("Seguido", for: .normal)
             } else {
-                self.userImage.image = UIImage(named:"user")
+                self.isFollowed = false
+                self.followButton.setTitle("Seguir", for: .normal)
             }
-            
+        }
+        
+        let currentUser = userViewModel.getCurrentUserUid()
+        if user?.uid == currentUser {
+            followButton.isHidden = true
+            followButtonHeightConstraint.constant = 0
         }
         
     }

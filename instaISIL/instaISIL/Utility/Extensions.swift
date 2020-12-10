@@ -40,5 +40,43 @@ extension Date {
     
 }
 
+extension UIViewController {
+    
+    typealias PressAlertAction = ()->Void
+    
+    func showAlert(title: String, message: String, acceptButton: String, pressAccept: PressAlertAction? = nil) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      
+        let acceptAction = UIAlertAction(title: acceptButton, style: .default) { (_) in
+            pressAccept?()
+        }
+        
+        alertController.addAction(acceptAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func showAlert(title: String, message: String, acceptButton: String, cancelButton: String, pressAccept: PressAlertAction? = nil, pressCancel: PressAlertAction? = nil) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let acceptAction = UIAlertAction(title: acceptButton, style: .default) { (_) in
+            pressAccept?()
+        }
+        
+        let cancelAction = UIAlertAction(title: cancelButton, style: .cancel) { (_) in
+            pressCancel?()
+        }
+          
+        alertController.addAction(acceptAction)
+        alertController.addAction(cancelAction)
+          
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+}
+
 
 

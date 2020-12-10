@@ -17,13 +17,29 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var campusLabel: UILabel!
     @IBOutlet weak var birthdateLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var followButtonHeightConstraint: NSLayoutConstraint!
     
     let userViewModel = UserViewModel()
+    
+    var isFollowed = false
     
     var user : User? {
         didSet {
             loadViewIfNeeded()
             self.updateData()
+        }
+    }
+    
+    @IBAction func followUser(_ sender: UIButton) {
+        
+        isFollowed = !isFollowed
+        if isFollowed {
+            sender.setTitle("Seguido", for: .normal)
+            userViewModel.followUser(followingUserId: user?.uid ?? "")
+        } else {
+            sender.setTitle("Seguir", for: .normal)
+            userViewModel.unfollowUser(followingUserId: user?.uid ?? "")
         }
     }
     
@@ -47,7 +63,6 @@ class UserProfileViewController: UIViewController {
         if let controller = segue.destination as? UserPostsListViewController {
             
             controller.userId = user?.uid ?? ""
-
         }
     }
     
@@ -74,6 +89,22 @@ class UserProfileViewController: UIViewController {
             }
         } else {
             userImage?.image = UIImage(named:"user")
+        }
+        
+        userViewModel.isFollowedByCurrentUser(followingUserId: user?.uid ?? "") {followed in
+
+            if followed {
+                self.isFollowed = true
+                self.followButton.setTitle("Seguido", for: .normal)
+            } else {
+                self.isFollowed = false
+                self.followButton.setTitle("Seguir", for: .normal)
+            }
+        }
+        let currentUser = userViewModel.getCurrentUserUid()
+        if user?.uid == currentUser {
+            followButton.isHidden = true
+            followButtonHeightConstraint.constant = 0
         }
         
     }

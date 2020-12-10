@@ -12,6 +12,8 @@ class PostLikesViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var messageLabel: UILabel!
+    
     private let userViewModel = UserViewModel()
     
     var userlikes = [String]()
@@ -19,6 +21,9 @@ class PostLikesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if userlikes.count > 0{
+            messageLabel.isHidden = true
+        }
         table.tableFooterView = UIView()
     }
     
@@ -44,13 +49,8 @@ extension PostLikesViewController: UITableViewDataSource {  // number, number, c
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  table.dequeueReusableCell(withIdentifier: PostLikesViewCell.identifier, for: indexPath) as! PostLikesViewCell
-        
-        userViewModel.getUserFullname(userID: userlikes[indexPath.row]) { (fullname) in
-            cell.username.text = fullname
-        }
-        
-        //cell.username.text = userlikes[indexPath.row]
+        let cell =  table.dequeueReusableCell(withIdentifier: UserListCell.identifier, for: indexPath) as! UserListCell
+        cell.user = userlikes[indexPath.row]
         return cell
     }
     
