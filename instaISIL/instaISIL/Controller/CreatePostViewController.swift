@@ -103,7 +103,7 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
             return
         }
         
-        guard let d: Data = image.jpegData(compressionQuality: 0.5) else { return }
+        guard let d: Data = image.jpegData(compressionQuality: 0.8) else { return }
         
         imageData = d
         
