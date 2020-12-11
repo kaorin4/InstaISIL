@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+
 class UserViewModel {
     
     private var db = Firestore.firestore()

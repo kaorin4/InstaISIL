@@ -122,13 +122,13 @@
 		3A68390C25520213001101F2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = instaISIL/Controller/EditProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6871F42564802B00A0020B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewController.swift; path = instaISIL/Controller/PostViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A68EA802566D10200321040 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = instaISIL/Model/User.swift; sourceTree = SOURCE_ROOT; };
-		3A68EA862566D4F000321040 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = instaISIL/ViewModel/UserViewModel.swift; sourceTree = SOURCE_ROOT; };
+		3A68EA862566D4F000321040 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = InstaISIL/Firebase/UserViewModel.swift; sourceTree = SOURCE_ROOT; };
 		3A694DE92550B67F00F012CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = instaISIL/Model/Post.swift; sourceTree = SOURCE_ROOT; };
 		3A6B5FF42536AD6100AA949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = instaISIL/Utility/Constants.swift; sourceTree = SOURCE_ROOT; };
 		3A6E1B06257F285C00B25877 /* UserFollowingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserFollowingListViewController.swift; path = instaISIL/Controller/UserFollowingListViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A6E1B10257F3B8400B25877 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserListCell.swift; path = instaISIL/View/UserListCell.swift; sourceTree = SOURCE_ROOT; };
 		3A6F07E92551C93000C99C63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = instaISIL/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
-		3A6F386625760C9B00C6A92D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewModel.swift; path = instaISIL/ViewModel/PostViewModel.swift; sourceTree = SOURCE_ROOT; };
+		3A6F386625760C9B00C6A92D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewModel.swift; path = InstaISIL/Firebase/PostViewModel.swift; sourceTree = SOURCE_ROOT; };
 		3A6FD20F253547F000FCCD98 /* ResetPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordEmailViewController.swift; path = instaISIL/Controller/ResetPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A705091257499FB0042A2A5 /* UserPostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPostsListViewController.swift; path = instaISIL/Controller/UserPostsListViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AAF4B6F2534144500989925 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = instaISIL/Controller/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -207,6 +207,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3A5E0D5125827EB5000AF6B6 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				3A68EA862566D4F000321040 /* UserViewModel.swift */,
+				3A6F386625760C9B00C6A92D /* PostViewModel.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		3A6422CB25266225008E1D6C = {
 			isa = PBXGroup;
 			children = (
@@ -232,8 +241,8 @@
 		3A6422D625266225008E1D6C /* InstaISIL */ = {
 			isa = PBXGroup;
 			children = (
+				3A5E0D5125827EB5000AF6B6 /* Firebase */,
 				3A67690425700ECD00D9F8FB /* Storyboards */,
-				3A68EA852566D4C900321040 /* ViewModel */,
 				3A694DE02550B5D000F012CA /* Model */,
 				3A579D2E2533CC1E003AD6A4 /* View */,
 				06A8720325268EAB00AA1740 /* Utility */,
@@ -303,15 +312,6 @@
 				3A676922257018DA00D9F8FB /* TabBar.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		3A68EA852566D4C900321040 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3A68EA862566D4F000321040 /* UserViewModel.swift */,
-				3A6F386625760C9B00C6A92D /* PostViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3A694DE02550B5D000F012CA /* Model */ = {
