@@ -96,6 +96,14 @@ class PostViewController: UIViewController {
             constraintPostImageHeight.constant = 0
         }
         
+        let currentUserUid = userViewModel.getCurrentUserUid()
+        
+        if objPost.userLikes.contains(currentUserUid) {
+            postLikes.setImage(UIImage(named: "liked"), for: .normal)
+        } else {
+            postLikes.setImage(UIImage(named: "like"), for: .normal)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -36,7 +36,9 @@ class PostTableViewCell: UITableViewCell {
     
     var objPost : Post! {
         didSet {
+            
             if usernameLabel != nil {
+                
                 self.updateData()
             }
         }
@@ -45,7 +47,7 @@ class PostTableViewCell: UITableViewCell {
     let userViewModel = UserViewModel()
     
     let postViewModel = PostViewModel()
-    
+
     var isDeletingAllowed : Bool? {
         didSet {
             if deleteButton != nil {
@@ -66,8 +68,10 @@ class PostTableViewCell: UITableViewCell {
         
         if !objPost.userLikes.contains(currentUserUid) {
             didLiked = true
+            likeButton.setImage(UIImage(named: "liked"), for: .normal)
             objPost.userLikes.insert(currentUserUid)
         } else {
+            likeButton.setImage(UIImage(named: "like"), for: .normal)
             objPost.userLikes.remove(currentUserUid)
         }
         
@@ -168,6 +172,15 @@ class PostTableViewCell: UITableViewCell {
         } else {
             constraintPostImageHeight.constant = 0
         }
+        
+        let currentUserUid = userViewModel.getCurrentUserUid()
+        
+        if objPost.userLikes.contains(currentUserUid) {
+            likeButton.setImage(UIImage(named: "liked"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(named: "like"), for: .normal)
+        }
+        
         
     }
     

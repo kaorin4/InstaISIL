@@ -30,8 +30,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4t-Ne-aPc">
-                                                    <rect key="frame" x="15" y="10" width="53" height="71"/>
-                                                    <state key="normal" title="Usuario">
+                                                    <rect key="frame" x="15" y="10" width="71" height="71"/>
+                                                    <state key="normal" title="Username">
                                                         <color key="titleColor" name="app_black"/>
                                                     </state>
                                                     <connections>

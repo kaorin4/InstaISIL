@@ -24,6 +24,7 @@ class UserListCell: UITableViewCell {
         didSet {
             userVM.getUserFullname(userID: user!) { (fullname) in
                 self.username.setTitle(fullname, for: .normal)
+                self.username.isHidden = false
             }
         }
     }
@@ -42,8 +43,8 @@ class UserListCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
+        username.isHidden = true
         super.awakeFromNib()
-
     }
 
     
